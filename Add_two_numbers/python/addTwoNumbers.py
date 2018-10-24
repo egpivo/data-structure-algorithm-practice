@@ -4,7 +4,7 @@ class ListNode:
     self.val = x
     self.next = None
 
-class Solution2:
+class Solution:
   def addTwoNumbers(self, l1, l2):
       """
       :type l1: ListNode
