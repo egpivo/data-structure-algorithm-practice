@@ -47,7 +47,7 @@ public:
             int minRightB = (splitB == n) ? INT_MAX : B[splitB];
             
             //cout <<"-------"<<endl;
-            //co/ut <<"start="<<start<<endl;
+            //cout <<"start="<<start<<endl;
             //cout <<"end="<< end<<endl;
             //cout <<"-------"<<endl;
             //cout <<"maxLeftA="<< maxLeftA<<endl;
@@ -86,11 +86,10 @@ int main(){
     
     //for (std::vector<int>::const_iterator i = num2.begin(); i != num2.end(); ++i)
     //    std::cout << *i << ' ';
-    double ans;
     
-    Solution detect;
+    Solution ans;
     
-    cout << "The meidan is " << detect.findMedianSortedArrays(num1, num2) <<endl;
+    cout << "The meidan is " << ans.findMedianSortedArrays(num1, num2) <<endl;
     
     return 0;
 }
