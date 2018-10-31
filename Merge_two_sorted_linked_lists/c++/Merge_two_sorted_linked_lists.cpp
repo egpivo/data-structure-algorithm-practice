@@ -73,16 +73,13 @@ public:
 
 int main(){
     
-    ListNode *a = new ListNode(2), *temp_a = a;
+    ListNode *a = new ListNode(2);
+    a->next = new ListNode(4);
+    a->next ->next = new ListNode(7);
     
-    temp_a->next = new ListNode(4);
-    temp_a = temp_a->next;
-    temp_a->next = new ListNode(7);
-    
-    ListNode *b = new ListNode(5), *temp_b = b;
-    temp_b->next = new ListNode(6);
-    temp_b = temp_b->next;
-    temp_b->next = new ListNode(8);
+    ListNode *b = new ListNode(5);
+    b->next = new ListNode(6);
+    b->next->next = new ListNode(8);
     
     Solution object;
     ListNode *ans = object.mergeTwoLists(a, b);

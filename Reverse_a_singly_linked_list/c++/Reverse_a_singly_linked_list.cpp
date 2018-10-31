@@ -37,16 +37,12 @@ public:
 
 
 int main(){
-    ListNode *a = new ListNode(1), *temp_a = a;
-    
-    temp_a->next = new ListNode(2);
-    temp_a = temp_a->next;
-    temp_a->next = new ListNode(3);
-    temp_a = temp_a->next;
-    temp_a->next = new ListNode(4);
-    temp_a = temp_a->next;
-    temp_a->next = new ListNode(5);
-   
+
+    ListNode *a = new ListNode(1);
+    a->next = new ListNode(2);
+    a->next->next = new ListNode(3);
+    a->next->next->next = new ListNode(4);
+    a->next->next->next->next = new ListNode(5);
     
     Solution object;
     ListNode *ans = object.reverseList(a);
@@ -57,7 +53,7 @@ int main(){
         cout << ans->val << " " << endl;
         ans = ans->next;
     }
-    
+
     return 0;
 }
 
