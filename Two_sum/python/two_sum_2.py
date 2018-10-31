@@ -9,7 +9,7 @@ class Solution(object):
         :rtype: List[int]
         """
         key = {}
-        for i, num in enumerate:
+        for i, num in enumerate(nums):
             if target - num in key:
                 return [key[target - num], i]
             if num not in key:
