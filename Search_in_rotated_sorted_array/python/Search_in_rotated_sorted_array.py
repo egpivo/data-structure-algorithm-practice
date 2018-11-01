@@ -10,7 +10,7 @@ class Solution:
 
         while start <= end:
 
-            split = start + (end - start)/2
+            split = start + int((end - start)/2)
 
             if nums[split] == target:
                 return split
