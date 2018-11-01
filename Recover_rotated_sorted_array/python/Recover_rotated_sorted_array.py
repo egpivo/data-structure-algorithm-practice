@@ -14,16 +14,16 @@ class Solution:
     def recoverRotatedSortedArray(self, nums):
 
         if(len(nums) <= 1):
-            return
+            return nums
         for i in range(len(nums) - 1):
             if(nums[i] > nums[i+1]):
                 self.reverse(nums, 0, i)
-                print(nums)
+              #  print(nums)
                 self.reverse(nums, i + 1, len(nums) - 1)
-                print(nums)
+              #  print(nums)
                 self.reverse(nums, 0, len(nums) - 1)
-                print(nums)
-
+               # print(nums)
+        return nums
 
 
 
