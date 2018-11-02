@@ -6,6 +6,11 @@
 //
 
 #include<iostream>
+#include<unordered_set>
+#include<unordered_map>
+#include<queue>
+#include<string>
+#include<vector>
 using namespace std;
 
 
@@ -15,8 +20,13 @@ public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
         
         unordered_set<string> wordSet(wordList.begin(), wordList.end());
-        unordered_map<string, int> pathCount({{beginWord, 1}});
-        queue<string> wordBag{{beginWord}}; //create a container to store words
+      //  unordered_map<string, int> pathCount({{beginWord, 1}}); use -std=c++11
+      //   queue<string> wordBag{{beginWord}}; //create a container to store words (use -std=c++11)
+        unordered_map<string, int> pathCount;
+        queue<string> wordBag;
+      
+        wordBag.push(beginWord);
+        pathCount[beginWord] = 1;
         
         while(!wordBag.empty()){ // test whether container is empty
             string term = wordBag.front(); // access the next word in wordBag
@@ -52,9 +62,10 @@ public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
         
         unordered_set<string> wordSet(wordList.begin(), wordList.end());
-        queue<string> wordBag{{beginWord}};
+        queue<string> wordBag;
         int counter = 0;
         
+        wordBag.push(beginWord);
         while(!wordBag.empty()){
             for(int k = wordBag.size(); k > 0; --k){
                 string term = wordBag.front();
@@ -62,9 +73,9 @@ public:
                 
                 if(term == endWord)
                     return counter ++;
-                for(int i = 0; i < word.size(); ++i){
+                for(int i = 0; i < term.size(); ++i){
                     string newWord = term;
-                    for(char letter = 'a'; ch <= 'z'; ++ch){
+                    for(char letter = 'a'; letter <= 'z'; ++letter){
                         newWord[i] = letter;
                         if(wordSet.count(newWord) && newWord != term){// look up if the newWord existing in wordSet, except of the term
                             wordBag.push(newWord);  // add a newWord
@@ -79,6 +90,24 @@ public:
     }
 };
 
+
+int main()
+{
+    vector<string> wordList;
+    string beginWord = "hit", endWord = "cog";
+    wordList.push_back("hot");
+    wordList.push_back("dot");
+    wordList.push_back("dog");
+    wordList.push_back("lot");
+    wordList.push_back("log");
+    wordList.push_back("cog");
+    
+    Solution ans;
+
+    cout << ans.ladderLength(beginWord, endWord, wordList) << endl;
+    
+    return 0;
+}
 
 
 
