@@ -13,12 +13,15 @@ class Solution {
 public:
     int search(vector<int>& nums, int target) {
         
+        if(nums.empty()) return -1;
+        if(nums.size() == 1)  return nums[0] == target ? 0 : -1;   
+         
         int n = nums.size();
         
         int start = 0;
-        int end = n;
+        int end = n - 1;
         
-        while(start < end){
+        while(start <= end){
             int split = (end - start)/2;
             
             int minLeft = nums[start];
@@ -96,6 +99,10 @@ public:
 class Solution2 {
 public:
     int search(vector<int>& nums, int target) {
+        
+        if(nums.empty()) return -1;
+        if(nums.size() == 1)  return nums[0] == target ? 0 : -1;   
+         
         int n = nums.size();
         
         int start = 0;
