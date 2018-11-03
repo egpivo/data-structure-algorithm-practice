@@ -63,7 +63,7 @@ public:
         
         unordered_set<string> wordSet(wordList.begin(), wordList.end());
         queue<string> wordBag;
-        int counter = 0;
+        int counter = 1;
         
         wordBag.push(beginWord);
         while(!wordBag.empty()){
