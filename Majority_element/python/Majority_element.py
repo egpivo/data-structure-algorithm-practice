@@ -18,12 +18,12 @@ class Solution2:
         :rtype: int
         """
         count, mode = 1, nums[0]
-        for i, val in enumerate(nums):
+        for val in nums[1:]:
           if val == mode:
             count += 1
           else:
             if count == 0:
-              mode = nums[i]
+              mode = val
               count = 1
             else:
               count -= 1
