@@ -39,7 +39,7 @@ public:
             stackBag.pop();
             ans.push_back(current->val);
             
-            current = current->right;
+            current = current->right; // if left node is gone
         }
         return ans;
         
