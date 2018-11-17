@@ -17,6 +17,33 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+/* another way
+class Solution{
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n){
+        
+        if(!head->next) return NULL;
+        int length = 0;
+        ListNode *tmp = root;
+        
+        while(tmp){
+            tmp = tmp->next;
+            length ++;
+        }
+        
+        if(length == n) return head->next;
+        else{
+            ListNode* current = head;
+            for(int i = 0; i < length - n - 1; ++i)
+                current = current->next;
+            current->next = current->next->next;
+            return head;
+        }
+    }
+    
+}
+*/
+
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
