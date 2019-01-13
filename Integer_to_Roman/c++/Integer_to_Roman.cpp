@@ -41,7 +41,7 @@ public:
 int main(){
     Solution ans;
     int input;
-    cout << "Please enter an integer:" << endl;
+    cout << "Please enter an integer (1 to 3999):" << endl;
     cin >> input;
     cout<< input <<" = " <<ans.intToRoman(input) << endl;
     return 0;
