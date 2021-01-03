@@ -1,1 +1,2 @@
-# leetcode/lintcode practice
+# Intro
+- Practice the implementation of data structre and algorithms
