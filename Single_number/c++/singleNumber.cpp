@@ -58,6 +58,20 @@ public:
 };
 
 
+class Solution3_XOR {
+public:
+    int singleNumber(vector<int>& nums) {
+        if(nums.size() == 1) return nums[0];
+
+        int result = 0;
+        for(int i = 0; i < nums.size(); ++i) {
+            result ^= nums[i];
+        }
+        return result;
+    }
+};
+
+
 int main()
 {
     vector<int> numList;
@@ -67,8 +81,10 @@ int main()
 
     Solution1 ans1;
     Solution2 ans2;
+    Solution3_XOR ans3;
     cout << "True Anwser: 1" << endl;
     cout << "Solution1: " << ans1.singleNumber(numList) << endl;
     cout << "Solution2: " << ans2.singleNumber(numList) << endl;
+    cout << "Solution3: " << ans3.singleNumber(numList) << endl;
     return 0;
 }

@@ -10,3 +10,7 @@
     - Time complexity: O(N)
     - Space Complexity: <= O(N)
     - Insert an element to `unordered_set`
+
+3. Solution 3: Apply the commutative laws of XOR (exclusive OR)
+    - Time complexity: O(N)
+    - Space Complexity: O(1)
