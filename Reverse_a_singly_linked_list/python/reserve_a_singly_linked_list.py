@@ -51,3 +51,28 @@ class Solution:
         head = foward
         return head
 
+
+class Solution2:
+    """ 
+    Note
+    ----
+    - Time: O(n)
+    - Space: O(1)
+
+    Example
+    -------
+    >>> input = [1, 2, 3, 4, 5]
+    >>> head = convert_to_linked_list(input)
+    >>> output = convert_to_list(Solution2().reverseList(head))
+    >>> print(output)
+    [5, 4, 3, 2, 1]
+    
+    """
+
+    def reverseList(self, head: ListNode) -> ListNode:
+        temp = None
+    
+        while head is not None:
+            # the memory references of `temp` from LHS and RHS are different
+            temp, temp.next, head = head, temp, head.next
+        return head
