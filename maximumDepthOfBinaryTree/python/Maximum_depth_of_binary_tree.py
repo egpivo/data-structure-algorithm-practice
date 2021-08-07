@@ -11,7 +11,7 @@ class Solution:
         :type root: TreeNode
         :rtype: int
         """
-        if(root == None): return 0
+        if root is None: return 0
 
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 
