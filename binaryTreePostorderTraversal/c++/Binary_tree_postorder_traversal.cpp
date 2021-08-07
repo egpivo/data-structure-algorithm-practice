@@ -51,8 +51,6 @@ public:
     }
 };
 
-
-
 //top-down
 //ref http://www.voidcn.com/article/p-mquqvehe-bez.html
 void Show(TreeNode *t) {
