@@ -35,11 +35,13 @@ class Solution:
         self.calculate(node.left, max_val, min_val)
         self.calculate(node.right, max_val, min_val)
 
-if __name__ == '__main__':
-  tree = TreeNode(1)
-  tree.right = TreeNode(2)
-  tree.right.right = TreeNode(0)
-  tree.right.right.left = TreeNode(3)
 
-  ans = Solution()
-  print(f"The answer is {ans.maxAncestorDiff(tree)}")
+if __name__ == "__main__":
+    tree = TreeNode(1)
+    tree.right = TreeNode(2)
+    tree.right.right = TreeNode(0)
+    tree.right.right.left = TreeNode(3)
+
+    ans = Solution()
+    print(f"The answer is {ans.maxAncestorDiff(tree)}")
+

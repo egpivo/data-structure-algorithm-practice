@@ -6,7 +6,7 @@
 //
 
 #include<iostream>
-#include<stack>
+#include<stack>`
 #include<vector>
 using namespace std;
 
@@ -47,7 +47,6 @@ public:
 };
 
 
-
 //top-down
 //ref http://www.voidcn.com/article/p-mquqvehe-bez.html
 void Show(TreeNode *t) {
@@ -84,8 +83,6 @@ int main(){
     cout<<"Result1:"<<endl;
     for(int i = 0; i < 6; ++i)
         cout<<result[i]<<endl;
-    
-    
     
     return 0;
 }
