@@ -36,7 +36,6 @@ public:
                temp.push(top->right);
             if(top->left)
                 temp.push(top->left);
-           
         }
         return ans;
     }

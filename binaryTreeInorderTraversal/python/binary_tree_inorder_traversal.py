@@ -27,8 +27,7 @@ class Solution:
                 stack_bag.append(root)
                 root = root.left
 
-            root = stack_bag[-1]
-            stack_bag.pop()
+            root = stack_bag.pop()
             answer.append(root.val)
             root = root.right
 
