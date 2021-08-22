@@ -40,15 +40,15 @@ class Solution:
         if head is None:
             return head
 
-        foward = ListNode(None)
+        forward = ListNode(None)
 
         while head is not None:
             temp = head.next
-            head.next = None if foward.val is None else foward
-            foward = head
+            head.next = None if forward.val is None else forward
+            forward = head
             head = temp
 
-        head = foward
+        head = forward
         return head
 
 
