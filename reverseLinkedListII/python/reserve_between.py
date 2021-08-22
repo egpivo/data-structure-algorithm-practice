@@ -50,7 +50,7 @@ class Solution:
 
         tail, con = current, previous
 
-        while right > 0:
+        while right > 0 and current is not None:
             temp = current.next
             current.next = previous
             previous = current
