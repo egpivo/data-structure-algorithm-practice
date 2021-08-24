@@ -40,7 +40,7 @@ class Solution:
         if head is None:
             return head
 
-        forward = ListNode(None)
+        forward = None
 
         while head is not None:
             temp = head.next
@@ -48,8 +48,7 @@ class Solution:
             forward = head
             head = temp
 
-        head = forward
-        return head
+        return forward
 
 
 class Solution2:
