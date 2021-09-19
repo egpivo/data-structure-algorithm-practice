@@ -1,4 +1,4 @@
-from typing import ForwardRef, Optional
+from typing import Optional
 
 # Definition
 class ListNode:
