@@ -5,7 +5,10 @@ You want to determine if there is a **valid path** that exists from vertex start
 
 Given `edges` and the integers `n`, `start`, and `end`, return true if there is a **valid path** from `start` to `end`, or `false` otherwise.
 
-
 ```
-Find if Path Exists in Graph
+Input: n = 3, edges = [[0,1],[1,2],[2,0]], start = 0, end = 2
+Output: true
+Explanation: There are two paths from vertex 0 to vertex 2:
+- 0 → 1 → 2
+- 0 → 2
 ```
