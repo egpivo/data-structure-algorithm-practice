@@ -1,10 +1,15 @@
-from typing import Optional
 from collections import deque
 
 
 # Definition for a binary tree node.
 class Node:
-    def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
+    def __init__(
+        self,
+        val: int = 0,
+        left: "Node" = None,
+        right: "Node" = None,
+        next: "Node" = None,
+    ):
         self.val = val
         self.left = left
         self.right = right
@@ -12,11 +17,11 @@ class Node:
 
 
 class Solution:
-    def connect(self, root: 'Node') -> 'Node':
+    def connect(self, root: "Node") -> "Node":
         """ BFS fashion"""
         if root is None:
             return None
-        
+
         q = deque([root])
 
         while q:
@@ -28,9 +33,9 @@ class Solution:
                     q.append(node.left)
                 if node.right is not None:
                     q.append(node.right)
-                
+
                 if i == level_size - 1:
                     node.next = None
                 else:
-                    node.next = q[0] 
+                    node.next = q[0]
         return root
