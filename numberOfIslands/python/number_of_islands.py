@@ -104,4 +104,3 @@ if __name__ == "__main__":
     print(f"Union Find: {result_union_find}")
     print(f"DFS: {result_dfs}")
     print(f"BFS: {result_bfs}")
-
