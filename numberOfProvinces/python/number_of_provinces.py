@@ -57,10 +57,12 @@ class SolutionDFS:
 
         return count
 
+
 class SolutionBFS:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         n = len(isConnected)
         marked = set()
+
         def bfs(start):
             q = deque([start])
             while q:
@@ -69,23 +71,21 @@ class SolutionBFS:
                     if isConnected[node][i] == 1 and i not in marked:
                         marked.add(i)
                         q.append(i)
-                    
+
         count = 0
         for i in range(n):
             if i not in marked:
                 bfs(i)
                 count += 1
-        
-        return count
 
+        return count
 
 
 if __name__ == "__main__":
     isConnected = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
     result_union_find = SolutionUnionFind().findCircleNum(isConnected)
     result_dfs = SolutionDFS().findCircleNum(isConnected)
-    result_bfs = SolutionBFS().findCircleNum(isConnected)    
+    result_bfs = SolutionBFS().findCircleNum(isConnected)
     print(f"Union Find: {result_union_find}")
     print(f"DFS: {result_dfs}")
-    print(f"BFS: {result_bfs}")    
-
+    print(f"BFS: {result_bfs}")
