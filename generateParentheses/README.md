@@ -1,13 +1,9 @@
-## [Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
+## [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/)
 
-Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
-
-A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
-
-
+Given `n` pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
 
 - Example 1:
 ```
-Input: digits = "23"
-Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+Input: n = 3
+Output: ["((()))","(()())","(())()","()(())","()()()"]
 ```
