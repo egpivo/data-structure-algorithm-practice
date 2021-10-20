@@ -1,4 +1,6 @@
 from typing import Optional, List
+import copy
+
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -35,6 +37,30 @@ class Solution:
             pointer.left = None
             pointer = pointer.right
 
+class Solution2:
+    def flattenTree(self, node):
+        if node is None:
+            return None
+        
+        if node.left is None and node.right is None:
+            return node
+        
+        left_tail = self.flattenTree(node.left)
+        right_tail = self.flattenTree(node.right)
+        
+        if left_tail:
+            left_tail.right = node.right
+            node.right = node.left
+            node.left = None
+            
+        return right_tail if right_tail else left_tail
+    
+    def flatten(self, root: Optional[TreeNode]) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        self.flattenTree(root)
+
 
 def show(node: TreeNode) -> None:
     if node is None:
@@ -51,8 +77,14 @@ if __name__ == "__main__":
     tree.right = TreeNode(2)
     tree.right.left = TreeNode(3)
 
+    tree2 = copy.deepcopy(tree)
     ans = Solution()
     ans.flatten(tree)
     print(f"After flattening,")
+    show(tree)
+
+    ans = Solution2()
+    ans.flatten(tree)
+    print(f"[2nd solution]After flattening,")
     show(tree)
 
