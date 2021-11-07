@@ -3,7 +3,13 @@ class Solution:
     right_parenthesis = ")"
 
     def minRemoveToMakeValid(self, s: str) -> str:
-        """ Broute force way"""
+        """ Broute force way
+
+        Note
+        ----
+        - Time complexity: O(n)
+        - Space complexity: O(n)
+        """
 
         if not (self.left_parenthesis in s or self.right_parenthesis in s):
             return s
