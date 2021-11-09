@@ -1,6 +1,9 @@
-## [Valid Palindrome II](https://leetcode.com/problems/valid-palindrome-ii/)
+## [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
 
-Given a string `s`, return `true` if the `s` can be palindrome after deleting ***at most one*** character from it.
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+Given a string `s`, return `true` if it is a palindrome, or `false` otherwise.
+
 
 
 - Example 1:
