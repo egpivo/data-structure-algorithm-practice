@@ -1,4 +1,5 @@
 from typing import List
+import bisect
 
 
 class SparseVectorHashMap:
@@ -65,13 +66,55 @@ class SparseVectorTwoPointers:
         return result
 
 
+class SparseVectorTwoPointersBinarySearch:
+    """
+    Note
+    ----
+    - n: the length of the input array
+    - L, L2: the number of non-zero elements for the two vectors
+    - Time complexity:
+        - O(n): creating the <index, value> pairs for non-zero values
+        - O(L + L2): calculating the dot product.
+    - Space complexity:
+        - O(L): creating the <index, value> pairs for non-zero values
+        - O(1): calculating the dot product.
+    """
+
+    def __init__(self, nums: List[int]):
+        self.indcies = [index for index, val in enumerate(nums) if val != 0]
+        self.vals = [val for val in nums if val != 0]
+
+    def __len__(self) -> int:
+        return len(self.indcies)
+
+    # Return the dotProduct of two sparse vectors
+    def dotProduct(self, vec: 'SparseVector') -> int:
+        result = 0
+        left = 0
+        right = 0
+        while left < len(self) and right < len(vec):
+            if self.indcies[left] == vec.indcies[right]:
+                result += self.vals[left] * vec.vals[right]
+                left += 1
+                right += 1
+            elif self.indcies[left] < vec.indcies[right]:
+                left = bisect.bisect_left(self.indcies, vec.indcies[right], lo=left + 1)
+            else:
+                right += bisect.bisect_left(self.indcies, self.indcies[left], lo=right + 1)
+        return result
+
+
 if __name__ == "__main__":
-    nums1 = [1,0,0,2,3]
-    nums2 = [0,3,0,4,0]
+    nums1 = [1, 0, 0, 2, 3]
+    nums2 = [0, 3, 0, 4, 0]
     v1 = SparseVectorHashMap(nums1)
     v2 = SparseVectorHashMap(nums2)
     print(v1.dotProduct(v2))
 
     v1 = SparseVectorTwoPointers(nums1)
     v2 = SparseVectorTwoPointers(nums2)
+    print(v1.dotProduct(v2))
+
+    v1 = SparseVectorTwoPointersBinarySearch(nums1)
+    v2 = SparseVectorTwoPointersBinarySearch(nums2)
     print(v1.dotProduct(v2))
