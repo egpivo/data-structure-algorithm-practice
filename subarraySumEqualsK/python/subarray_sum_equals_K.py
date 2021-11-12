@@ -35,9 +35,7 @@ class Solution:
         for num in nums:
             total += num
             if hash_map.get(total - k):
-                print(num, total - k, hash_map)
                 count += hash_map[total - k]
-                print(f"count: {count}")
             hash_map[total] += 1
 
         return count
