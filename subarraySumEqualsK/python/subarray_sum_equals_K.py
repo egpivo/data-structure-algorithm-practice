@@ -37,7 +37,6 @@ class Solution:
             if hash_map.get(total - k):
                 count += hash_map[total - k]
             hash_map[total] += 1
-
         return count
 
 
