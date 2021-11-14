@@ -1,43 +1,60 @@
-from typing import Optional
+# """
+# This is BinaryMatrix's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+# class BinaryMatrix(object):
+#    def get(self, row: int, col: int) -> int:
+#    def dimensions(self) -> list[]:
 
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
 
+class SolutionBS:
+    """
+
+    Complexity
+    ----------
+    - N: rows
+    - M: cols
+    - TC: O(NlogM)
+    - SC: O(1)
+    """
+    def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
+        rows, cols = binaryMatrix.dimenstion()
+        smallest_index = cols
+
+        for row in rows:
+            low = 0
+            high = cols - 1
+            while low < high:
+                mid = low + (high - low) // 2
+                if binaryMatrix.get(row, mid) == 0:
+                    low = mid + 1
+                else:
+                    high = mid
+
+            if binaryMatrix.get(row, low) == 1:
+                smallest_index = min(smallest_index, low)
+
+        return -1 if smallest_index == cols else smallest_index
 
 class Solution:
-    def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
-        if root is None:
-            return None
+    """
 
-        queue_bag = [root]
-        while queue_bag:
-            level_size = len(queue_bag)
-            answer = 0
+    Complexity
+    ----------
+    - N: rows
+    - M: cols
+    - TC: O(N+M)
+    - SC: O(1)
+    """
+    def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
+        rows, cols = binaryMatrix.dimenstion()
+        current_row = 0
+        current_col = cols -1
 
-            for _ in range(level_size):
-                node = queue_bag.pop(0)
-                answer += node.val
+        while current_row < rows and current_col >= 0:
+            if binaryMatrix.get(current_row, current_col) == 0:
+                current_row += 1
+            else:
+                current_col -= 1
 
-                if node.left is not None:
-                    queue_bag.append(node.left)
-                if node.right is not None:
-                    queue_bag.append(node.right)
-
-        return answer
-
-
-if __name__ == "__main__":
-    tree = TreeNode(1)
-    tree.left = TreeNode(2)
-    tree.right = TreeNode(3)
-    tree.left.left = TreeNode(4)
-    tree.left.right = TreeNode(5)
-    tree.right.right = TreeNode(6)
-    tree.left.left.left = TreeNode(7)
-    tree.right.right.right = TreeNode(8)
-    ans = Solution()
-    print(f"The answer is {ans.deepestLeavesSum(tree)}")
+        return current_col + 1 if current_col != cols - 1 else -1
