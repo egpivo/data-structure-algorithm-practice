@@ -33,6 +33,9 @@ class Solution:
 
         return answer
 
+class SolutionRecursive:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right) if root else []
 
 if __name__ == "__main__":
     tree = TreeNode(1)
@@ -40,4 +43,5 @@ if __name__ == "__main__":
     tree.right.left = TreeNode(3)
     ans = Solution()
     print(f"The answer is {ans.inorderTraversal(tree)}")
+    print(f"The recurisve answer is {SolutionRecursive().inorderTraversal(tree)}")
 
