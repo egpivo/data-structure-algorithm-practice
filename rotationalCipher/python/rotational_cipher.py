@@ -1,4 +1,9 @@
 def rotational_cipher(input, rotation_factor):
+    """
+    Reference
+    ---------
+    - ASCII https://donsnotes.com/tech/charsets/ascii.html
+    """
     result = ""
 
     for char in input:
