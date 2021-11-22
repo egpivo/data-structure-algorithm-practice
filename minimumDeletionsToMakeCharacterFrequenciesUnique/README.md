@@ -1,17 +1,14 @@
-## [Maximal Network Rank](https://leetcode.com/problems/maximal-network-rank/)
+## [Minimum Deletions to Make Character Frequencies Unique](https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique/)
 
-There is an infrastructure of `n` cities with some number of roads connecting these cities. Each `roads[i] = [ai, bi]` indicates that there is a bidirectional road between cities `ai` and `bi`.
+A string s is called ***good*** if there are no two different characters in s that have the same ***frequency***.
 
-The ***network rank*** of ***two different cities*** is defined as the total number of ***directly*** connected roads to either city. If a road is directly connected to both cities, it is only counted once.
+Given a string s, return the minimum number of characters you need to delete to make s ***good***.
 
-The ***maximal network rank*** of the infrastructure is the ***maximum network rank*** of all pairs of different cities.
-
-Given the integer n and the array roads, return the ***maximal network rank*** of the entire infrastructure.
-
-
+The frequency of a character in a string is the number of times it appears in the string. For example, in the string `"aab"`, the frequency of `'a'` is `2`, while the frequency of `'b'` is `1`.
 - Example 1:
 ```
-Input: n = 4, roads = [[0,1],[0,3],[1,2],[1,3]]
-Output: 4
-Explanation: The network rank of cities 0 and 1 is 4 as there are 4 roads that are connected to either 0 or 1. The road between 0 and 1 is only counted once.
+Input: s = "aaabbbcc"
+Output: 2
+Explanation: You can delete two 'b's resulting in the good string "aaabcc".
+Another way it to delete one 'b' and one 'c' resulting in the good string "aaabbc".
 ```
