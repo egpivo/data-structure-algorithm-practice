@@ -1,29 +1,39 @@
 # Definition for singly-linked list.
 class ListNode:
-  def __init__(self, x):
-    self.val = x
-    self.next = None
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
 
 class Solution:
-  def addTwoNumbers(self, l1, l2):
-      """
-      :type l1: ListNode
-      :type l2: ListNode
-      :rtype: ListNode
-      """
-      ls = ListNode(0)
-      temp = ls
-      rest = 0
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
 
-      while(l1 != None or  l2 != None or rest):
-        sum = (l1.val if l1!= None else 0) + (l2.val if l2 != None else 0) + rest
-        rest = 1 if sum >= 10 else 0
-        temp.next = ListNode(sum%10)
-        l1 = l1.next if l1!= None else None
-        l2 = l2.next if l1!= None else None
-        temp = temp.next
+        Complextity
+        -----------
+        - m: the length of l1
+        - n: the lenght of l2
 
-      return ls.next
+        TC: O(max(m + n))
+        SC: O(max(m + n))
+        """
+        ls = ListNode(0)
+        temp = ls
+        rest = 0
+
+        while l1 or l2 or rest:
+            sum = (l1.val if l1 else 0) + (l2.val if l2 else 0) + rest
+            rest = sum // 10
+            temp.next = ListNode(sum % 10)
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+            temp = temp.next
+
+        return ls.next
+
 
 if __name__ == '__main__':
     a, a.next, a.next.next = ListNode(2), ListNode(4), ListNode(3)
