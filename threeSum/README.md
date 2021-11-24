@@ -1,10 +1,10 @@
-## [3Sum Closest](https://leetcode.com/problems/3sum-closest/)
+## [3Sum](https://leetcode.com/problems/3sum/)
 
-Given an integer array `nums` of length `n` and an integer `target`, find three integers in `nums` such that the sum is closest to `target`.
+Given an integer array nums, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.
 
-Return the sum of the three integers.
+Notice that the solution set must not contain duplicate triplets.
 
-You may assume that each input would have exactly one solution.
+
 - Example 1:
 ```
 Input: nums = [-1,2,1,-4], target = 1
