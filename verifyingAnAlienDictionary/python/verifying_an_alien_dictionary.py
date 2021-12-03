@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
 
@@ -14,20 +15,18 @@ class Solution:
 
         for i in range(len(words) - 1):
             for j in range(len(words[i])):
-                if j >= len(words[i+1]):
+                if j >= len(words[i + 1]):
                     return False
 
-                if order_map[words[i][j]] != order_map[words[i+1][j]]:
-                    if order_map[words[i][j]] > order_map[words[i+1][j]]:
+                if order_map[words[i][j]] != order_map[words[i + 1][j]]:
+                    if order_map[words[i][j]] > order_map[words[i + 1][j]]:
                         return False
                     break
         return True
 
 
-
-
 if __name__ == "__main__":
-    words = ["hello","leetcode"]
+    words = ["hello", "leetcode"]
     order = "hlabcdefgijkmnopqrstuvwxyz"
     print(f"Solution: {Solution().isAlienSorted(words, order)}")
 
