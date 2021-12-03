@@ -1,5 +1,5 @@
-from typing import Optional, List
 from collections import deque
+from typing import Optional, List
 
 
 # Definition for a binary tree node.
@@ -14,14 +14,17 @@ class DFSSolution:
     """
     Note
     ----
+    - H: tree height
     - Time complexity: O(N)
     - Space complexity: O(H)
     """
+
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if root is None:
             return []
 
         answer = []
+
         def search_by_level(node: TreeNode, level: int) -> None:
             if level == len(answer):
                 answer.append(node.val)
@@ -33,36 +36,37 @@ class DFSSolution:
         search_by_level(root, 0)
         return answer
 
+
 class BFSSolution:
     """
     Note
     ----
+    - D: tree diameter
     - Time complexity: O(N)
     - Space complexity: O(D)
-    """    
+    """
+
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         answer = []
         if root is None:
-            return answer  
+            return answer
         q = deque([root])
 
         answer = []
         while q:
             level_length = len(q)
-            
+
             for i in range(level_length):
                 node = q.popleft()
                 if i == level_length - 1:
                     answer.append(node.val)
-                
+
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
 
         return answer
-
-
 
 
 if __name__ == "__main__":
@@ -73,5 +77,3 @@ if __name__ == "__main__":
 
     print(f"The DFS answer is {DFSSolution().rightSideView(tree)}")
     print(f"The BFS answer is {BFSSolution().rightSideView(tree)}")
-        
-
