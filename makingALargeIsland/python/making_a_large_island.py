@@ -53,38 +53,41 @@ class SolutionComponentDFS:
         - TC: O(N^2)
         - SC: O(N^2)
         """
-        n = len(grid)
-
-        def neighbors(r, c):
-            for nr, nc in ((r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)):
-                if 0 <= nr < n and 0 <= nc < n:
-                    yield nr, nc
-
-        def dfs(r, c, index):
-            area = 1
-            grid[r][c] = index
-
-            for nr, nc in neighbors(r, c):
-                if grid[nr][nc] == 1:
-                    area += dfs(nr, nc, index)
-            return area
+        self.grid = grid
+        self.nrows = len(grid)
+        self.ncols = len(grid[0])
 
         area = {}
         index = 2
-        for r in range(n):
-            for c in range(n):
-                if grid[r][c] == 1:
-                    area[index] = dfs(r, c, index)
+        for row in range(self.nrows):
+            for col in range(self.ncols):
+                if self.grid[row][col] == 1:
+                    area[index] = self.dfs(row, col, index)
                     index += 1
 
         answer = max(area.values() or [0])
-        for r in range(n):
-            for c in range(n):
-                if grid[r][c] == 0:
-                    seen_indces = {grid[nr][nc] for nr, nc in neighbors(r, c) if grid[nr][nc] > 1}
-                    answer = max(answer, 1 + sum(area[i] for i in seen_indces))
+        for row in range(self.nrows):
+            for col in range(self.ncols):
+                if self.grid[row][col] == 0:
+                    seen_indices = {self.grid[nr][nc] for nr, nc in self.neighbors(row, col) if self.grid[nr][nc] > 1}
+                    answer = max(answer, 1 + sum(area[i] for i in seen_indices))
 
         return answer
+
+    def neighbors(self, row, col):
+        directions = ((-1, 0), (1, 0), (0, -1), (0, 1))
+        for dx, dy in directions:
+            new_row, new_col = row + dx, col + dy
+            if 0 <= new_row < self.nrows and 0 <= new_col < self.ncols:
+                yield new_row, new_col
+
+    def dfs(self, row, col, index):
+        area = 1
+        self.grid[row][col] = index
+        for nr, nc in self.neighbors(row, col):
+            if self.grid[nr][nc] == 1:
+                area += self.dfs(nr, nc, index)
+        return area
 
 
 if __name__ == "__main__":
