@@ -2,6 +2,14 @@ from collections import OrderedDict
 
 
 class LRUCache:
+    """
+
+    Complexity
+    ----------
+    - TC: O(1)
+    - SC: O(capacity)
+
+    """
 
     def __init__(self, capacity: int):
         self.capacity = capacity
