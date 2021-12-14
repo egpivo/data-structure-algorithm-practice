@@ -1,3 +1,4 @@
+from collections import deque
 from typing import Optional
 
 
@@ -54,6 +55,7 @@ class SolutionDFSRecursive:
 
 class SolutionDFSRecursive2:
     """This is thread-safe version"""
+
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
         if root is None:
             return 0
@@ -68,6 +70,33 @@ class SolutionDFSRecursive2:
         return total
 
 
+class SolutionBFS:
+    """
+    Note
+    ----
+    - N: # nodes
+    - TC: O(N)
+    - SC: O(N)
+    """
+
+    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        answer = 0
+        q = deque([root])
+
+        while q:
+            level = len(q)
+            for _ in range(level):
+                node = q.popleft()
+                if node:
+                    if low <= node.val <= high:
+                        answer += node.val
+                    if node.val > low:
+                        q.append(node.left)
+                    if node.val < high:
+                        q.append(node.right)
+        return answer
+
+
 if __name__ == "__main__":
     root = TreeNode(10)
     root.left = TreeNode(5)
@@ -80,3 +109,4 @@ if __name__ == "__main__":
     print(SolutionIterative().rangeSumBST(root, low, high))
     print(SolutionDFSRecursive().rangeSumBST(root, low, high))
     print(SolutionDFSRecursive2().rangeSumBST(root, low, high))
+    print(SolutionBFS().rangeSumBST(root, low, high))
