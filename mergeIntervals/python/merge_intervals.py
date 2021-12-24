@@ -8,7 +8,7 @@ class SolutionSorting:
     Complexity
     ----------
     - TC: O(n*long(n)) (sorting)
-    - SC: O(n)
+    - SC: O(n) (resultant output)
     """
 
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
