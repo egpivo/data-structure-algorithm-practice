@@ -5,6 +5,7 @@ class SolutionStack:
     - TC: O(n)
     - SC: O(n)
     """
+
     def minAddToMakeValid(self, s: str) -> int:
         stack = []
         for char in s:
@@ -18,7 +19,8 @@ class SolutionStack:
 
         return len(stack)
 
-class SolutionBalance:
+
+class SolutionCounter:
     """
     Complexity
     ----------
@@ -41,7 +43,29 @@ class SolutionBalance:
 
         return invalid + max(left_parenthesis_count, 0)
 
+
+class SolutionBalance:
+    """
+    Complexity
+    ----------
+    - TC: O(n)
+    - SC: O(1)
+    """
+
+    def minAddToMakeValid(self, s: str) -> int:
+        answer = balance = 0
+
+        for char in s:
+            balance += 1 if char == "(" else -1
+            if balance == -1:
+                answer += 1
+                balance += 1
+
+        return answer + balance
+
+
 if __name__ == "__main__":
-    s = "lee(t(c)o)de)"
+    s = "(()))"
     print(f"Answer: {SolutionStack().minAddToMakeValid(s)}")
+    print(f"Answer: {SolutionCounter().minAddToMakeValid(s)}")
     print(f"Answer: {SolutionBalance().minAddToMakeValid(s)}")
