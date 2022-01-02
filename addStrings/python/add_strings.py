@@ -2,7 +2,7 @@ class Solution:
     """
     Complexity
     ----------
-    - TC: O(1)
+    - TC: O(max(p1, p2))
     - SC: O(1)
     """
 
