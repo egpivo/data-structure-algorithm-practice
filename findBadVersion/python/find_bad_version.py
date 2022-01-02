@@ -16,7 +16,7 @@ class Solution:
         Note
         ----
         - binary search: O(log(n))
-        - `Python` `left + right` could overflow -> `left + (right - left)//2`
+        - `python` `left + right` could overflow -> `left + (right - left)//2`
         """
         if not isBadVersion(n - 1) and isBadVersion(n):
             return n

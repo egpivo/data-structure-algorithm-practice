@@ -45,7 +45,7 @@ class Solution2:
     """
     Idea
     ----
-    - For Python, using count() is actually faster than using a frequency map,
+    - For python, using count() is actually faster than using a frequency map,
     """
     digits = [
         [0, "z", []],
