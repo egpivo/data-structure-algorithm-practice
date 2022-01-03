@@ -8,7 +8,7 @@ class Solution:
     Complexity
     ----------
     - TC: O(nlog(n))
-    - SC: O(n)
+    - SC: O(n + k)
     """
 
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
@@ -18,6 +18,12 @@ class Solution:
 
 
 class SolutionHeap:
+    """
+    Complexity
+    ----------
+    - TC: O(nlog(k))
+    - SC: O(n + k)
+    """
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         if len(nums) <= k:
             return nums
