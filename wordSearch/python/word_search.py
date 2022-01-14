@@ -26,7 +26,7 @@ class Solution:
 
         return False
 
-    def backtrack(self, board, row, col, word) -> bool:
+    def backtrack(self, row, col, word) -> bool:
         if len(word) == 0:
             return True
 
