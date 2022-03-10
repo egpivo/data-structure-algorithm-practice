@@ -13,6 +13,7 @@ class Solution:
     - TC: O(max(n, m))
     - SC: O(1)
     """
+
     def addPoly(self, poly1: 'PolyNode', poly2: 'PolyNode') -> 'PolyNode':
         head = answer = PolyNode()
 
@@ -43,7 +44,44 @@ class Solution:
         return answer.next
 
 
+class SolutionRecursive:
+    """
+    Complexity
+    ----------
+    - TC: O(max(n, m))
+    - SC: O(max(n, m))
+    """
+
+    def addPoly(self, poly1: 'PolyNode', poly2: 'PolyNode') -> 'PolyNode':
+        if not poly1:
+            return poly2
+        if not poly2:
+            return poly1
+
+        if poly1.power == poly2.power:
+            coefficient = poly1.coefficient + poly2.coefficient
+            if coefficient != 0:
+                poly1.coefficient = coefficient
+                poly1.next = self.addPoly(poly1.next, poly2.next)
+                return poly1
+            else:
+                return self.addPoly(poly1.next, poly2.next)
+        elif poly1.power > poly2.power:
+            poly1.next = self.addPoly(poly1.next, poly2)
+            return poly1
+        else:
+            poly2.next = self.addPoly(poly1, poly2.next)
+            return poly2
+
+
 if __name__ == '__main__':
+    a, a.next, a.next.next = PolyNode(2, 2), PolyNode(4, 1), PolyNode(3, 0)
+    b, b.next, b.next.next = PolyNode(3, 2), PolyNode(-4, 1), PolyNode(-1, 0)
+    result = SolutionRecursive().addPoly(a, b)
+    while result:
+        print(f"[{result.coefficient},{result.power}]")
+        result = result.next
+
     a, a.next, a.next.next = PolyNode(2, 2), PolyNode(4, 1), PolyNode(3, 0)
     b, b.next, b.next.next = PolyNode(3, 2), PolyNode(-4, 1), PolyNode(-1, 0)
     result = Solution().addPoly(a, b)
