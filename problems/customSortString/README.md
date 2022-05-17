@@ -1,15 +1,15 @@
-## [Custom Sort String](https://leetcode.com/problems/custom-sort-string/)
+## [Find a Corresponding Node of a Binary Tree in a Clone of That Tree](https://leetcode.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/)
 
-You are given two strings `order` and `s`. All the words of `order` are **unique** and were sorted in some custom order previously.
+Given two binary trees `original` and `cloned` and given a reference to a node `target` in the original tree.
 
-Permute the characters of `s` so that they match the order that order was sorted. More specifically, if a character `x` occurs before a character `y` in `order`, then `x` should occur before `y` in the permuted string.
+The `cloned` tree is a copy of the `original` tree.
 
-Return any permutation of `s` that satisfies this property.
+Return a reference to the same node in the `cloned` tree.
+
+Note that you are not allowed to change any of the two trees or the `target` node and the answer must be a reference to a node in the `cloned` tree.
 
 ```
-Input: order = "cba", s = "abcd"
-Output: "cbad"
-Explanation: 
-"a", "b", "c" appear in order, so the order of "a", "b", "c" should be "c", "b", and "a". 
-Since "d" does not appear in order, it can be at any position in the returned string. "dcba", "cdba", "cbda" are also valid outputs.
+Input: tree = [7,4,3,null,null,6,19], target = 3
+Output: 3
+Explanation: In all examples the original and cloned trees are shown. The target node is a green node from the original tree. The answer is the yellow node from the cloned tree.
 ```
