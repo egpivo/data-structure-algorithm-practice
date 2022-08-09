@@ -4,42 +4,37 @@ from typing import List
 
 class Solution:
     """
-    Note
-    ----
-    - cost(i, j) = grid[i][j] + min(grid[i+1][j], grid[i][j+1])
 
     Complexity
     ----------
-    - TC: O(nlogn)
-    - SC: O(n)
+    - TC: O(logn)
+    - SC: O(1)
     """
 
-    def missingElement(self, nums: List[int], k: int) -> int:
-        num_inner_missings = nums[-1] - nums[0] - len(nums) + 1
+    def __init__(self, nums: List[int]) -> None:
+        self.nums = nums
+        self.n = len(nums)
 
-        if k > num_inner_missings:
-            return nums[-1] + (k - num_inner_missings)
+    def _calculate_missings(self, idx: int) -> int:
+        return self.nums[idx] - self.nums[0] - idx
 
-        cumsum_missings = [0] * len(nums)
-        for i in range(len(nums) - 1):
-            cumsum_missings[i + 1] = cumsum_missings[i] + \
-                (nums[i + 1] - nums[i] - 1)
+    def missingElement(self, k: int) -> int:
+
+        if k > self._calculate_missings(self.n - 1):
+            return nums[-1] + (k - self._calculate_missings(nums, self.n - 1))
 
         # binary search
-        high, low = len(nums) - 1, 0
+        high, low = self.n - 1, 0
         while low < high:
             mid = low + (high - low) // 2
-            if cumsum_missings[mid - 1] < k <= cumsum_missings[mid]:
-                return nums[mid - 1] + (k - cumsum_missings[mid - 1])
-
-            elif k > cumsum_missings[mid]:
+            if k > self._calculate_missings(mid):
                 low = mid + 1
             else:
                 high = mid
 
-        return nums[low] + (k - cumsum_missings[low - 1])
+        return nums[low - 1] + (k - self._calculate_missings(low - 1))
 
 
 if __name__ == "__main__":
     nums, k = [4, 7, 9, 10], 1
-    print(f"{Solution().missingElement(nums, k)}")
+    print(f"{Solution(nums).missingElement(k)}")
