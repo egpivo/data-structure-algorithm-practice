@@ -1,2 +1,5 @@
 bitarray
 mmh3
+seaborn
+matplotlib
+pandas
