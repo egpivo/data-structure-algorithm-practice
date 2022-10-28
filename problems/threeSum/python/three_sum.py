@@ -51,7 +51,7 @@ class SolutionNotSorting:
                     complement = -num - num2
                     if complement in seen and seen[complement] == idx:
                         res.add(tuple(sorted([num, num2, complement])))
-                    seen[num2] = idxg
+                    seen[num2] = idx
         return res
 
 
