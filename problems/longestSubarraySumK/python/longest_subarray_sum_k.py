@@ -5,8 +5,8 @@ class Solution:
     """
     Note
     ----
-    - TC:
-    - SC:
+    - TC: O(n)
+    - SC: O(n)
     """
     def compute_longest_length(self, array: List[int], k: int) -> int:
         hash_map = defaultdict(int)
