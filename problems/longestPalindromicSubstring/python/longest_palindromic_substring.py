@@ -61,8 +61,39 @@ class SolutionDP:
         return result
 
 
+class SolutionDP2:
+    """
+    Complexity
+    ----------
+    - TC: O(n^2)
+    - SC: O(n)
+    """
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
+
+        dp = [False]* n
+        result = ""
+
+        for end in range(n):
+            for start in range(end + 1):
+
+                if start == end:
+                    dp[start] = True
+                elif start + 1 == end:
+                    dp[start] = s[start] == s[end]
+                else:
+                    dp[start] = s[start] == s[end] and dp[start + 1]
+
+                if dp[start] and end - start + 1 > len(result):
+                    result = s[start: end + 1]
+
+        return result
+
+
+
 if __name__ == "__main__":
     s = "babad"
 
     print(f"Palindromic substing is: {Solution().longestPalindrome(s)}")
     print(f"Palindromic substing is: {SolutionDP().longestPalindrome(s)}")
+    print(f"Palindromic substing is: {SolutionDP2().longestPalindrome(s)}")
