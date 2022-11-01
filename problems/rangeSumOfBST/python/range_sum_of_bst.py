@@ -97,6 +97,37 @@ class SolutionBFS:
         return answer
 
 
+class SolutionTest:
+    """
+    - binary tree
+        - left < right
+        - level i root > level i+1 root
+
+    - data structure: use an integer variable
+    - aglorithm:
+        - recursively sum up the node in the range until the invalid node occurs
+
+    """
+    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        if root is None:
+            return 0
+
+        result = 0
+
+        def recursive(node):
+            nonlocal result
+
+            if low <= node.val <= high:
+                result += node.val
+            if node.left and node.val > low:
+                recursive(node.left)
+            if node.right and node.val < high:
+                recursive(node.right)
+
+        recursive(root)
+        return result
+
+
 if __name__ == "__main__":
     root = TreeNode(10)
     root.left = TreeNode(5)
@@ -110,3 +141,4 @@ if __name__ == "__main__":
     print(SolutionDFSRecursive().rangeSumBST(root, low, high))
     print(SolutionDFSRecursive2().rangeSumBST(root, low, high))
     print(SolutionBFS().rangeSumBST(root, low, high))
+    print(SolutionTest().rangeSumBST(root, low, high))
