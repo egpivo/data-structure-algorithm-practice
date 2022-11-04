@@ -32,12 +32,13 @@ class DpSolution:
 
     Complexity
     ----------
-    - TC: O(n^(target/min(candidates)))
+    - TC: O(target ^ 2 * n))
        - n = len(candidates)
-    - SC: O(target ))
+    - SC: O(target ^ 2))
     """
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         dp = [[] for _ in range(target + 1)]
+        
         for candidate in candidates:
             for c in range(candidate, target + 1):
                 if candidate == c:
