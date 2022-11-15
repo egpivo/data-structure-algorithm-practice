@@ -1,8 +1,8 @@
 from typing import List
 
+
 class SolutionDP:
     def maxSubArray(self, nums: List[int]) -> int:
-
         """
         Complexity
         ----------
@@ -19,7 +19,6 @@ class SolutionDP:
 
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-
         """
         Complexity
         ----------
@@ -34,9 +33,9 @@ class Solution:
             answer = max(answer, current_maximum)
 
         return answer
-        
+
 
 if __name__ == "__main__":
-    nums = [-2,1,-3,4,-1,2,1,-5,4]
+    nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
     print(f"Solution: {Solution().maxSubArray(nums)}")
     print(f"Solution: {SolutionDP().maxSubArray(nums)}")
