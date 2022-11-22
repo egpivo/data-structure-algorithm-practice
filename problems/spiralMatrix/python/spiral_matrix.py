@@ -1,6 +1,40 @@
 from typing import List
 
 
+class SolutionSeen:
+    """
+    Complexity
+    ----------
+    - TC: O(nrows * ncols)
+    - SC: O(nrows * ncols) (don't include the output array in the space complexity)
+    """
+
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        directions = (
+            (0, 1), (1, 0), (0, -1), (-1, 0)
+        )
+        nrows = len(matrix)
+        ncols = len(matrix[0])
+        row = col = 0
+        answer = [matrix[row][col]]
+        seen = {(row, col)}
+
+        m = 0
+        while len(answer) < nrows * ncols:
+            candidate = (row + directions[m][0], col + directions[m][1])
+
+            if candidate in seen or not (0 <= candidate[0] < nrows) or not (0 <= candidate[1] < ncols):
+                m += 1
+                m %= 4
+                continue
+
+            row, col = candidate
+            answer.append(matrix[row][col])
+            seen.add(candidate)
+
+        return answer
+
+
 class Solution:
     """
     Complexity
@@ -43,3 +77,4 @@ class Solution:
 if __name__ == "__main__":
     matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
     print(f"{Solution().spiralOrder(matrix)}")
+    print(f"{SolutionSeen().spiralOrder(matrix)}")
