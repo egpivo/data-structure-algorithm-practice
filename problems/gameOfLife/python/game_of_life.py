@@ -41,12 +41,52 @@ class Solution(object):
                 return True
         return False
 
+class Solution2(object):
+    """
+    Complexity
+    ----------
+    - TC: O(MN)
+    - SC: O(1)
+    """
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        directions = [(i, j) for i in range(-1, 2) for j in range(-1, 2) if not (i == 0 and j == 0)]
+
+        m = len(board)
+        n = len(board[0])
+        live_tag = 2
+        death_tag = -1
+
+        for row in range(m):
+            for col in range(n):
+                lives = sum(
+                    abs(board[row+ix][col+iy]) == 1
+                    for ix, iy in directions
+                    if 0 <= row+ix < m and 0 <= col+iy <n
+                )
+                if board[row][col] == 1 and not lives in (2, 3):
+                    board[row][col] = death_tag
+                elif board[row][col] == 0 and lives == 3:
+                    board[row][col] = live_tag
+
+        for row in range(m):
+            for col in range(n):
+                board[row][col] = 1 if board[row][col] > 0 else 0
+
+
 
 if __name__ == "__main__":
     matrix = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
     Solution().gameOfLife(matrix)
     print(f"Solution is {matrix}")
 
+    matrix = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
+    Solution2().gameOfLife(matrix)
+    print(f"Solution with O(1) space complexity is {matrix}")
+
     matrix = [[1,1],[1,0]]
     Solution().gameOfLife(matrix)
     print(f"Solution is {matrix}")
+
+    matrix = [[1,1],[1,0]]
+    Solution2().gameOfLife(matrix)
+    print(f"Solution with O(1) space complexity is {matrix}")
