@@ -44,7 +44,7 @@ class SolutionIterative:
     - n: # of nodes in list1
     - m : # of nodes in list2
     - TC: O(n + m)
-    - SC: O (1)
+    - SC: O (n + m)
     """
 
     def mergeTwoLists(
