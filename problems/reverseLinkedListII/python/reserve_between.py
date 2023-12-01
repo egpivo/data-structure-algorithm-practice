@@ -50,6 +50,7 @@ class Solution:
 
         tail, con = current, previous
 
+        # previous will contain the reverse list
         while right > 0 and current is not None:
             temp = current.next
             current.next = previous
@@ -60,8 +61,9 @@ class Solution:
         if con is not None:
             con.next = previous
         else:
+            # if left is the starting point
             head = previous
-
+        # if right != length of the list
         tail.next = current
         return head
 
