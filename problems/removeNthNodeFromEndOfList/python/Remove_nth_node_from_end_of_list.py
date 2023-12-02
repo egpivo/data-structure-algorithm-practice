@@ -60,6 +60,29 @@ class Solution2:
         return head
 
 
+class Solution3:
+    """
+    - Notes: two-pointer
+    """
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        fast = head
+        slow = head
+
+        while n > 0:
+            fast = fast.next
+            n -= 1
+
+        if not fast:
+            return head.next
+
+        while fast and fast.next:
+            fast = fast.next
+            slow = slow.next
+
+        slow.next = slow.next.next
+        return head
+
+
 
 if __name__ == "__main__":
   data = ListNode(1)
@@ -83,6 +106,20 @@ if __name__ == "__main__":
   data.next.next.next.next = ListNode(5)
 
   ans = Solution2()
+
+  ansList = ans.removeNthFromEnd(data, 2)
+  for i in range(4):
+    print("%d \t"% ansList.val)
+    ansList = ansList.next
+
+
+  data = ListNode(1)
+  data.next = ListNode(2)
+  data.next.next = ListNode(3)
+  data.next.next.next = ListNode(4)
+  data.next.next.next.next = ListNode(5)
+
+  ans = Solution3()
 
   ansList = ans.removeNthFromEnd(data, 2)
   for i in range(4):
