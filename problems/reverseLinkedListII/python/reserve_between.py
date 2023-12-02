@@ -39,6 +39,8 @@ class Solution:
     ) -> Optional[ListNode]:
         if head is None:
             return None
+        if left >= right:
+            return head
 
         previous = None
         current = head
@@ -47,25 +49,22 @@ class Solution:
             current = current.next
             left -= 1
             right -= 1
-
-        tail, con = current, previous
-
-        # previous will contain the reverse list
-        while right > 0 and current is not None:
+        tail = current
+        forward = None
+        while right > 0 and current:
             temp = current.next
-            current.next = previous
-            previous = current
+            current.next = forward
+            forward = current
             current = temp
             right -= 1
 
-        if con is not None:
-            con.next = previous
+        if previous is not None:
+            previous.next = forward
         else:
-            # if left is the starting point
-            head = previous
-        # if right != length of the list
+            head = forward
         tail.next = current
         return head
+
 
 
 if __name__ == "__main__":
