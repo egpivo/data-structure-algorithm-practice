@@ -9,6 +9,12 @@ class TreeNode:
 
 
 class Solution:
+    """
+    Notes
+    -----
+    - TC: O(n)
+    - SC: O(n)
+    """
     def maxDepth(self, root):
         """
         :type root: TreeNode
