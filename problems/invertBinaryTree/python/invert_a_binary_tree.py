@@ -11,6 +11,12 @@ class TreeNode:
 
 
 class Solution:
+    """
+    Notes
+    -----
+    - TC: O(n)
+    - SC: O(n)
+    """
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if root is None:
             return None
@@ -21,6 +27,30 @@ class Solution:
 
         return root
 
+
+class SolutionBFS:
+    """
+    Notes
+    -----
+    - TC: O(n)
+    - SC: O(n)
+    """
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root is None:
+            return None
+
+        queue = [root]
+        while queue:
+            level = len(queue)
+
+            for _ in range(level):
+                node = queue.pop(-1)
+                if node.right:
+                    queue.append(node.right)
+                if node.left:
+                    queue.append(node.left)
+                node.left, node.right = node.right, node.left
+        return root
 
 def show(node: TreeNode) -> None:
     if node is None:
@@ -35,4 +65,10 @@ if __name__ == "__main__":
     tree.left = TreeNode(3)
     tree.right = TreeNode(2)
     ans = Solution()
+    show(ans.invertTree(tree))
+
+    tree = TreeNode(1)
+    tree.left = TreeNode(3)
+    tree.right = TreeNode(2)
+    ans = SolutionBFS()
     show(ans.invertTree(tree))

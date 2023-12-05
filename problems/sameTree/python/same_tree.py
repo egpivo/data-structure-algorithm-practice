@@ -24,6 +24,7 @@ class Solution:
 
         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 
+
 if __name__ == "__main__":
     tree = TreeNode(3)
     tree.left = TreeNode(9)
