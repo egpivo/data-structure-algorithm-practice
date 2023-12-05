@@ -44,7 +44,7 @@ class SolutionBFS:
             level = len(queue)
 
             for _ in range(level):
-                node = queue.pop(-1)
+                node = queue.pop(0)
                 if node.right:
                     queue.append(node.right)
                 if node.left:
