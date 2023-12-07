@@ -15,17 +15,39 @@ class Solution1:
     - SC: O(n)
     """
 
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        if not preorder:
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
+        if not inorder or not postorder:
             return None
 
-        root = TreeNode(preorder[0])
-        index = inorder.index(preorder[0])
-        root.left = self.buildTree(preorder[1:index + 1], inorder[:index + 1])
-        root.right = self.buildTree(preorder[index + 1:], inorder[index + 1:])
+        value = postorder[-1]
+        index = inorder.index(value)
+        root = TreeNode(value)
+        root.left = self.buildTree(inorder[:index+1], postorder[:index])
+        root.right = self.buildTree(inorder[index+1:], postorder[index:-1])
+
         return root
 
 class Solution2:
+    """
+    Notes
+    -----
+    - TC: O(n^2)
+    - SC: O(n)
+    """
+
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
+        if not inorder or not postorder:
+            return None
+
+        value = postorder.pop()
+        index = inorder.index(value)
+        root = TreeNode(value)
+        root.left = self.buildTree(inorder[:index+1], postorder[:index])
+        root.right = self.buildTree(inorder[index+1:], postorder[index:])
+
+        return root
+
+class Solution3:
     """
     Notes
     -----
