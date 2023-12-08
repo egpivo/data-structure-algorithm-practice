@@ -13,21 +13,20 @@ class Solution:
 
     def recoverRotatedSortedArray(self, nums):
 
-        if(len(nums) <= 1):
+        if len(nums) <= 1:
             return nums
         for i in range(len(nums) - 1):
-            if(nums[i] > nums[i+1]):
+            if nums[i] > nums[i + 1]:
                 self.reverse(nums, 0, i)
-              #  print(nums)
+                #  print(nums)
                 self.reverse(nums, i + 1, len(nums) - 1)
-              #  print(nums)
+                #  print(nums)
                 self.reverse(nums, 0, len(nums) - 1)
-               # print(nums)
+            # print(nums)
         return nums
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     nums = [4, 5, 6, 7, 1, 2, 3]
     ans = Solution()

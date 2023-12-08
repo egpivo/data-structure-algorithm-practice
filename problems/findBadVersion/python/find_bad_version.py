@@ -3,6 +3,7 @@
 # @return an integer
 # def isBadVersion(version):
 
+
 def calculate_mid(left, right):
     return left + (right - left) // 2
 
@@ -20,7 +21,7 @@ class Solution:
         """
         if not isBadVersion(n - 1) and isBadVersion(n):
             return n
-        
+
         left = 1
         right = n
         mid = calculate_mid(left, right)

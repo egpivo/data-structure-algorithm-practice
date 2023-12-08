@@ -18,20 +18,20 @@ using namespace std;
 class Solution {
 public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
-        
+
         unordered_set<string> wordSet(wordList.begin(), wordList.end());
       //  unordered_map<string, int> pathCount({{beginWord, 1}}); use -std=c++11
       //   queue<string> wordBag{{beginWord}}; //create a container to store words (use -std=c++11)
         unordered_map<string, int> pathCount;
         queue<string> wordBag;
-      
+
         wordBag.push(beginWord);
         pathCount[beginWord] = 1;
-        
+
         while(!wordBag.empty()){ // test whether container is empty
             string term = wordBag.front(); // access the next word in wordBag
             wordBag.pop(); // remove the next element
-            
+
             for(int i = 0; i < term.size(); ++i){
                 string newWord = term;
                 for(char letter = 'a'; letter < 'z'; ++letter){ // traversial 26 letters: a->z
@@ -39,18 +39,18 @@ public:
                     if(wordSet.count(newWord)){ // check if newWord exists in wordSet
                         if(newWord == endWord)
                             return pathCount[term] + 1; //return the total number
-                        
+
                         if(!pathCount.count(newWord)){ // check if newWord does NOT exist in pathCount
                             wordBag.push(newWord); // insert the newWord
                             pathCount[newWord] = pathCount[term] + 1; //count one more
                         }
-                        
+
                     }
-                    
+
                 }
-                
+
             }
-            
+
         }
         return 0;
     }
@@ -60,17 +60,17 @@ public:
 class Solution2 {
 public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
-        
+
         unordered_set<string> wordSet(wordList.begin(), wordList.end());
         queue<string> wordBag;
         int counter = 1;
-        
+
         wordBag.push(beginWord);
         while(!wordBag.empty()){
             for(int k = wordBag.size(); k > 0; --k){
                 string term = wordBag.front();
                 wordBag.pop();
-                
+
                 if(term == endWord)
                     return counter ++;
                 for(int i = 0; i < term.size(); ++i){
@@ -101,13 +101,10 @@ int main()
     wordList.push_back("lot");
     wordList.push_back("log");
     wordList.push_back("cog");
-    
+
     Solution ans;
 
     cout << ans.ladderLength(beginWord, endWord, wordList) << endl;
-    
+
     return 0;
 }
-
-
-

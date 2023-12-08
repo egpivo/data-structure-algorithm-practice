@@ -108,6 +108,7 @@ class SolutionTest:
         - recursively sum up the node in the range until the invalid node occurs
 
     """
+
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
         if root is None:
             return 0

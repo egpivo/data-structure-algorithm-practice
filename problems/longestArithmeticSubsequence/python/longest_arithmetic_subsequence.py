@@ -1,6 +1,7 @@
 from collections import defaultdict
 from typing import List
 
+
 class Solution:
     """
 
@@ -9,6 +10,7 @@ class Solution:
     - This is a DP problem
         - Keep the previous arithmetic values and update them if a repeated value occurs
     """
+
     def longestArithSeqLength(self, nums: List[int]) -> int:
         n = len(nums)
         if n <= 1:

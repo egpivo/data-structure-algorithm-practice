@@ -67,4 +67,3 @@ if __name__ == "__main__":
     print(f"DFS: {result_dfs}")
     print(f"BFS: {result_bfs}")
     assert result_dfs == result_bfs, "Wrong results"
-

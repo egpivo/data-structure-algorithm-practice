@@ -16,6 +16,7 @@ class Solution:
     - TC: O(n)
     - SC: O(n)
     """
+
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         if not q and not p:
             return True
@@ -40,6 +41,3 @@ if __name__ == "__main__":
 
     ans = Solution()
     print(ans.isSameTree(tree, tree2))
-
-
-    

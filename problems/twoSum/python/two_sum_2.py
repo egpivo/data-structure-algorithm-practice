@@ -1,6 +1,8 @@
 """
 apply Hashmap
 """
+
+
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -15,6 +17,7 @@ class Solution(object):
             if num not in key:
                 key[num] = i
 
-if __name__ == '__main__':
-  nums = [2, 7, 11, 15]
-  print(Solution().twoSum(nums, 9))
+
+if __name__ == "__main__":
+    nums = [2, 7, 11, 15]
+    print(Solution().twoSum(nums, 9))

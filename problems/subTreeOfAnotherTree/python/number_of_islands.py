@@ -1,5 +1,6 @@
 from typing import Optional
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -9,22 +10,22 @@ class TreeNode:
 
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        if self.isMatched(root, subRoot): return True
-        if not root: return False
-        return (
-            self.isSubtree(root.left, subRoot) or 
-            self.isSubtree(root.right, subRoot)
-        )    
+        if self.isMatched(root, subRoot):
+            return True
+        if not root:
+            return False
+        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
 
     def isMatched(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         if not (root and subRoot):
             return root is subRoot
 
         return (
-            root.val == subRoot.val and
-            self.isMatched(root.left, subRoot.left) and
-            self.isMatched(root.right, subRoot.right)
+            root.val == subRoot.val
+            and self.isMatched(root.left, subRoot.left)
+            and self.isMatched(root.right, subRoot.right)
         )
+
 
 if __name__ == "__main__":
     tree = TreeNode(3)

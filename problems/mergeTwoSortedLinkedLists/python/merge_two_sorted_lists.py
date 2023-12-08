@@ -1,6 +1,6 @@
 # Definition for singly-linked list.
-from typing import Optional
 import copy
+from typing import Optional
 
 
 class ListNode:
@@ -20,7 +20,7 @@ class Solution:
     """
 
     def mergeTwoLists(
-            self, l1: Optional[ListNode], l2: Optional[ListNode]
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
     ) -> Optional[ListNode]:
         if not l1 and not l2:
             return None
@@ -48,7 +48,7 @@ class SolutionIterative:
     """
 
     def mergeTwoLists(
-            self, l1: Optional[ListNode], l2: Optional[ListNode]
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
     ) -> Optional[ListNode]:
         prev = prehead = ListNode(-1)
         while l1 and l2:

@@ -3,7 +3,7 @@ from typing import List
 
 
 class Solution:
-    
+
     """
     Complexity
     ----------
@@ -25,9 +25,10 @@ class Solution:
                 else:
                     dp[idx] = num
             return len(dp)
+
         return lis([envelope[1] for envelope in envelopes])
 
 
 if __name__ == "__main__":
-    envelopes = [[5,4],[6,4],[6,7],[2,3]]
+    envelopes = [[5, 4], [6, 4], [6, 7], [2, 3]]
     print(f"Solution: {Solution().maxEnvelopes(envelopes)}")

@@ -10,9 +10,7 @@ class SolutionSeen:
     """
 
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        directions = (
-            (0, 1), (1, 0), (0, -1), (-1, 0)
-        )
+        directions = ((0, 1), (1, 0), (0, -1), (-1, 0))
         nrows = len(matrix)
         ncols = len(matrix[0])
         row = col = 0
@@ -23,7 +21,11 @@ class SolutionSeen:
         while len(answer) < nrows * ncols:
             candidate = (row + directions[m][0], col + directions[m][1])
 
-            if candidate in seen or not (0 <= candidate[0] < nrows) or not (0 <= candidate[1] < ncols):
+            if (
+                candidate in seen
+                or not (0 <= candidate[0] < nrows)
+                or not (0 <= candidate[1] < ncols)
+            ):
                 m += 1
                 m %= 4
                 continue

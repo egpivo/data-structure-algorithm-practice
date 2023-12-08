@@ -8,6 +8,7 @@ class Solution:
     - TCL O(N^2)
     - SC: O(1)
     """
+
     def rotate(self, matrix: List[List[int]]) -> None:
         self.transpose(matrix)
         self.reflect(matrix)
@@ -20,7 +21,10 @@ class Solution:
     def reflect(self, matrix: List[List[int]]) -> None:
         for i in range(len(matrix)):
             for j in range(len(matrix[0]) // 2):
-                matrix[i][j], matrix[i][len(matrix[0]) - j - 1] = matrix[i][len(matrix[0]) - j - 1], matrix[i][j]
+                matrix[i][j], matrix[i][len(matrix[0]) - j - 1] = (
+                    matrix[i][len(matrix[0]) - j - 1],
+                    matrix[i][j],
+                )
 
 
 if __name__ == "__main__":

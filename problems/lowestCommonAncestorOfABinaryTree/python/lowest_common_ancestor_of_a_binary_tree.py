@@ -14,6 +14,7 @@ class SolutionRecursive:
     - TC: O(n)
     - SC: O(n)
     """
+
     def lowestCommonAncestor(
         self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
     ) -> "TreeNode":

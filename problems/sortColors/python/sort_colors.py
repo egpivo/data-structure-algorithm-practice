@@ -21,9 +21,8 @@ class Solution:
             else:
                 current += 1
 
+
 if __name__ == "__main__":
-    input = [2,0,2,1,1,0]
+    input = [2, 0, 2, 1, 1, 0]
     answer = Solution().sortColors(input)
     print(input)
-
-

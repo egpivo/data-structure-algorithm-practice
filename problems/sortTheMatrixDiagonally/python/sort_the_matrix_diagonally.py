@@ -1,6 +1,6 @@
 import heapq
+from collections import Counter, defaultdict
 from typing import List
-from collections import defaultdict, Counter
 
 
 class SolutionHashMap:

@@ -7,7 +7,8 @@ class Solution:
         - SC: O(1)
         """
         n = len(s)
-        if n < 2: return s
+        if n < 2:
+            return s
 
         start = end = 0
 
@@ -15,7 +16,7 @@ class Solution:
             start, end = self.searchPalindrome(s, i, i, start, end)
             start, end = self.searchPalindrome(s, i, i + 1, start, end)
 
-        return s[start:(start + end)]
+        return s[start : (start + end)]
 
     def searchPalindrome(self, s, left, right, start, end):
 
@@ -37,6 +38,7 @@ class SolutionDP:
     - TC: O(n^2)
     - SC: O(n^2)
     """
+
     def longestPalindrome(self, s: str) -> str:
         n = len(s)
 
@@ -56,7 +58,7 @@ class SolutionDP:
 
                 if dp[start][end] and end - start + 1 > max_length:
                     max_length = end - start + 1
-                    result = s[start: end + 1]
+                    result = s[start : end + 1]
 
         return result
 
@@ -68,10 +70,11 @@ class SolutionDP2:
     - TC: O(n^2)
     - SC: O(n)
     """
+
     def longestPalindrome(self, s: str) -> str:
         n = len(s)
 
-        dp = [False]* n
+        dp = [False] * n
         result = ""
 
         for end in range(n):
@@ -85,10 +88,9 @@ class SolutionDP2:
                     dp[start] = s[start] == s[end] and dp[start + 1]
 
                 if dp[start] and end - start + 1 > len(result):
-                    result = s[start: end + 1]
+                    result = s[start : end + 1]
 
         return result
-
 
 
 if __name__ == "__main__":

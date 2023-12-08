@@ -30,7 +30,11 @@ class Solution:
         if len(word) == 0:
             return True
 
-        if not (0 <= row < self.nrows) or not (0 <= col < self.ncols) or self.board[row][col] != word[0]:
+        if (
+            not (0 <= row < self.nrows)
+            or not (0 <= col < self.ncols)
+            or self.board[row][col] != word[0]
+        ):
             return False
 
         does_exist = False

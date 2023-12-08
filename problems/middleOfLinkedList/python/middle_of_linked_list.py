@@ -15,6 +15,7 @@ class Solution:
     - TC: O(n)
     - SC: O(1)
     """
+
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         fast = slow = head
 

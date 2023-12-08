@@ -6,6 +6,7 @@ class Solution:
     - TC: O (n)
     - SC: O(n - d)
     """
+
     def removeDuplicates(self, s: str) -> str:
         stack = []
 

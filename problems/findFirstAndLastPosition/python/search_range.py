@@ -8,6 +8,7 @@ class Solution:
     - Time Complexity: O(log n)
     - Space Complexity: O(1)
     """
+
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         lower_bound = self.binary_search(nums, target, True)
         if lower_bound == -1:
@@ -30,7 +31,7 @@ class Solution:
                 else:
                     if mid == right or nums[mid + 1] > target:
                         return mid
-                    left = mid + 1                    
+                    left = mid + 1
 
             elif nums[mid] > target:
                 right = mid - 1
@@ -38,9 +39,9 @@ class Solution:
                 left = mid + 1
 
         return -1
-        
+
 
 if __name__ == "__main__":
-    nums = [5,7,7,8,8,10]
+    nums = [5, 7, 7, 8, 8, 10]
     target = 8
     print(f"Solution: {Solution().searchRange(nums, target)}")

@@ -5,7 +5,7 @@ You can swap the characters at any pair of indices in the given `pairs` any numb
 
 Return the lexicographically smallest string that `s` can be changed to after using the swaps.
 
- 
+
 
 ```
 Input: s = "dcab", pairs = [[0,3],[1,2],[0,2]]

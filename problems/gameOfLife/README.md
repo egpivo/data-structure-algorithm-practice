@@ -9,7 +9,7 @@ The board is made up of an m x n grid of cells, where each cell has an initial s
 4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 The next state is created by applying the above rules simultaneously to every cell in the current state, where births and deaths occur simultaneously. Given the current state of the m x n grid board, return the next state.
 
- 
+
 - Example
 ```
 Input: board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]

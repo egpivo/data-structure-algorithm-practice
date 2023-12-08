@@ -8,12 +8,12 @@ class Solution:
         for i in range(n):
             if not 0 < nums[i] <= n:
                 nums[i] = n + 1
-        
+
         for i in range(n):
             index = abs(nums[i])
             if 0 < index <= n:
-                nums[index - 1] = - abs(nums[index - 1])
-        
+                nums[index - 1] = -abs(nums[index - 1])
+
         for i in range(n):
             if nums[i] > 0:
                 return i + 1
@@ -22,6 +22,5 @@ class Solution:
 
 
 if __name__ == "__main__":
-    nums = [3,4,-1,1]
+    nums = [3, 4, -1, 1]
     print(f"Solution: {Solution().firstMissingPositive(nums)}")
-

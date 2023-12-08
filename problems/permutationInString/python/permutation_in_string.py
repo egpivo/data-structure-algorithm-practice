@@ -28,13 +28,13 @@ class Solution:
 
             if s1_freq == s2_freq:
                 return True
-            s2_freq[ord(s2[lo]) - ord('a')] -= 1
+            s2_freq[ord(s2[lo]) - ord("a")] -= 1
 
         return False
 
     @staticmethod
     def calculate_letter_index_from_a(lower_letter: str) -> int:
-        return ord(lower_letter) - ord('a')
+        return ord(lower_letter) - ord("a")
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ class ListNode:
         self.val = x
         self.next = None
 
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -11,13 +12,15 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 class Solution:
     def sortedListToBST(self, head):
         """
         :type head: ListNode
         :rtype: TreeNode
         """
-        if head == None: return None
+        if head == None:
+            return None
 
         first = head
         second = head
@@ -33,27 +36,33 @@ class Solution:
 
         ans = TreeNode(second.val)
 
-        if head != second: ans.left = self.sortedListToBST(head)
+        if head != second:
+            ans.left = self.sortedListToBST(head)
         ans.right = self.sortedListToBST(first)
 
         return ans
 
+
 def inorder(tree):
-  if tree != None:
-      inorder(tree.left)
-      print(tree.val)
-      inorder(tree.right)
+    if tree != None:
+        inorder(tree.left)
+        print(tree.val)
+        inorder(tree.right)
+
 
 def preorder(tree):
     if tree != None:
         print(tree.val)
         preorder(tree.left)
         preorder(tree.right)
+
+
 def postorder(tree):
     if tree != None:
         postorder(tree.left)
         postorder(tree.right)
         print(tree.val)
+
 
 if __name__ == "__main__":
     l1 = ListNode(-10)

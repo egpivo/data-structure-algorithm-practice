@@ -17,15 +17,15 @@ class Solution(object):
                 for key, value in atom_pair.items():
                     stack[-1][key] += value * int(num2 or 1)
 
-        answer = "".join([
-            name + (str(stack[-1][name]))
-            if stack[-1][name] > 1 else ""
-            for name in sorted(stack[-1])
-        ]) 
-        return answer 
+        answer = "".join(
+            [
+                name + (str(stack[-1][name])) if stack[-1][name] > 1 else ""
+                for name in sorted(stack[-1])
+            ]
+        )
+        return answer
 
 
 if __name__ == "__main__":
     formula = "K4(ON(SO3)2)2"
     print(Solution().countOfAtoms(formula))
-

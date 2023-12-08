@@ -14,7 +14,7 @@ using namespace std;
 class Solution{
 public:
     vector<int> twoSum1(vector<int> nums, int target){
-        
+
         vector<int> index;
         for(int i = 0; i < nums.size(); i++){
             for(int j = i + 1; j < nums.size(); j++){
@@ -22,7 +22,7 @@ public:
                     index.push_back(i);
                     index.push_back(j);
                 }
-                
+
             }
         }
         return index;
@@ -30,7 +30,7 @@ public:
     vector < int > twoSum2(vector< int >& nums, int target) {
         unordered_map < int , int > maps;
         vector<int> index;
-        
+
         for ( int i = 0 ; i < nums.size(); ++ i) {
             if (maps.count(target - nums[i])) {
                 index.push_back(maps[target - nums[i]]);
@@ -43,5 +43,3 @@ public:
     }
 };
 #endif /* two_sum_hpp */
-
-

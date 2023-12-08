@@ -1,5 +1,6 @@
-
 from typing import List, Optional
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -22,10 +23,11 @@ class Solution1:
         value = postorder[-1]
         index = inorder.index(value)
         root = TreeNode(value)
-        root.left = self.buildTree(inorder[:index+1], postorder[:index])
-        root.right = self.buildTree(inorder[index+1:], postorder[index:-1])
+        root.left = self.buildTree(inorder[: index + 1], postorder[:index])
+        root.right = self.buildTree(inorder[index + 1 :], postorder[index:-1])
 
         return root
+
 
 class Solution2:
     """
@@ -42,10 +44,11 @@ class Solution2:
         value = postorder.pop()
         index = inorder.index(value)
         root = TreeNode(value)
-        root.left = self.buildTree(inorder[:index+1], postorder[:index])
-        root.right = self.buildTree(inorder[index+1:], postorder[index:])
+        root.left = self.buildTree(inorder[: index + 1], postorder[:index])
+        root.right = self.buildTree(inorder[index + 1 :], postorder[index:])
 
         return root
+
 
 class Solution3:
     """
@@ -68,4 +71,3 @@ class Solution3:
             return root
 
         return helper(0, len(inorder) - 1)
-

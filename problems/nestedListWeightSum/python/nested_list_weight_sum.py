@@ -1,6 +1,5 @@
 from typing import List
 
-
 # """
 # This is the interface that allows for creating nested lists.
 # You should not implement it, or speculate about its implementation
@@ -54,7 +53,6 @@ class SolutionDFS:
     """
 
     def depthSum(self, nestedList: List[NestedInteger]) -> int:
-
         def dfs(nested_list, depth):
             total = 0
             for nested_obj in nested_list:

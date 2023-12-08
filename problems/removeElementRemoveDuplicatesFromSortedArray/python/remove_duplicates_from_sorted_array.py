@@ -1,12 +1,11 @@
 from typing import List
 
 
-
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if len(nums) <= 1:
             return len(nums)
-        
+
         count = 1
         prev = nums[0]
         for num in nums:
@@ -41,8 +40,7 @@ class Solution:
         return count
 
 
-
 if __name__ == "__main__":
-    nums = [1,1,1,2,2,3]
+    nums = [1, 1, 1, 2, 2, 3]
     print(f"{Solution().removeDuplicates(nums)} \nnums = {nums}")
     print(f"{Solution().removeDuplicatesII(nums)} \nnums = {nums}")

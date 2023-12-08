@@ -8,7 +8,9 @@ class Solution:
     - TC: O(n)
     - SC: O(n)
     """
+
     _operators = ("+", "-", "*", "/")
+
     def evalRPN(self, tokens: List[str]) -> int:
         stack = []
         for token in tokens:
@@ -30,5 +32,5 @@ class Solution:
 
 
 if __name__ == "__main__":
-    tokens = ["10","6","9","3","+","-11","*","/","*","17","+","5","+"]
+    tokens = ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
     print(f"{Solution().evalRPN(tokens)}")

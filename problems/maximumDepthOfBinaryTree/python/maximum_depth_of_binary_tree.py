@@ -1,5 +1,6 @@
 from collections import deque
 
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -15,6 +16,7 @@ class Solution:
     - TC: O(n)
     - SC: O(n)
     """
+
     def maxDepth(self, root):
         """
         :type root: TreeNode
@@ -61,5 +63,3 @@ if __name__ == "__main__":
     ans = Solution()
     print(ans.maxDepth(tree))
     print(SolutionBFS().maxDepth(tree))
-
-    

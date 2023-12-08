@@ -40,7 +40,10 @@ class SolutionII:
             else:
                 out_order_list.append(char)
 
-        return "".join(sorted(in_order_list, key=lambda x: order_index_dict.get(x)) + out_order_list)
+        return "".join(
+            sorted(in_order_list, key=lambda x: order_index_dict.get(x))
+            + out_order_list
+        )
 
 
 class SolutionIII:

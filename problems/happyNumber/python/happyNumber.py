@@ -1,4 +1,5 @@
 from collections.abc import Generator
+
 LIMIT = 1000
 
 

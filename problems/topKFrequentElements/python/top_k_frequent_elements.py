@@ -24,6 +24,7 @@ class SolutionHeap:
     - TC: O(nlog(k))
     - SC: O(n + k)
     """
+
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         if len(nums) <= k:
             return nums

@@ -5,6 +5,7 @@ class Solution:
     - TC: O(n)
     - SC: O(n)
     """
+
     def countBinarySubstrings(self, s: str) -> int:
         groups = [1]
         for i in range(len(s) - 1):

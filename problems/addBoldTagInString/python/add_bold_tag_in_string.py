@@ -7,7 +7,7 @@ class Solution:
 
     def addBoldTag(self, s: str, words: List[str]) -> str:
         s_size = len(s)
-        is_bold_list = [False  for i in range(s_size)]
+        is_bold_list = [False for i in range(s_size)]
 
         for word in words:
             start_index = s.find(word)
@@ -17,7 +17,7 @@ class Solution:
                 start_index = s.find(word, start_index + 1)
 
         output = []
-        index =  0
+        index = 0
         is_left_bold_annotation = True
         while index < s_size:
             if is_bold_list[index]:
@@ -37,9 +37,8 @@ class Solution:
         return "".join(output)
 
 
-
 if __name__ == "__main__":
-  s = "abcxyz123"
-  words = ["abc","123"]
+    s = "abcxyz123"
+    words = ["abc", "123"]
 
-  print(Solution().addBoldTag(s, words))
+    print(Solution().addBoldTag(s, words))

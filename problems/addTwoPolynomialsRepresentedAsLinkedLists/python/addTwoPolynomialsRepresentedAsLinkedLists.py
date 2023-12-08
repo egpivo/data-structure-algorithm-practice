@@ -14,7 +14,7 @@ class Solution:
     - SC: O(1)
     """
 
-    def addPoly(self, poly1: 'PolyNode', poly2: 'PolyNode') -> 'PolyNode':
+    def addPoly(self, poly1: "PolyNode", poly2: "PolyNode") -> "PolyNode":
         head = answer = PolyNode()
 
         while poly1 and poly2:
@@ -52,7 +52,7 @@ class SolutionRecursive:
     - SC: O(max(n, m))
     """
 
-    def addPoly(self, poly1: 'PolyNode', poly2: 'PolyNode') -> 'PolyNode':
+    def addPoly(self, poly1: "PolyNode", poly2: "PolyNode") -> "PolyNode":
         if not poly1:
             return poly2
         if not poly2:
@@ -74,7 +74,7 @@ class SolutionRecursive:
             return poly2
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     a, a.next, a.next.next = PolyNode(2, 2), PolyNode(4, 1), PolyNode(3, 0)
     b, b.next, b.next.next = PolyNode(3, 2), PolyNode(-4, 1), PolyNode(-1, 0)
     result = SolutionRecursive().addPoly(a, b)

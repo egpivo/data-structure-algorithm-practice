@@ -3,7 +3,7 @@ from typing import List
 
 class Solution:
     def largestIsland(self, grid: List[List[int]]) -> int:
-        """"
+        """ "
         Idea
         ----
         - Find grid with zero --> dfs for 1's --> count the area
@@ -22,7 +22,12 @@ class Solution:
             while stack:
                 r, c = stack.pop()
                 for nr, nc in ((r - 1, c), (r, c - 1), (r + 1, c), (r, c + 1)):
-                    if 0 <= nr < n and 0 <= nc < n and (nr, nc) not in seen and grid[nr][nc] == 1:
+                    if (
+                        0 <= nr < n
+                        and 0 <= nc < n
+                        and (nr, nc) not in seen
+                        and grid[nr][nc] == 1
+                    ):
                         stack.append((nr, nc))
                         seen.add((nr, nc))
 
@@ -69,7 +74,11 @@ class SolutionComponentDFS:
         for row in range(self.nrows):
             for col in range(self.ncols):
                 if self.grid[row][col] == 0:
-                    seen_indices = {self.grid[nr][nc] for nr, nc in self.neighbors(row, col) if self.grid[nr][nc] > 1}
+                    seen_indices = {
+                        self.grid[nr][nc]
+                        for nr, nc in self.neighbors(row, col)
+                        if self.grid[nr][nc] > 1
+                    }
                     answer = max(answer, 1 + sum(area[i] for i in seen_indices))
 
         return answer
@@ -93,5 +102,9 @@ class SolutionComponentDFS:
 if __name__ == "__main__":
     grid = [[0, 1, 1, 0], [0, 0, 1, 0], [0, 1, 1, 0], [1, 1, 0, 1]]
     expected_answer = 9
-    print(f"Solution: {Solution().largestIsland(grid)} || expected answer: {expected_answer}")
-    print(f"Component Solution: {SolutionComponentDFS().largestIsland(grid)} || expected answer: {expected_answer}")
+    print(
+        f"Solution: {Solution().largestIsland(grid)} || expected answer: {expected_answer}"
+    )
+    print(
+        f"Component Solution: {SolutionComponentDFS().largestIsland(grid)} || expected answer: {expected_answer}"
+    )

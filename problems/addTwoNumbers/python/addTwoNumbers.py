@@ -35,7 +35,7 @@ class Solution:
         return ls.next
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     a, a.next, a.next.next = ListNode(2), ListNode(4), ListNode(3)
     b, b.next, b.next.next = ListNode(5), ListNode(6), ListNode(4)
     result = Solution().addTwoNumbers(a, b)

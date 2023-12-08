@@ -14,13 +14,14 @@ class Solution:
 
         return x == rev or x == rev // 10
 
+
 if __name__ == "__main__":
-  ans = Solution()
+    ans = Solution()
 
-  x = 123
-  print("input: {}".format(x))
-  print("Palindrome: {}".format(ans.isPalindrome(x)))
+    x = 123
+    print("input: {}".format(x))
+    print("Palindrome: {}".format(ans.isPalindrome(x)))
 
-  x = 121
-  print("input: {}".format(x))
-  print("Palindrome: {}".format(ans.isPalindrome(x)))
+    x = 121
+    print("input: {}".format(x))
+    print("Palindrome: {}".format(ans.isPalindrome(x)))

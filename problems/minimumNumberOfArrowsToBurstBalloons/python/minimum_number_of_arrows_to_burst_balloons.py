@@ -8,6 +8,7 @@ class Solution:
     - TC: O(n*long(n)) (sorting)
     - SC: O(1)
     """
+
     def findMinArrowShots(self, points: List[List[int]]) -> int:
         if len(points) < 2:
             return len(points)
@@ -26,6 +27,5 @@ class Solution:
 
 
 if __name__ == "__main__":
-    intervals = [[10,16],[2,8],[1,6],[7,12]]
+    intervals = [[10, 16], [2, 8], [1, 6], [7, 12]]
     print(f"Solution is {Solution().findMinArrowShots(intervals)}")
-

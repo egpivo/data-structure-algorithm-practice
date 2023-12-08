@@ -17,7 +17,8 @@ class SolutionBS:
     - TC: O(NlogM)
     - SC: O(1)
     """
-    def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
+
+    def leftMostColumnWithOne(self, binaryMatrix: "BinaryMatrix") -> int:
         rows, cols = binaryMatrix.dimenstion()
         smallest_index = cols
 
@@ -36,6 +37,7 @@ class SolutionBS:
 
         return -1 if smallest_index == cols else smallest_index
 
+
 class Solution:
     """
 
@@ -46,10 +48,11 @@ class Solution:
     - TC: O(N+M)
     - SC: O(1)
     """
-    def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
+
+    def leftMostColumnWithOne(self, binaryMatrix: "BinaryMatrix") -> int:
         rows, cols = binaryMatrix.dimenstion()
         current_row = 0
-        current_col = cols -1
+        current_col = cols - 1
 
         while current_row < rows and current_col >= 0:
             if binaryMatrix.get(current_row, current_col) == 0:

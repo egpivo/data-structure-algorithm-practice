@@ -11,7 +11,9 @@ class Solution:
         - TC: O(NlogN) (due to the sort with the worst case)
         - SC: O(1)
         """
-        return [point for point in sorted(points, key=lambda x: x[0] * x[0] + x[1] * x[1])][:k]
+        return [
+            point for point in sorted(points, key=lambda x: x[0] * x[0] + x[1] * x[1])
+        ][:k]
 
 
 class SolutionPriorityQueue:
@@ -22,7 +24,9 @@ class SolutionPriorityQueue:
         - TC: O(Nlogk)
         - SC: O(k)
         """
-        distance_heap = [(self.negative_squared_distance(points[i]), i) for i in range(k)]
+        distance_heap = [
+            (self.negative_squared_distance(points[i]), i) for i in range(k)
+        ]
         heapq.heapify(distance_heap)
 
         for i in range(k, len(points)):
@@ -33,7 +37,7 @@ class SolutionPriorityQueue:
         return [points[i] for _, i in distance_heap]
 
     def negative_squared_distance(self, point: List[int]) -> int:
-        return - sum(x ** 2 for x in point)
+        return -sum(x**2 for x in point)
 
 
 class SolutionQuickSort:
@@ -73,7 +77,7 @@ class SolutionQuickSort:
         return quick_select(points, 0, len(points) - 1)
 
     def squared_distance(self, point: List[int]) -> int:
-        return sum(x ** 2 for x in point)
+        return sum(x**2 for x in point)
 
 
 if __name__ == "__main__":

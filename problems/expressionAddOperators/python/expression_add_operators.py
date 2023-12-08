@@ -37,8 +37,13 @@ class Solution:
                 # Multiplication
                 path.append("*")
                 path.append(str_cur_operand)
-                backtrack(index + 1, cur_operand * pre_operand, 0, value - pre_operand + (pre_operand * cur_operand),
-                          path)
+                backtrack(
+                    index + 1,
+                    cur_operand * pre_operand,
+                    0,
+                    value - pre_operand + (pre_operand * cur_operand),
+                    path,
+                )
                 path.pop()
                 path.pop()
 

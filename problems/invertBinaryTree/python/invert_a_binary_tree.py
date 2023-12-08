@@ -17,6 +17,7 @@ class Solution:
     - TC: O(n)
     - SC: O(n)
     """
+
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if root is None:
             return None
@@ -35,6 +36,7 @@ class SolutionBFS:
     - TC: O(n)
     - SC: O(n)
     """
+
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if root is None:
             return None
@@ -51,6 +53,7 @@ class SolutionBFS:
                     queue.append(node.left)
                 node.left, node.right = node.right, node.left
         return root
+
 
 def show(node: TreeNode) -> None:
     if node is None:

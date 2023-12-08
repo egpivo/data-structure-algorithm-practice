@@ -9,6 +9,7 @@ class Solution:
     - TC: O(n)
     - SC: O(n)
     """
+
     def numPairsDivisibleBy60(self, time: List[int]) -> int:
         hash_map = defaultdict(int)
         count = 0

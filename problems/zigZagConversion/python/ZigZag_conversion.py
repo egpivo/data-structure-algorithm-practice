@@ -6,7 +6,7 @@ class Solution:
         :rtype: str
         """
 
-        if(len(s) < 2 or numRows == 1):
+        if len(s) < 2 or numRows == 1:
             return s
 
         ans = ""
@@ -14,21 +14,21 @@ class Solution:
 
         for i in range(numRows):
             j = i
-            while(j < len(s)):
+            while j < len(s):
                 ans += s[j]
 
-                temp = j + step - 2*i
-                if (i not in [0, numRows-1]) and (temp < len(s)):
-                      ans += s[temp]
+                temp = j + step - 2 * i
+                if (i not in [0, numRows - 1]) and (temp < len(s)):
+                    ans += s[temp]
                 j += step
 
         return ans
 
 
 if __name__ == "__main__":
-  s = "PAYPALISHIRING"
-  numRows = 3
+    s = "PAYPALISHIRING"
+    numRows = 3
 
-  ans = Solution()
+    ans = Solution()
 
-  print(ans.convert(s, numRows))
+    print(ans.convert(s, numRows))

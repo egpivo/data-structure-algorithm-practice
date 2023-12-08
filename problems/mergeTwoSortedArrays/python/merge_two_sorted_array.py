@@ -20,7 +20,7 @@ class Solution:
             else:
                 nums1[k] = nums2[j]
                 j -= 1
-            
+
             k -= 1
         while j > 0:
             nums1[k] = nums2[j]
@@ -28,11 +28,10 @@ class Solution:
             j -= 1
 
 
-
 if __name__ == "__main__":
-    nums1 = [1,2,3,0,0,0]
+    nums1 = [1, 2, 3, 0, 0, 0]
     m = 3
-    nums2 = [2,5,6]
+    nums2 = [2, 5, 6]
     n = 3
 
     Solution().merge(nums1=nums1, m=m, nums2=nums2, n=n)

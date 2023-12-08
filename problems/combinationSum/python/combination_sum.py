@@ -2,7 +2,7 @@ from typing import List
 
 
 class BackTrackingSolution:
-    """ Backtracking
+    """Backtracking
 
     Complexity
     ----------
@@ -10,6 +10,7 @@ class BackTrackingSolution:
        - n = len(candidates)
     - SC: O(target/min(candidates))
     """
+
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         answer = []
         n = len(candidates)
@@ -20,15 +21,16 @@ class BackTrackingSolution:
             elif sum(collection) == target:
                 answer.append(collection)
                 return
-            
+
             for i in range(idx, n):
                 dfs(collection + [candidates[i]], i)
 
         dfs([], 0)
         return answer
 
+
 class DpSolution:
-    """ Dynamic Programming
+    """Dynamic Programming
 
     Complexity
     ----------
@@ -36,9 +38,10 @@ class DpSolution:
        - n = len(candidates)
     - SC: O(target ^ 2))
     """
+
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         dp = [[] for _ in range(target + 1)]
-        
+
         for candidate in candidates:
             for c in range(candidate, target + 1):
                 if candidate == c:
@@ -51,9 +54,8 @@ class DpSolution:
 
 
 if __name__ == "__main__":
-    candidates = [2,3,6,7]
+    candidates = [2, 3, 6, 7]
     target = 7
 
     print(f"Solution: {BackTrackingSolution().combinationSum(candidates, target)}")
     print(f"Solution: {DpSolution().combinationSum(candidates, target)}")
-

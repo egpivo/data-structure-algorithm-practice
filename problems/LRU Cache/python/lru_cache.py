@@ -32,11 +32,14 @@ class LRUCache:
 
 
 class ListNode:
-    def __init__(self, key: int, value: int, next: "ListNode" = None, prev: "ListNode" = None):
+    def __init__(
+        self, key: int, value: int, next: "ListNode" = None, prev: "ListNode" = None
+    ):
         self.key = key
         self.value = value
         self.next = next
         self.prev = prev
+
 
 class LRUCache2:
     """
@@ -49,6 +52,7 @@ class LRUCache2:
     - TC: O(1)
     - SC: O(capacity)
     """
+
     def __init__(self, capacity: int):
         self.capacity = capacity
         self.dictionary = {}

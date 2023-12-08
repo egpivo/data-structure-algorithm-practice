@@ -1,6 +1,3 @@
-from typing import Optional
-
-
 # Definition for a Node.
 class Node:
     def __init__(self, val):
@@ -11,7 +8,7 @@ class Node:
 
 
 class Solution:
-    def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
+    def lowestCommonAncestor(self, p: "Node", q: "Node") -> "Node":
         """
         Example
         -------
@@ -43,7 +40,7 @@ class Solution:
 
 
 class SolutionHashSet:
-    def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
+    def lowestCommonAncestor(self, p: "Node", q: "Node") -> "Node":
         """
         Complexity
         ----------

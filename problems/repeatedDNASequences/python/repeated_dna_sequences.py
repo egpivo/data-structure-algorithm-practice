@@ -8,6 +8,7 @@ class Solution:
     TC: O(N)
     SC: O(N)
     """
+
     window = 10
 
     def findRepeatedDnaSequences(self, s: str) -> List[str]:
@@ -19,7 +20,7 @@ class Solution:
         answer, seen = set(), set()
 
         for i in range(n - self.window + 1):
-            seq = s[i:i + self.window]
+            seq = s[i : i + self.window]
 
             if seq in seen:
                 answer.add(seq)
@@ -29,7 +30,7 @@ class Solution:
         return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
     ans = Solution()
     print(f"Solution: {ans.findRepeatedDnaSequences(s)}")

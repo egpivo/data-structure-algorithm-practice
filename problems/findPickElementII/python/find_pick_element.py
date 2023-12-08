@@ -1,4 +1,3 @@
-import copy
 from typing import List
 
 
@@ -19,10 +18,14 @@ class Solution:
             max_row = 0
             for i in range(len(mat)):
                 max_row = i if mat[i][mid_col] >= mat[max_row][mid_col] else max_row
-            is_left_larger = mid_col - \
-                1 >= low_col and mat[max_row][mid_col] < mat[max_row][mid_col - 1]
-            is_right_larger = mid_col + \
-                1 <= high_col and mat[max_row][mid_col] < mat[max_row][mid_col + 1]
+            is_left_larger = (
+                mid_col - 1 >= low_col
+                and mat[max_row][mid_col] < mat[max_row][mid_col - 1]
+            )
+            is_right_larger = (
+                mid_col + 1 <= high_col
+                and mat[max_row][mid_col] < mat[max_row][mid_col + 1]
+            )
             if not is_left_larger and not is_right_larger:
                 return [max_row, mid_col]
             elif is_right_larger:

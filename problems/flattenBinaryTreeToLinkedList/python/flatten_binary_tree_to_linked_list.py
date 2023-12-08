@@ -1,5 +1,5 @@
-from typing import Optional, List
 import copy
+from typing import Optional
 
 
 # Definition for a binary tree node.
@@ -37,24 +37,25 @@ class Solution:
             pointer.left = None
             pointer = pointer.right
 
+
 class Solution2:
     def flattenTree(self, node):
         if node is None:
             return None
-        
+
         if node.left is None and node.right is None:
             return node
-        
+
         left_tail = self.flattenTree(node.left)
         right_tail = self.flattenTree(node.right)
-        
+
         if left_tail:
             left_tail.right = node.right
             node.right = node.left
             node.left = None
-            
+
         return right_tail if right_tail else left_tail
-    
+
     def flatten(self, root: Optional[TreeNode]) -> None:
         """
         Do not return anything, modify root in-place instead.
@@ -87,4 +88,3 @@ if __name__ == "__main__":
     ans.flatten(tree)
     print(f"[2nd solution]After flattening,")
     show(tree)
-

@@ -28,6 +28,7 @@ class Solution:
             if target < prefix_sum:
                 return idx
 
+
 class SolutionBS:
     """
     Complexity
@@ -39,6 +40,7 @@ class SolutionBS:
         - constructor: O(N)
         - `pickIndex`: O(1)
     """
+
     def __init__(self, w: List[int]):
         self.prefix_sums = []
         prefix_sum = 0
@@ -59,6 +61,8 @@ class SolutionBS:
                 high = mid
 
         return low
+
+
 if __name__ == "__main__":
     w = [1, 3, 2, 5]
     obj = Solution(w)

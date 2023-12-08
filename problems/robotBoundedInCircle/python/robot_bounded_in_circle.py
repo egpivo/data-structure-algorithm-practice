@@ -5,6 +5,7 @@ class Solution:
     - TC: O(n)
     - SC: 0(1)
     """
+
     def isRobotBounded(self, instructions: str) -> bool:
         # north -> east -> south -> west
         directions = ((0, 1), (1, 0), (0, -1), (-1, 0))
@@ -27,4 +28,6 @@ class Solution:
 
 if __name__ == "__main__":
     instructions = "GLRLLGLL"
-    print(f"The solution to {instructions} is {Solution().isRobotBounded(instructions)}")
+    print(
+        f"The solution to {instructions} is {Solution().isRobotBounded(instructions)}"
+    )

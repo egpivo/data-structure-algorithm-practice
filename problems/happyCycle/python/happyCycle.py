@@ -1,7 +1,6 @@
 from typing import Optional
 
 
-
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -14,9 +13,9 @@ class Solution1:
             return False
 
         while head:
-            if head.val == 'v':
+            if head.val == "v":
                 return True
-            head.val = 'v'
+            head.val = "v"
             head = head.next
 
         return False
@@ -38,6 +37,7 @@ class Solution2:
 
 class Solution3:
     """Two pointers"""
+
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         if not head:
             return False

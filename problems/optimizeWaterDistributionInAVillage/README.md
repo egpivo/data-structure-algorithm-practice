@@ -8,7 +8,7 @@ Return the minimum total cost to supply water to all houses.
 ```
 Input: n = 3, wells = [1,2,2], pipes = [[1,2,1],[2,3,1]]
 Output: 3
-Explanation: 
+Explanation:
 The image shows the costs of connecting houses using pipes.
 The best strategy is to build a well in the first house with cost 1 and connect the other houses to it with cost 2 so the total cost is 3.
 ```

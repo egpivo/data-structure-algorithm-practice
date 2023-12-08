@@ -34,6 +34,7 @@ class Solution:
     - Time complexity: O(N)
     - Space complexity: O(1)
     """
+
     def reverseBetween(
         self, head: Optional[ListNode], left: int, right: int
     ) -> Optional[ListNode]:
@@ -64,7 +65,6 @@ class Solution:
             head = forward
         tail.next = current
         return head
-
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
-from typing import Optional, List
+from typing import List, Optional
+
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -15,6 +16,7 @@ class Solution:
     - Time complexity: O(N)
     - Space complexity: O(N)
     """
+
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         stack_bag = []
         answer = []
@@ -33,9 +35,17 @@ class Solution:
 
         return answer
 
+
 class SolutionRecursive:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right) if root else []
+        return (
+            self.inorderTraversal(root.left)
+            + [root.val]
+            + self.inorderTraversal(root.right)
+            if root
+            else []
+        )
+
 
 if __name__ == "__main__":
     tree = TreeNode(1)
@@ -44,4 +54,3 @@ if __name__ == "__main__":
     ans = Solution()
     print(f"The answer is {ans.inorderTraversal(tree)}")
     print(f"The recurisve answer is {SolutionRecursive().inorderTraversal(tree)}")
-

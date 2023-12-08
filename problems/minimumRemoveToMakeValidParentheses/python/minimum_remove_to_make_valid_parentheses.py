@@ -3,7 +3,7 @@ class Solution:
     right_parenthesis = ")"
 
     def minRemoveToMakeValid(self, s: str) -> str:
-        """ Broute force way
+        """Broute force way
 
         Note
         ----
@@ -35,9 +35,8 @@ class Solution:
 
 
 class TowPassSolution:
-
     def minRemoveToMakeValid(self, s: str) -> str:
-        """ 2-pass
+        """2-pass
 
         Note
         ----

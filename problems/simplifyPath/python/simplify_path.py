@@ -13,8 +13,7 @@ class Solution:
 
         return f"/{'/'.join(directories)}"
 
-        
-        
+
 if __name__ == "__main__":
     s = "/../"
     print(Solution().simplifyPath(s))

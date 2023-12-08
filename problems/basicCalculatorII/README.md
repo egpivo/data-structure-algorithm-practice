@@ -1,6 +1,6 @@
 ## [Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/)
 
-Given a string `s` which represents an expression, evaluate this expression and return its value. 
+Given a string `s` which represents an expression, evaluate this expression and return its value.
 
 The integer division should truncate toward zero.
 
@@ -14,5 +14,3 @@ Note: You are not allowed to use any built-in function which evaluates strings a
 Input: s = " 3+5 / 2 "
 Output: 5
 ```
-
-

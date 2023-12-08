@@ -17,25 +17,58 @@ class Node:
 
 
 class Solution:
+    """
+    Notes
+    -----
+    - TC: O(n)
+    - SC: O(n)
+    """
+
     def connect(self, root: "Node") -> "Node":
-        """ BFS fashion"""
-        if root is None:
-            return None
+        if not root:
+            return root
+        queue = deque([root])
 
-        q = deque([root])
+        while queue:
+            level = len(queue)
+            for index in range(level):
+                node = queue.popleft()
 
-        while q:
-            level_size = len(q)
-            for i in range(level_size):
-                node = q.popleft()
+                if index < level - 1:
+                    node.next = queue[0]
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+        return root
 
-                if node.left is not None:
-                    q.append(node.left)
-                if node.right is not None:
-                    q.append(node.right)
 
-                if i == level_size - 1:
-                    node.next = None
-                else:
-                    node.next = q[0]
+class Solution2:
+    """
+    Notes
+    -----
+    - TC: O(n)
+    - SC: O(1)
+    """
+
+    def connect(self, root: "Node") -> "Node":
+        if not root:
+            return root
+
+        current_level_start = root
+        next_level_dummy = Node()
+
+        while current_level_start:
+            current = current_level_start
+            previous = next_level_dummy
+            while current:
+                if current.left:
+                    previous.next = current.left
+                    previous = previous.next
+                if current.right:
+                    previous.next = current.right
+                    previous = previous.next
+                current = current.next
+            current_level_start = next_level_dummy.next
+            next_level_dummy.next = None
         return root

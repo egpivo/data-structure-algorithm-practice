@@ -1,9 +1,5 @@
 class Solution:
-    _char_mpa = {
-        "{": "}",
-        "(": ")",
-        "[": "]"
-    }
+    _char_mpa = {"{": "}", "(": ")", "[": "]"}
 
     def isValid(self, s: str) -> bool:
         if len(s) <= 1 or s[0] not in self._char_mpa or s[-1] in self._char_mpa:
@@ -19,19 +15,15 @@ class Solution:
                 matched_pattern += char
                 if q:
                     remaining += q.pop()
-        
-        matched_pattern += s[-1]  
+
+        matched_pattern += s[-1]
         if q:
             remaining += "".join(q)
         return matched_pattern == remaining
-            
+
 
 class CleanerSolution:
-    _char_mpa = {
-        "{": "}",
-        "(": ")",
-        "[": "]"
-    }
+    _char_mpa = {"{": "}", "(": ")", "[": "]"}
 
     def isValid(self, s: str) -> bool:
         if len(s) <= 1 or s[0] not in self._char_mpa or s[-1] in self._char_mpa:
@@ -47,13 +39,12 @@ class CleanerSolution:
                 stacked_char = q.pop()
                 if char != stacked_char:
                     return False
-        
+
         return len(q) == 0
-            
 
 
 if __name__ == "__main__":
-  s = "()[]{}"
+    s = "()[]{}"
 
-  print(Solution().isValid(s))
-  print(CleanerSolution().isValid(s))
+    print(Solution().isValid(s))
+    print(CleanerSolution().isValid(s))

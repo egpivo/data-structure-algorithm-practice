@@ -11,6 +11,7 @@ class Solution:
     - TC: O(n * k)
     - SC: O(n * k)
     """
+
     def groupStrings(self, strings: List[str]) -> List[List[str]]:
         string_order_map = defaultdict(list)
 

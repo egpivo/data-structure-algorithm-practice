@@ -15,7 +15,7 @@ class Solution:
         abs_num = abs(num // 7)
         power = 1
         while abs_num:
-            remainder += (abs_num % 7) * 10 ** power
+            remainder += (abs_num % 7) * 10**power
             power += 1
             abs_num //= 7
 

@@ -21,12 +21,14 @@ class SolutionBruteForce:
 
     def calculate(self, grid, row, col):
         if row == len(grid) or col == len(grid[0]):
-            return float('inf')
+            return float("inf")
 
         if row == len(grid) - 1 and col == len(grid[0]) - 1:
             return grid[row][col]
 
-        return grid[row][col] + min(self.calculate(grid, row + 1, col), self.calculate(grid, row, col + 1))
+        return grid[row][col] + min(
+            self.calculate(grid, row + 1, col), self.calculate(grid, row, col + 1)
+        )
 
 
 class SolutionDPI:

@@ -16,7 +16,7 @@ Return the number of query strings that are ***stretchy***.
 ```
 Input: s = "heeellooo", words = ["hello", "hi", "helo"]
 Output: 1
-Explanation: 
+Explanation:
 We can extend "e" and "o" in the word "hello" to get "heeellooo".
 We can't extend "helo" to get "heeellooo" because the group "ll" is not size 3 or more.
 ```

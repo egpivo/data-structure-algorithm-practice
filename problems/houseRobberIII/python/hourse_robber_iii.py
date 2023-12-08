@@ -1,4 +1,4 @@
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 from typing import Optional
 
 
@@ -67,8 +67,13 @@ class SolutionDP:
             if not graph[i]:
                 dp_rob[i] = tree[i]
             else:
-                dp_rob[i] = tree[i] + sum(dp_not_rob[child_index] for child_index in graph[i])
-                dp_not_rob[i] = sum(max(dp_rob[child_index], dp_not_rob[child_index]) for child_index in graph[i])
+                dp_rob[i] = tree[i] + sum(
+                    dp_not_rob[child_index] for child_index in graph[i]
+                )
+                dp_not_rob[i] = sum(
+                    max(dp_rob[child_index], dp_not_rob[child_index])
+                    for child_index in graph[i]
+                )
         return max(dp_rob[0], dp_not_rob[0])
 
 

@@ -21,7 +21,7 @@ struct TreeNode {
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        
+
         if(!root) return 0;
         else if(!root->left && !root->right) return 1;
         else
@@ -39,7 +39,7 @@ public:
 //ref http://www.voidcn.com/article/p-mquqvehe-bez.html
 void Show(TreeNode *t) {
     if (!t) return;
-    
+
     cout << t->val << " ";
     Show(t->left);
     Show(t->right);
@@ -47,18 +47,18 @@ void Show(TreeNode *t) {
 
 
 int main(){
-    
+
     TreeNode *root = new TreeNode(3);
-    
+
     root->left = new TreeNode(9);
     root->right = new TreeNode(20);
     root->right->left = new TreeNode(15);
     root->right->right = new TreeNode(7);
-    
+
     Show(root);
     Solution ans;
-    
+
     cout <<"\n The answer: " <<  ans.maxDepth(root)<<endl;
-    
+
     return 0;
 }

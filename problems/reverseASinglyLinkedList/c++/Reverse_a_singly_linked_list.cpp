@@ -22,7 +22,7 @@ class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
         ListNode *forward = NULL;
-        
+
         while(head){
             ListNode *temp = head->next;
             head->next = forward;
@@ -43,11 +43,11 @@ int main(){
     a->next->next = new ListNode(3);
     a->next->next->next = new ListNode(4);
     a->next->next->next->next = new ListNode(5);
-    
+
     Solution object;
     ListNode *ans = object.reverseList(a);
-    
-   
+
+
     cout << "printing ans " << endl;
     while(ans){ //traversal
         cout << ans->val << " " << endl;
@@ -56,5 +56,3 @@ int main(){
 
     return 0;
 }
-
-

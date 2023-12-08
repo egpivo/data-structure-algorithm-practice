@@ -1,6 +1,5 @@
 # Definition for singly-linked list.
 from typing import Optional
-import copy
 
 
 class TreeNode:

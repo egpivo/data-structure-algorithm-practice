@@ -17,7 +17,7 @@ class Solution:
             if not remainder in pos:
                 pos[remainder] = len(result)
             else:
-                return result[:pos[remainder]] + "(" + result[pos[remainder]:] + ")"
+                return result[: pos[remainder]] + "(" + result[pos[remainder] :] + ")"
 
             result += str((remainder * 10) // denominator)
             remainder = (remainder * 10) % denominator

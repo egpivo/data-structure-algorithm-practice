@@ -1,5 +1,6 @@
 from typing import Optional
 
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -14,6 +15,7 @@ class Solution:
     - TC: O(n)
     - SC: O(1)
     """
+
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
         left, right = ListNode(), ListNode()
 

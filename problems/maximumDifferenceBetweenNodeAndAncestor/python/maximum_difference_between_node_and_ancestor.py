@@ -7,7 +7,7 @@ class TreeNode:
 
 class Solution:
     """This is broute force version.
-    
+
     Note
     ----
     - Time complexity: O(N)
@@ -44,4 +44,3 @@ if __name__ == "__main__":
 
     ans = Solution()
     print(f"The answer is {ans.maxAncestorDiff(tree)}")
-

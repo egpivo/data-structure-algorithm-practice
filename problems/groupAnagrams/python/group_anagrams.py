@@ -9,6 +9,7 @@ class Solution:
     - TC: O(n*k*log(k))
     - SC: O(n * k)
     """
+
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         answer_dict = defaultdict(list)
 
@@ -19,5 +20,5 @@ class Solution:
 
 
 if __name__ == "__main__":
-    strs = ["eat","tea","tan","ate","nat","bat"]
+    strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
     print(f"Solution is {Solution().groupAnagrams(strs)}")

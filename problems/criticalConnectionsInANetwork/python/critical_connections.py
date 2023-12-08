@@ -10,6 +10,7 @@ class Solution:
     - Space: O(E)
     - Note: E >= V since the graph is connected
     """
+
     rank = {}
     graph = defaultdict(list)
     conn_dict = {}
@@ -29,9 +30,12 @@ class Solution:
         min_rank = discovery_rank + 1
 
         for neighbor in self.graph[node]:
-            if self.rank[neighbor] is not None and self.rank[neighbor] == discovery_rank - 1:
+            if (
+                self.rank[neighbor] is not None
+                and self.rank[neighbor] == discovery_rank - 1
+            ):
                 continue
-            recursive_rank = self.dfs(neighbor, discovery_rank + 1)         
+            recursive_rank = self.dfs(neighbor, discovery_rank + 1)
             if recursive_rank <= discovery_rank:
                 del self.conn_dict[(min(node, neighbor), max(node, neighbor))]
 

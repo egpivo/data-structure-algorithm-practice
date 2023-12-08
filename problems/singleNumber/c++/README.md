@@ -1,6 +1,6 @@
 ## Note
 1. Solution 1: Traverse an array with a hashtable/map stroing key-value pais of an element and the corresponding count
-    - Time complexity: O(N) or O(NlogN) 
+    - Time complexity: O(N) or O(NlogN)
         - Traverse an array: O(N)
         - Insert an element to a hashtable `unordered_map`: O(1)
         - Insert an element to a map `map`: O(logN)

@@ -1,5 +1,6 @@
+from typing import Optional
 
-from typing import List, Optional
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -14,6 +15,7 @@ class SolutionBFS:
     - TC: O(n)
     - SC: O(n)
     """
+
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if not root:
             return True
@@ -37,11 +39,18 @@ class SolutionBFS:
                 node.left, node.right = node.right, node.left
             level = len(queue)
             for i in range(level // 2):
-                if not ((queue[i] is None and queue[level - i - 1] is None) or (
-                        queue[i] and queue[level - i - 1] and queue[level - i - 1].val == queue[i].val)):
+                if not (
+                    (queue[i] is None and queue[level - i - 1] is None)
+                    or (
+                        queue[i]
+                        and queue[level - i - 1]
+                        and queue[level - i - 1].val == queue[i].val
+                    )
+                ):
                     return False
 
         return True
+
 
 class SolutionDFS:
     """
@@ -50,6 +59,7 @@ class SolutionDFS:
     - TC: O(n)
     - SC: O(n)
     """
+
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if not root:
             return True
@@ -62,4 +72,6 @@ class SolutionDFS:
             return False
         if left.val != right.val:
             return False
-        return self.is_mirror(left.left, right.right) and self.is_mirror(left.right, right.left)
+        return self.is_mirror(left.left, right.right) and self.is_mirror(
+            left.right, right.left
+        )

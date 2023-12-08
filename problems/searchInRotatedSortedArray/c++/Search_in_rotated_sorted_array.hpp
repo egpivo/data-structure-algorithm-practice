@@ -12,23 +12,23 @@
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
-        
+
         if(nums.empty()) return -1;
-        if(nums.size() == 1)  return nums[0] == target ? 0 : -1;   
-         
+        if(nums.size() == 1)  return nums[0] == target ? 0 : -1;
+
         int n = nums.size();
-        
+
         int start = 0;
         int end = n - 1;
-        
+
         while(start <= end){
             int split = (end - start)/2;
-            
+
             int minLeft = nums[start];
             int maxLeft = nums[start + split - 1];
             int minRight = nums[start + split];
             int maxRight = nums[end - 1];
-            
+
             // cout <<"-------"<<endl;
             // cout <<"start="<<start<<endl;
             // cout <<"end="<< end<<endl;
@@ -37,10 +37,10 @@ public:
             // cout <<"maxLeft="<< maxLeft<<endl;
             // cout <<"minRight="<< minRight<<endl;
             // cout <<"maxRight="<< maxRight<<endl;
-            
-            
+
+
             if((maxLeft - minLeft) >= 0 & (maxRight - minRight) >= 0){
-                
+
                 if(target < min(minLeft, minRight) | target > max(maxRight, maxLeft)){
                     cout << "gg1"<<endl;
                     return -1;
@@ -99,18 +99,18 @@ public:
 class Solution2 {
 public:
     int search(vector<int>& nums, int target) {
-        
+
         if(nums.empty()) return -1;
-        if(nums.size() == 1)  return nums[0] == target ? 0 : -1;   
-         
+        if(nums.size() == 1)  return nums[0] == target ? 0 : -1;
+
         int n = nums.size();
-        
+
         int start = 0;
         int end = n - 1;
-        
+
         while(start <= end){
             int split = start + (end - start)/2;
-        
+
             if(nums[split] == target)
                 return split;
             else if(nums[split] <  nums[end])
@@ -128,5 +128,3 @@ public:
     }
 };
 #endif /* two_sum_hpp */
-
-

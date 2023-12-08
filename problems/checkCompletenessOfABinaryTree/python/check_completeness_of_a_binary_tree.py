@@ -22,6 +22,7 @@ class Solution:
     - Time complexity: O(N)
     - Space complexity: O(D)
     """
+
     def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
         q = deque([(root, 1)])
         expected_num = 1

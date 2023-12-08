@@ -31,6 +31,7 @@ class SolutionGraph:
     - TC: O(n^2)
     - SC: O(n^2)
     """
+
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         graph = self.build_graph(intervals)
         nodes_in_component, component_number = self.fetch_nodes_in_component(

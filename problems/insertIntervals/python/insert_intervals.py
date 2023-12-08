@@ -8,7 +8,10 @@ class Solution:
     - TC: O(n*long(n)) (sorting)
     - SC: O(n) (resultant output)
     """
-    def insert(self, intervals: List[List[int]], new_interval: List[int]) -> List[List[int]]:
+
+    def insert(
+        self, intervals: List[List[int]], new_interval: List[int]
+    ) -> List[List[int]]:
         answer = []
         index = 0
         for interval in intervals:
@@ -30,6 +33,5 @@ class Solution:
 
 if __name__ == "__main__":
     intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
-    new_interval = [4,8]
+    new_interval = [4, 8]
     print(f"Solution is {Solution().insert(intervals, new_interval)}")
-

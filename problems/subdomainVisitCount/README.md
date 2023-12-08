@@ -6,7 +6,7 @@ A ***count-paired domain*** is a domain that has one of the two formats `"rep d1
 For example, `"9001 discuss.leetcode.com"` is a count-paired domain that indicates that `discuss.leetcode.com` was visited `9001` times.
 Given an array of ***count-paired domains*** `cpdomains`, return an array of the ***count-paired domains*** of each subdomain in the input. You may return the answer in ***any order***.
 
- 
+
 
 ```
 Input: root = [3,4,5,1,2], subRoot = [4,1,2]

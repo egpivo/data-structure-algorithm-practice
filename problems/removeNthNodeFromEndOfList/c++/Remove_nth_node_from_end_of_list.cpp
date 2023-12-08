@@ -21,16 +21,16 @@ struct ListNode {
 class Solution{
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n){
-        
+
         if(!head->next) return NULL;
         int length = 0;
         ListNode *tmp = root;
-        
+
         while(tmp){
             tmp = tmp->next;
             length ++;
         }
-        
+
         if(length == n) return head->next;
         else{
             ListNode* current = head;
@@ -40,27 +40,27 @@ public:
             return head;
         }
     }
-    
+
 }
 */
 
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        
+
         if(!head->next) return NULL;
-        
+
         ListNode *keep = head, *move = head;
-        
+
         for(int i = 0; i < n; ++i) move = move->next;
         if(!move) return head->next;
-        
+
         while(move->next){
             move = move->next;
             keep = keep->next;
         }
         keep->next = keep->next->next;
-        
+
         return head;
     }
 };
@@ -70,41 +70,40 @@ public:
 //    来源：CSDN
 //    原文：https://blog.csdn.net/sunnyyoona/article/details/42462457
 ListNode* createList(int *A, int n){
-    
+
     if(n <= 0) return NULL;
-    
+
     ListNode *head = new ListNode(A[0]), *temp = head;
-    
+
     for(int i = 1; i < n; i++){
         ListNode *input = new ListNode(A[i]);
         temp->next = input;
         temp = temp->next;
     }
-    
+
     return head;
-    
+
 }
 
 
 
 
 int main() {
-    
+
     int A[] = {1,2,4,7,9};
-    
-    
+
+
     ListNode* temp = createList(A,5);
-    
+
     Solution ans;
     ListNode *head = ans.removeNthFromEnd(temp, 1);
-    
+
     ListNode *p = head;
     while(p){
         cout<<p->val<<" ";
         p = p->next;
     }
     cout<<endl;
-    
+
     return 0;
 }
-

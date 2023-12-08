@@ -1,4 +1,5 @@
-from typing import Optional, List
+from typing import List, Optional
+
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -15,6 +16,7 @@ class Solution:
     - Time complexity: O(N)
     - Space complexity: O(N)
     """
+
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         answer = []
         if root is None:
@@ -38,4 +40,3 @@ if __name__ == "__main__":
     tree.right.left = TreeNode(3)
     ans = Solution()
     print(f"The answer is {ans.preorderTraversal(tree)}")
-

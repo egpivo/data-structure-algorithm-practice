@@ -7,5 +7,3 @@ Given an integer `num`, return a string of its **base 7** representation.
 Input: num = 101
 Output: ""203""
 ```
-
-

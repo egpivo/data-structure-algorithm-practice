@@ -10,7 +10,7 @@ class Solution:
     Complexity
     ----------
     - Time: O(amount * n)
-    - Space: O(amount) 
+    - Space: O(amount)
     - n = # of coints
     """
 
@@ -26,6 +26,6 @@ class Solution:
 
 
 if __name__ == "__main__":
-    coins = [1,2,5]
+    coins = [1, 2, 5]
     amount = 11
     print(f"Solution: {Solution().coinChange(coins, amount)}")

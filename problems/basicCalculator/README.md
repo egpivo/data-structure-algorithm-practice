@@ -11,5 +11,3 @@ Note: You are not allowed to use any built-in function which evaluates strings a
 Input: s = "(1+(4+5+2)-3)+(6+8)"
 Output: 23
 ```
-
-

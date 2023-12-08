@@ -12,7 +12,7 @@ A ***sparse vector*** is a vector that has mostly zero values, you should store 
 
 ***Follow up***: What if only one of the vectors is sparse?
 
- 
+
 
 
 - Example 1:

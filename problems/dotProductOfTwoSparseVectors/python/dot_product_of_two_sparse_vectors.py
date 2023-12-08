@@ -1,5 +1,5 @@
-from typing import List
 import bisect
+from typing import List
 
 
 class SparseVectorHashMap:
@@ -20,7 +20,7 @@ class SparseVectorHashMap:
         self.num_map = {index: val for index, val in enumerate(nums) if val != 0}
 
     # Return the dotProduct of two sparse vectors
-    def dotProduct(self, vec: 'SparseVector') -> int:
+    def dotProduct(self, vec: "SparseVector") -> int:
         result = 0
         intersected_index = set(self.num_map).intersection(vec.num_map.keys())
         for index in intersected_index:
@@ -50,7 +50,7 @@ class SparseVectorTwoPointers:
         return len(self.pairs)
 
     # Return the dotProduct of two sparse vectors
-    def dotProduct(self, vec: 'SparseVector') -> int:
+    def dotProduct(self, vec: "SparseVector") -> int:
         result = 0
         left = 0
         right = 0
@@ -88,7 +88,7 @@ class SparseVectorTwoPointersBinarySearch:
         return len(self.indcies)
 
     # Return the dotProduct of two sparse vectors
-    def dotProduct(self, vec: 'SparseVector') -> int:
+    def dotProduct(self, vec: "SparseVector") -> int:
         result = 0
         left = 0
         right = 0
@@ -100,7 +100,9 @@ class SparseVectorTwoPointersBinarySearch:
             elif self.indcies[left] < vec.indcies[right]:
                 left = bisect.bisect_left(self.indcies, vec.indcies[right], lo=left + 1)
             else:
-                right += bisect.bisect_left(self.indcies, self.indcies[left], lo=right + 1)
+                right += bisect.bisect_left(
+                    self.indcies, self.indcies[left], lo=right + 1
+                )
         return result
 
 

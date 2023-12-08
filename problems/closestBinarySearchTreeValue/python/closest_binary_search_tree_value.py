@@ -42,7 +42,7 @@ class OpimizedSolution:
         SC: O(H)
         """
         stack = []
-        min_val = float('-inf')
+        min_val = float("-inf")
 
         while stack or root:
             while root:

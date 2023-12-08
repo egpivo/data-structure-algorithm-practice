@@ -1,6 +1,6 @@
 //
 //  binary_tree_preorder_traveral.cpp
-//  
+//
 //
 //  Created by Wen-Ting Wang on 2018/11/4.
 //
@@ -21,13 +21,13 @@ struct TreeNode{
 class Solution{
 public:
     vector<int> preorderTraversal(TreeNode* root){
-        
+
         vector<int> ans;
         if (!root) return ans;
-   
+
         stack<TreeNode *> temp;
         temp.push(root);
-        
+
         while(!temp.empty()){
             TreeNode *top = temp.top();
             temp.pop();
@@ -46,7 +46,7 @@ public:
 //ref http://www.voidcn.com/article/p-mquqvehe-bez.html
 void Show(TreeNode *t) {
     if (!t) return;
-    
+
     cout << t->val << " ";
     Show(t->left);
     Show(t->right);
@@ -60,26 +60,26 @@ int main(){
     TreeNode *nodeD = new TreeNode(4);
     TreeNode *nodeE = new TreeNode(5);
     TreeNode *nodeF = new TreeNode(6);
-    
+
     nodeA->left = nodeB;
     nodeA->right = nodeC;
     nodeB->left = nodeD;
     nodeB->right = nodeE;
     nodeC->right = nodeF;
-    
+
     Show(nodeA);
     vector<int> result, result2;
     Solution ans;
 
     result = ans.preorderTraversal(nodeA);
-    
+
 
     cout<<endl;
     cout<<"Result1:"<<endl;
     for(int i = 0; i < 6; ++i)
         cout<<result[i]<<endl;
-    
 
-    
+
+
     return 0;
 }

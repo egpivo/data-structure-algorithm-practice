@@ -28,7 +28,7 @@ public:
                 numCount[nums[i]] += 1;
             }
         }
-        
+
         for(auto iter = numCount.begin(); iter != numCount.end(); ++iter) {
            if (iter->second == 1) {
                 return iter->first;

@@ -1,6 +1,7 @@
 from collections import defaultdict
 from typing import List
 
+
 class Solution:
     """
     Note
@@ -8,6 +9,7 @@ class Solution:
     - TC: O(n)
     - SC: O(n)
     """
+
     def compute_longest_length(self, array: List[int], k: int) -> int:
         hash_map = defaultdict(int)
         prefix_sum = 0

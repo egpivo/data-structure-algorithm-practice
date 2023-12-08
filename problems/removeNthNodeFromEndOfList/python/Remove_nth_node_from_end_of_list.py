@@ -3,9 +3,10 @@ from typing import Optional
 
 
 class ListNode:
-  def __init__(self, x):
-       self.val = x
-       self.next = None
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
 
 class Solution:
     def removeNthFromEnd(self, head, n):
@@ -14,23 +15,22 @@ class Solution:
         :type n: int
         :rtype: ListNode
         """
-        if(head.next == None):
+        if head.next == None:
             return None
-        tmp = head;
+        tmp = head
 
         for i in range(n):
             tmp = tmp.next
-        if(tmp == None):
+        if tmp == None:
             return head.next
         else:
             keep = head
-            while(tmp.next != None):
+            while tmp.next != None:
                 keep = keep.next
                 tmp = tmp.next
 
             keep.next = keep.next.next
             return head
-
 
 
 class Solution2:
@@ -64,6 +64,7 @@ class Solution3:
     """
     - Notes: two-pointer
     """
+
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         fast = head
         slow = head
@@ -83,45 +84,42 @@ class Solution3:
         return head
 
 
-
 if __name__ == "__main__":
-  data = ListNode(1)
-  data.next = ListNode(2)
-  data.next.next = ListNode(3)
-  data.next.next.next = ListNode(4)
-  data.next.next.next.next = ListNode(5)
+    data = ListNode(1)
+    data.next = ListNode(2)
+    data.next.next = ListNode(3)
+    data.next.next.next = ListNode(4)
+    data.next.next.next.next = ListNode(5)
 
-  ans = Solution()
+    ans = Solution()
 
-  ansList = ans.removeNthFromEnd(data, 2)
-  for i in range(4):
-    print("%d \t"% ansList.val)
-    ansList = ansList.next
+    ansList = ans.removeNthFromEnd(data, 2)
+    for i in range(4):
+        print("%d \t" % ansList.val)
+        ansList = ansList.next
 
+    data = ListNode(1)
+    data.next = ListNode(2)
+    data.next.next = ListNode(3)
+    data.next.next.next = ListNode(4)
+    data.next.next.next.next = ListNode(5)
 
-  data = ListNode(1)
-  data.next = ListNode(2)
-  data.next.next = ListNode(3)
-  data.next.next.next = ListNode(4)
-  data.next.next.next.next = ListNode(5)
+    ans = Solution2()
 
-  ans = Solution2()
+    ansList = ans.removeNthFromEnd(data, 2)
+    for i in range(4):
+        print("%d \t" % ansList.val)
+        ansList = ansList.next
 
-  ansList = ans.removeNthFromEnd(data, 2)
-  for i in range(4):
-    print("%d \t"% ansList.val)
-    ansList = ansList.next
+    data = ListNode(1)
+    data.next = ListNode(2)
+    data.next.next = ListNode(3)
+    data.next.next.next = ListNode(4)
+    data.next.next.next.next = ListNode(5)
 
+    ans = Solution3()
 
-  data = ListNode(1)
-  data.next = ListNode(2)
-  data.next.next = ListNode(3)
-  data.next.next.next = ListNode(4)
-  data.next.next.next.next = ListNode(5)
-
-  ans = Solution3()
-
-  ansList = ans.removeNthFromEnd(data, 2)
-  for i in range(4):
-    print("%d \t"% ansList.val)
-    ansList = ansList.next
+    ansList = ans.removeNthFromEnd(data, 2)
+    for i in range(4):
+        print("%d \t" % ansList.val)
+        ansList = ansList.next

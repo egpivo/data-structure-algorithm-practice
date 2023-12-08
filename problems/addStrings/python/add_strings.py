@@ -24,7 +24,7 @@ class Solution:
         return str(carry) + answer if carry > 0 else answer
 
     def stringTointeger(self, char: str) -> int:
-        return ord(char) - ord('0')
+        return ord(char) - ord("0")
 
 
 if __name__ == "__main__":
