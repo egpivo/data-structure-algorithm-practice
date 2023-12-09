@@ -41,6 +41,29 @@ class Solution:
         return dfs(root, 0)
 
 
+class SolutionBFS:
+    """
+    Notes
+    ----
+    - TC: O(N)
+    - SC: O(H)
+    """
+
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        queue = [(root, root.val)]
+        while queue:
+            node, value = queue.pop(0)
+            if not node.left and not node.right:
+                if value == targetSum:
+                    return True
+            else:
+                if node.left:
+                    queue.append((node.left, value + node.left.val))
+                if node.right:
+                    queue.append((node.right, value + node.right.val))
+        return False
+
+
 if __name__ == "__main__":
     tree = TreeNode(5)
     tree.left = TreeNode(4)
@@ -48,5 +71,5 @@ if __name__ == "__main__":
     tree.right = TreeNode(11)
     tree.right.left = TreeNode(3)
 
-    ans = Solution()
-    print(ans.hasPathSum(tree, 17))
+    print(Solution().hasPathSum(tree, 17))
+    print(SolutionBFS().hasPathSum(tree, 17))
