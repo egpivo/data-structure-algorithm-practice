@@ -18,7 +18,7 @@ class SolutionRecursive:
     def lowestCommonAncestor(
         self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
     ) -> "TreeNode":
-        ans = None
+        answer = None
 
         def recurse_tree(node):
             nonlocal ans
@@ -29,13 +29,13 @@ class SolutionRecursive:
             left = recurse_tree(node.left)
             right = recurse_tree(node.right)
 
-            mid = node == p or node == q
+            mid = node in (p, q)
             if mid + left + right >= 2:
                 ans = node
             return mid or left or right
 
         recurse_tree(root)
-        return ans
+        return answer
 
 
 if __name__ == "__main__":
