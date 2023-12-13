@@ -1,3 +1,4 @@
+from collections import deque
 from typing import Generator, Optional
 
 
@@ -54,7 +55,7 @@ class BSTIteratorStack:
     def _generate_inorder_value(
         self, node: Optional[TreeNode]
     ) -> Generator[int, None, None]:
-        stack = []
+        stack = deque([])
         while node or stack:
             while node:
                 stack.append(node)
