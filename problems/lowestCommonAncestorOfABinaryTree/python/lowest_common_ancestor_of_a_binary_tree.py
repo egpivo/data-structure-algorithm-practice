@@ -11,31 +11,73 @@ class SolutionRecursive:
 
     Complexity
     ----------
-    - TC: O(n)
-    - SC: O(n)
+    - TC: O(N)
+    - SC: O(H)
     """
 
     def lowestCommonAncestor(
         self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
     ) -> "TreeNode":
-        answer = None
+        if not root:
+            return root
 
-        def recurse_tree(node):
-            nonlocal ans
+        lca = None
 
-            if not node:
+        def dfs(node):
+            nonlocal lca
+
+            if not node or lca:
                 return False
 
-            left = recurse_tree(node.left)
-            right = recurse_tree(node.right)
+            is_left = dfs(node.left)
+            is_right = dfs(node.right)
+            is_current = node in (p, q)
 
-            mid = node in (p, q)
-            if mid + left + right >= 2:
-                ans = node
-            return mid or left or right
+            if is_left + is_right + is_current >= 2:
+                lca = node
 
-        recurse_tree(root)
-        return answer
+            return is_left or is_right or is_current
+
+        dfs(root)
+        return lca
+
+
+class SolutionParentPointer:
+    """
+
+    Complexity
+    ----------
+    - TC: O(N)
+    - SC: O(H)
+    """
+
+    def lowestCommonAncestor(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
+        parent = {root: None}
+        ancestors = set()
+        stack = [root]
+
+        # Perform DFS to build parent pointers
+        while p not in parent or q not in parent:
+            node = stack.pop()
+
+            if node.left:
+                parent[node.left] = node
+                stack.append(node.left)
+            if node.right:
+                parent[node.right] = node
+                stack.append(node.right)
+
+        # Collect ancestors of node p
+        while p:
+            ancestors.add(p)
+            p = parent[p]
+
+        # Find the first common ancestor of p and q
+        while q not in ancestors:
+            q = parent[q]
+        return q
 
 
 if __name__ == "__main__":
@@ -53,3 +95,4 @@ if __name__ == "__main__":
     node.right = q
 
     print(f"{SolutionRecursive().lowestCommonAncestor(node, p, q).val}")
+    print(f"{SolutionParentPointer().lowestCommonAncestor(node, p, q).val}")
