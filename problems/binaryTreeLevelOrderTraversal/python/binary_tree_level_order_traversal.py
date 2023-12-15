@@ -1,3 +1,4 @@
+from collections import deque
 from typing import List, Optional
 
 
@@ -22,7 +23,7 @@ class Solution:
         if root is None:
             return answer
 
-        queue_bag = [root]
+        queue_bag = deque([root])
         while queue_bag:
             level = []
             level_size = len(queue_bag)
