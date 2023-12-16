@@ -20,25 +20,50 @@ class BFSSolution:
     """
 
     def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
-        answer = []
-
         if not root:
-            return answer
+            return []
 
+        result = []
         queue = deque([root])
 
         while queue:
-            level = len(queue)
-            count = 0
-            for _ in range(level):
+            level_size = len(queue)
+            level_sum = sum(node.val for node in queue)
+            result.append(level_sum / level_size)
+
+            for _ in range(level_size):
                 node = queue.popleft()
-                count += node.val
                 if node.left:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-            answer.append(count / level)
-        return answer
+
+        return result
+
+
+class DFSSolution:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        def dfs(node, level, level_sums, level_counts):
+            if not node:
+                return
+
+            if level < len(level_sums):
+                level_sums[level] += node.val
+                level_counts[level] += 1
+            else:
+                level_sums.append(node.val)
+                level_counts.append(1)
+
+            dfs(node.left, level + 1, level_sums, level_counts)
+            dfs(node.right, level + 1, level_sums, level_counts)
+
+        level_sums, level_counts = [], []
+        dfs(root, 0, level_sums, level_counts)
+
+        return [
+            level_sum / level_count
+            for level_sum, level_count in zip(level_sums, level_counts)
+        ]
 
 
 if __name__ == "__main__":
@@ -48,3 +73,4 @@ if __name__ == "__main__":
     tree.right.right = TreeNode(5)
 
     print(f"The BFS answer is {BFSSolution().averageOfLevels(tree)}")
+    print(f"The DFS answer is {DFSSolution().averageOfLevels(tree)}")

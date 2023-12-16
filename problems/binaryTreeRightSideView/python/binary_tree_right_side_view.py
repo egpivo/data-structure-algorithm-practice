@@ -20,21 +20,21 @@ class DFSSolution:
     """
 
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        if root is None:
-            return []
+        result = []
+        if not root:
+            return result
 
-        answer = []
+        self.dfs(root, 0, result)
+        return result
 
-        def search_by_level(node: TreeNode, level: int) -> None:
-            if level == len(answer):
-                answer.append(node.val)
+    def dfs(self, node, depth, result):
+        if depth == len(result):
+            result.append(node.val)
 
-            for child in (node.right, node.left):
-                if child:
-                    search_by_level(child, level + 1)
-
-        search_by_level(root, 0)
-        return answer
+        if node.right:
+            self.dfs(node.right, depth + 1, result)
+        if node.left:
+            self.dfs(node.left, depth + 1, result)
 
 
 class BFSSolution:
