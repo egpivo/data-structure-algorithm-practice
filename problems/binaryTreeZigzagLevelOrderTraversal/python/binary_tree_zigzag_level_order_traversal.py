@@ -45,6 +45,45 @@ class BFSSolution:
         return answer
 
 
+class BFSSolution2:
+    """
+    Note
+    ----
+    - D: tree diameter
+    - Time complexity: O(N)
+    - Space complexity: O(D)
+    """
+
+    def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
+
+        result = []
+        queue = deque([root])
+        reverse = False
+
+        while queue:
+            level_size = len(queue)
+            level_values = deque()
+
+            for _ in range(level_size):
+                node = queue.popleft()
+
+                if reverse:
+                    level_values.appendleft(node.val)
+                else:
+                    level_values.append(node.val)
+
+                for child in (node.left, node.right):
+                    if child:
+                        queue.append(child)
+
+            result.append(list(level_values))
+            reverse = not reverse
+
+        return result
+
+
 if __name__ == "__main__":
     tree = TreeNode(1)
     tree.right = TreeNode(2)
@@ -52,3 +91,4 @@ if __name__ == "__main__":
     tree.right.right = TreeNode(5)
 
     print(f"The BFS answer is {BFSSolution().zigzagLevelOrder(tree)}")
+    print(f"The BFS2 answer is {BFSSolution2().zigzagLevelOrder(tree)}")
