@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional
 
 
 # Definition for a binary tree node.
@@ -14,7 +14,7 @@ class Solution:
     Complexity
     ----------
     - TC: O(n)
-    - SC: O(n)
+    - SC: O(H)
     """
 
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
@@ -33,19 +33,37 @@ class Solution:
 
 
 class SolutionRecursive:
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        return (
-            self.inorderTraversal(root.left)
-            + [root.val]
-            + self.inorderTraversal(root.right)
-            if root
-            else []
-        )
+    """
+    Complexity
+    ----------
+    - TC: O(n)
+    - SC: O(H)
+    """
+
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        previous = -float("inf")
+        result = True
+
+        def inorder(node):
+            nonlocal previous, result
+            if not node:
+                return
+
+            inorder(node.left)
+            if previous >= node.val:
+                result = False
+                return
+
+            previous = node.val
+            inorder(node.right)
+
+        inorder(root)
+        return result
 
 
 if __name__ == "__main__":
     tree = TreeNode(1)
     tree.right = TreeNode(3)
     tree.right.left = TreeNode(2)
-    ans = Solution()
-    print(f"The answer is {ans.isValidBST(tree)}")
+    print(f"The answer is {Solution().isValidBST(tree)}")
+    print(f"The answer is {SolutionRecursive().isValidBST(tree)}")
