@@ -1,3 +1,4 @@
+from collections import deque
 from typing import Optional
 
 
@@ -19,19 +20,45 @@ class Solution:
     """
 
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        collections = []
-
         def inorder(node):
+            nonlocal k
             if not node:
                 return
-            inorder(node.left)
-            if len(collections) == k:
-                return
-            collections.append(node.val)
-            inorder(node.right)
+            left_result = inorder(node.left)
+            if left_result is not None:
+                return left_result
+            k -= 1
+            if k == 0:
+                return node.val
+            return inorder(node.right)
 
-        inorder(root)
-        return collections[-1]
+        return inorder(root)
+
+
+class Solution2:
+    """
+    Notes
+    -----
+    - H: tree height
+    - Time complexity: O(N)
+    - Space complexity: O(H)
+    """
+
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        stack = deque()
+
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+
+            root = stack.pop()
+            k -= 1
+
+            if k == 0:
+                return root.val
+
+            root = root.right
 
 
 if __name__ == "__main__":
@@ -42,3 +69,4 @@ if __name__ == "__main__":
     bst.left.right = TreeNode(3)
 
     print(f"The answer is {Solution().kthSmallest(bst, 2)}")
+    print(f"The answer is {Solution2().kthSmallest(bst, 2)}")
