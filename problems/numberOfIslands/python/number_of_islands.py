@@ -44,51 +44,75 @@ class SolutionUnionFind:
 
 
 class SolutionDFS:
+    """
+    Notes
+    -----
+    - TC: O(mn)
+    - SC: O(mn)
+    """
+
     def numIslands(self, grid: List[List[str]]) -> int:
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-        m = len(grid)
-        n = len(grid[0])
+        m, n = len(grid), len(grid[0])
+
+        def is_valid(row, col):
+            return 0 <= row < m and 0 <= col < n and grid[row][col] == "1"
 
         def dfs(row, col):
-            # base condition
-            if not (0 <= row < m and 0 <= col < n and grid[row][col] == "1"):
-                return
+            if not is_valid(row, col):
+                return 0
             grid[row][col] = "visited"
             for dx, dy in directions:
-                dfs(row + dx, col + dy)
+                new_row, new_col = row + dx, col + dy
+                if is_valid(new_row, new_col):
+                    dfs(new_row, new_col)
 
-        count = 0
+            return 1
 
-        for row in range(m):
-            for col in range(n):
-                if grid[row][col] == "1":
-                    dfs(row, col)
-                    count += 1
-        return count
+        return sum(
+            dfs(row, col)
+            for row in range(m)
+            for col in range(n)
+            if grid[row][col] == "1"
+        )
 
 
 class SolutionBFS:
+    """
+    Notes
+    -----
+    - TC: O(mn)
+    - SC: O(mn)
+    """
+
     def numIslands(self, grid: List[List[str]]) -> int:
-        nrow = len(grid)
-        ncol = len(grid[0])
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        m, n = len(grid), len(grid[0])
 
-        def bfs(i, j):
-            queue = deque([(i, j)])
+        def bfs(start_row, start_col):
+            queue = deque([(start_row, start_col)])
+            grid[start_row][start_col] = "visited"
+
             while queue:
-                i, j = queue.popleft()
-                for k, m in [i + 1, j], [i - 1, j], [i, j + 1], [i, j - 1]:
-                    if (0 <= k < nrow) and (0 <= m < ncol) and (grid[k][m] == "1"):
-                        grid[k][m] = "#"
-                        queue.append((k, m))
+                current_row, current_col = queue.popleft()
 
-        count = 0
-        for i in range(nrow):
-            for j in range(ncol):
-                if grid[i][j] == "1":
-                    grid[i][j] = "#"
-                    bfs(i, j)
-                    count += 1
-        return count
+                for dx, dy in directions:
+                    new_row, new_col = current_row + dx, current_col + dy
+                    if (
+                        0 <= new_row < m
+                        and 0 <= new_col < n
+                        and grid[new_row][new_col] == "1"
+                    ):
+                        queue.append((new_row, new_col))
+                        grid[new_row][new_col] = "visited"
+            return 1
+
+        return sum(
+            bfs(row, col)
+            for row in range(m)
+            for col in range(n)
+            if grid[row][col] == "1"
+        )
 
 
 if __name__ == "__main__":
