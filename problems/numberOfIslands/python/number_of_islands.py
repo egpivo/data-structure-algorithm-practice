@@ -45,23 +45,24 @@ class SolutionUnionFind:
 
 class SolutionDFS:
     def numIslands(self, grid: List[List[str]]) -> int:
-        nrow = len(grid)
-        ncol = len(grid[0])
+        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        m = len(grid)
+        n = len(grid[0])
 
-        def dfs(i, j):
-            if not (0 <= i < nrow) or not (0 <= j < ncol) or grid[i][j] != "1":
+        def dfs(row, col):
+            # base condition
+            if not (0 <= row < m and 0 <= col < n and grid[row][col] == "1"):
                 return
-            grid[i][j] = "#"
-            dfs(i, j + 1)
-            dfs(i, j - 1)
-            dfs(i - 1, j)
-            dfs(i + 1, j)
+            grid[row][col] = "visited"
+            for dx, dy in directions:
+                dfs(row + dx, col + dy)
 
         count = 0
-        for i in range(nrow):
-            for j in range(ncol):
-                if grid[i][j] == "1":
-                    dfs(i, j)
+
+        for row in range(m):
+            for col in range(n):
+                if grid[row][col] == "1":
+                    dfs(row, col)
                     count += 1
         return count
 
