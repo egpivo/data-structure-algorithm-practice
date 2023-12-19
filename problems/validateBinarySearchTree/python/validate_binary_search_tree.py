@@ -1,3 +1,4 @@
+from collections import deque
 from typing import Optional
 
 
@@ -46,7 +47,7 @@ class SolutionRecursive:
 
         def inorder(node):
             nonlocal previous, result
-            if not node:
+            if not node or not result:
                 return
 
             inorder(node.left)
@@ -61,9 +62,28 @@ class SolutionRecursive:
         return result
 
 
+class SolutionIterative:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        previous = -float("inf")
+        stack = deque()
+
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+
+            root = stack.pop()
+            if previous >= root.val:
+                return False
+            previous = root.val
+            root = root.right
+        return True
+
+
 if __name__ == "__main__":
     tree = TreeNode(1)
     tree.right = TreeNode(3)
     tree.right.left = TreeNode(2)
     print(f"The answer is {Solution().isValidBST(tree)}")
     print(f"The answer is {SolutionRecursive().isValidBST(tree)}")
+    print(f"The answer is {SolutionIterative().isValidBST(tree)}")
