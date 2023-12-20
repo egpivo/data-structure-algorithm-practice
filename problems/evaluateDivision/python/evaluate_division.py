@@ -5,21 +5,26 @@ class UnionFind:
     def __init__(self) -> None:
         self.root = {}
 
-    def find(self, x) -> Tuple[str, float]:
-        if x not in self.root:
-            self.root[x] = (x, 1)
-        group_id, weight = self.root[x]
-        if group_id != x:
-            new_group_id, group_weight = self.find(group_id)
-            self.root[x] = (new_group_id, group_weight * weight)
-        return self.root[x]
+    def _update(self, node) -> Tuple[str, float]:
+        root, node_weight = self.root[node]
+        if root != node:
+            new_root, new_weight = self.find(root)
+            self.root[node] = (new_root, new_weight * node_weight)
+        return self.root[node]
 
-    def union(self, x, y, weight) -> None:
-        root_x, weight_x = self.find(x)
-        root_y, weight_y = self.find(y)
+    def find(self, node) -> Tuple[str, float]:
+        if node not in self.root:
+            self.root[node] = (node, 1)
+            return self.root[node]
+        else:
+            return self._update(node)
 
-        if root_x != root_y:
-            self.root[root_x] = (root_y, weight_y * weight / weight_x)
+    def union(self, src, dst, weight) -> None:
+        root_src, src_weight = self.find(src)
+        root_dst, dst_weight = self.find(dst)
+
+        if root_src != root_dst:
+            self.root[root_src] = (root_dst, dst_weight * weight / src_weight)
 
 
 class Solution:
@@ -35,19 +40,26 @@ class Solution:
     def calcEquation(
         self, equations: List[List[str]], values: List[float], queries: List[List[str]]
     ) -> List[float]:
-        uf = UnionFind()
-        for (x, y), weight in zip(equations, values):
-            uf.union(x, y, weight)
+        graph = UnionFind()
+        for (dividend, divisor), quotient in zip(equations, values):
+            graph.union(dividend, divisor, quotient)
 
         results = []
-        for x, y in queries:
-            if x not in uf.root or y not in uf.root:
+        for dividend, divisor in queries:
+            if dividend not in graph.root or divisor not in graph.root:
                 results.append(-1.0)
             else:
-                root_x, weight_x = uf.find(x)
-                root_y, weight_y = uf.find(y)
-                if root_x != root_y:
-                    results.append(-1)
+                root_dividend, dividend_weight = graph.find(dividend)
+                root_divisor, divisor_weight = graph.find(divisor)
+                if root_dividend != root_divisor:
+                    results.append(-1.0)
                 else:
-                    results.append(weight_x / weight_y)
+                    results.append(dividend_weight / divisor_weight)
         return results
+
+
+if __name__ == "__main__":
+    equations = [["a", "b"], ["b", "c"]]
+    values = [2.0, 3.0]
+    queries = [["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]]
+    print(f"Answer is {Solution().calcEquation(equations, values, queries)}")
