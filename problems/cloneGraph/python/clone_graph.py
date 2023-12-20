@@ -38,17 +38,27 @@ class SolutionDFS:
 
 
 class SolutionBFS:
+    """
+    Notes
+    -----
+    - V: the number of nodes in the graph
+    - TC: O(V)
+    - SC: O(V)
+    """
+
     def cloneGraph(self, node: "Node") -> "Node":
-        if node is None:
+        if not node:
             return None
+
         visited = {node: Node(node.val)}
         queue = deque([node])
 
         while queue:
-            n = queue.popleft()
-            for neighbor in n.neighbors:
-                if not neighbor in visited:
+            current_node = queue.popleft()
+            for neighbor in current_node.neighbors:
+                if neighbor not in visited:
                     visited[neighbor] = Node(neighbor.val)
                     queue.append(neighbor)
-                visited[n].append(visited[neighbor])
-        return visited[Node]
+                visited[current_node].neighbors.append(visited[neighbor])
+
+        return visited[node]
