@@ -1,64 +1,35 @@
-from collections import deque
+from collections import defaultdict
+from typing import List
 
 
-# Definition for a Node.
-class Node:
-    def __init__(self, val=0, neighbors=None):
-        self.val = val
-        self.neighbors = neighbors if neighbors is not None else []
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = defaultdict(list)
 
+        for src, dst in prerequisites:
+            graph[src].append(dst)
 
-class SolutionDFS:
-    def cloneGraph(self, node: "Node") -> "Node":
-        """
-        Complexity
-        ----------
-        - N: # of nodes
-        - M: # of edges
-        - TC: O(N+M)
-        - SC: O(N)
-            - visited hash map
-        """
-        visited = {}
+        def dfs(src, visited, path, memo):
+            if (src, path) in memo:
+                return memo[(src, path)]
 
-        def dfs(node):
-            if node is None:
-                return
-            if node in visited:
-                return visited[node]
-            else:
-                cloned_node = Node(node.val)
-                visited[node] = cloned_node
-            if node.neighbors:
-                for i in node.neighbors:
-                    cloned_node.neighbors.append(dfs(i))
-            return cloned_node
+            if src in visited:
+                return False
+            if src not in graph:
+                return True
 
-        return dfs(node)
+            visited.add(src)
+            result = True
 
+            for neighbor in graph[src]:
+                result &= dfs(neighbor, visited, path + 1, memo)
 
-class SolutionBFS:
-    """
-    Notes
-    -----
-    - V: the number of nodes in the graph
-    - TC: O(V)
-    - SC: O(V)
-    """
+            visited.remove(src)
+            memo[(src, path)] = result
+            return result
 
-    def cloneGraph(self, node: "Node") -> "Node":
-        if not node:
-            return None
-
-        visited = {node: Node(node.val)}
-        queue = deque([node])
-
-        while queue:
-            current_node = queue.popleft()
-            for neighbor in current_node.neighbors:
-                if neighbor not in visited:
-                    visited[neighbor] = Node(neighbor.val)
-                    queue.append(neighbor)
-                visited[current_node].neighbors.append(visited[neighbor])
-
-        return visited[node]
+        for key in range(numCourses):
+            is_valid = dfs(key, set(), 0, {})
+            if not is_valid:
+                return False
+        return True
