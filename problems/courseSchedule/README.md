@@ -5,7 +5,7 @@ For example, the pair [0, 1], indicates that to take course 0 you have to first 
 Return true if you can finish all courses. Otherwise, return false.
 
 
-
+- Example
 ```
 Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
 Output: false
