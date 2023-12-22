@@ -22,7 +22,7 @@ class SolutionDFS:
         def is_valid(course, visited, path, memory):
             if (course, path) in memory:
                 return memory[(course, path)]
-            if not course in graph:
+            if course not in graph:
                 return True
 
             visited.add(course)
@@ -55,13 +55,13 @@ class SolutionBFS:
         if numCourses == 0:
             return True
         graph = defaultdict(list)
-        in_degree = [0] * numCourses
+        in_degrees = [0] * numCourses
 
         for course, prereq in prerequisites:
             graph[prereq].append(course)
-            in_degree[course] += 1
+            in_degrees[course] += 1
 
-        queue = deque(course for course in range(numCourses) if in_degree[course] == 0)
+        queue = deque(course for course in range(numCourses) if in_degrees[course] == 0)
         visited = set()
 
         while queue:
@@ -69,8 +69,8 @@ class SolutionBFS:
             visited.add(current_course)
 
             for neighbor in graph[current_course]:
-                in_degree[neighbor] -= 1
-                if in_degree[neighbor] == 0:
+                in_degrees[neighbor] -= 1
+                if in_degrees[neighbor] == 0:
                     queue.append(neighbor)
 
         return len(visited) == numCourses

@@ -17,14 +17,14 @@ class Solution:
             return list(range(numCourses))
 
         graph = defaultdict(list)
-        in_degree = [0] * numCourses
+        in_degrees = [0] * numCourses
 
         for target, source in prerequisites:
             graph[source].append(target)
-            in_degree[target] += 1
+            in_degrees[target] += 1
 
         queue = deque(
-            [course for course in range(numCourses) if in_degree[course] == 0]
+            [course for course in range(numCourses) if in_degrees[course] == 0]
         )
         result = []
 
@@ -33,8 +33,8 @@ class Solution:
             result.append(course)
 
             for neighbor in graph[course]:
-                in_degree[neighbor] -= 1
-                if in_degree[neighbor] == 0:
+                in_degrees[neighbor] -= 1
+                if in_degrees[neighbor] == 0:
                     queue.append(neighbor)
 
         return result if len(result) == numCourses else []
