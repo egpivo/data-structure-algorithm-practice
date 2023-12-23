@@ -2,7 +2,53 @@ from collections import defaultdict, deque
 from typing import List
 
 
-class Solution:
+class SolutionDFS:
+    """
+    Notes
+    -----
+    - TC: O(V + E)
+    - SC: O(V + E)
+    """
+
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        if numCourses == 0:
+            return [0]
+
+        graph = defaultdict(list)
+        for course, prereq in prerequisites:
+            graph[prereq].append(course)
+
+        visiting = set()
+        visited = set()
+        result = []
+
+        def is_valid(course):
+            nonlocal result, visiting, visited
+
+            if course in visiting:
+                return False
+            if course in visited:
+                return True
+
+            visiting.add(course)
+
+            for neighbor in graph[course]:
+                if not is_valid(neighbor):
+                    return False
+
+            visiting.remove(course)
+            visited.add(course)
+            result.append(course)
+            return True
+
+        for course in range(numCourses):
+            if course not in visited and not is_valid(course):
+                return []
+
+        return result[::-1]
+
+
+class SolutionBFS:
     """
     Notes
     -----
@@ -38,3 +84,10 @@ class Solution:
                     queue.append(neighbor)
 
         return result if len(result) == numCourses else []
+
+
+if __name__ == "__main__":
+    numCourses = 4
+    prerequisites = [[1, 0], [2, 0], [3, 1], [3, 2]]
+    print(f"DFS Solution: {SolutionDFS().findOrder(numCourses, prerequisites)}")
+    print(f"BFS Solution: {SolutionBFS().findOrder(numCourses, prerequisites)}")
