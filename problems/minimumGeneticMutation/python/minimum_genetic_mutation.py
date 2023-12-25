@@ -3,6 +3,15 @@ from typing import List
 
 
 class Solution:
+    """
+    Notes
+    -----
+    - TC: O(NM)
+      - $N$: Length of the gene sequence.
+      - $M$: Number of possible choices (4, in this case).
+    - SC: O(N)
+    """
+
     @staticmethod
     def mutate(gene: str, choice: str, position: int) -> str:
         return gene[:position] + choice + gene[position + 1 :]

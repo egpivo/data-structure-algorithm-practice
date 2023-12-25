@@ -3,6 +3,14 @@ from typing import List, Tuple
 
 
 class Solution:
+    """
+    Notes
+    -----
+    - TC: O(N)
+      - N: the number of squares in the board.
+    - SC: O(N)
+    """
+
     @staticmethod
     def convert_boustrophedon(n, square) -> Tuple[int, int]:
         row = n - (square - 1) // n - 1
