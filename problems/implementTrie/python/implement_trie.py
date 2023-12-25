@@ -1,4 +1,5 @@
 from collections import defaultdict
+from typing import Optional
 
 
 class TrieNode:
@@ -24,7 +25,7 @@ class Trie:
     def startsWith(self, prefix: str) -> bool:
         return self._get_node(prefix) is not None
 
-    def _get_node(self, prefix: str) -> TrieNode:
+    def _get_node(self, prefix: str) -> Optional[TrieNode]:
         current = self.root
         for char in prefix:
             current = current.children.get(char)
