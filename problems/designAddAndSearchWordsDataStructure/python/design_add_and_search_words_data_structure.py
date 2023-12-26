@@ -8,6 +8,16 @@ class TrieNode:
 
 
 class WordDictionary:
+    """
+    Complexity
+    ----------
+    - Time complexity:
+       - $O(m)$, where $m$ is the length of the word being added.
+       - $O(n \cdot m)$, where $n$ is the number of Trie nodes and $m$ is the length of the word being searched.
+    - Space complexity:
+       - $O(n \cdot m)$, where $n$ is the total number of Trie nodes and $m$ is the average length of the words.
+    """
+
     def __init__(self):
         self.root = TrieNode()
 

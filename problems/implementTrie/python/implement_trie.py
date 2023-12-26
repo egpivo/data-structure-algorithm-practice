@@ -9,6 +9,19 @@ class TrieNode:
 
 
 class Trie:
+    """
+    Complexity
+    ----------
+    - Time complexity:
+        - Trie Insertion: $O(m)$, where $m$ is the length of the word being inserted.
+        - Trie Search: $O(m)$, where $m$ is the length of the word being searched.
+        - Trie Prefix Search: $O(m)$, where $m$ is the length of the prefix being searched.
+    - Space complexity:
+        - Trie Insertion: $O(m)$, where $m$ is the length of the word being inserted.
+        - Trie Search: $O(1)$
+        - Trie Prefix Search: $O(1)$
+    """
+
     def __init__(self):
         self.root = TrieNode()
 
