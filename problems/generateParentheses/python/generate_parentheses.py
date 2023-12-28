@@ -3,25 +3,24 @@ from typing import List
 
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        ans = []
+        answer = []
 
-        def backtrack(parenthese=[], left=0, right=0):
-            if len(parenthese) == 2 * n:
-                ans.append("".join(parenthese))
+        def backtrack(open_count, close_count, path):
+            if len(path) == 2 * n:
+                answer.append("".join(path))
                 return
+            if open_count < n:
+                path.append("(")
+                backtrack(open_count + 1, close_count, path)
+                path.pop()
 
-            if left < n:
-                parenthese.append("(")
-                backtrack(parenthese, left + 1, right)
-                parenthese.pop()
+            if close_count < open_count:
+                path.append(")")
+                backtrack(open_count, close_count + 1, path)
+                path.pop()
 
-            if right < left:
-                parenthese.append(")")
-                backtrack(parenthese, left, right + 1)
-                parenthese.pop()
-
-        backtrack()
-        return ans
+        backtrack(0, 0, [])
+        return answer
 
 
 if __name__ == "__main__":

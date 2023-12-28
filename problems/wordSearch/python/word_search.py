@@ -3,49 +3,41 @@ from typing import List
 
 class Solution:
     """
-
     Complexity
     ----------
-    - N: # of cells
-    - L: length of a word
-    - TC: O(N * 3 ^L)
-    - SC: O(L)
+    - Time complexity: $O(m\cdot n \cdot 4^\text{len(word)})$
+       - In the worst case, the algorithm explores all possible paths on the board, making it $O(m\cdot n \cdot 4^\text{len(word)})$, $m$ and $n$ are the dimensions of the board.
+       - $4^\text{len(word)}$ represents the number of possible directions at each step.
+    -  Space complexity:$O(\text{len(word)})$
+       - It's due to the recursion stack. The depth of the recursion is limited by the length of the word.
     """
 
-    direction = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-
     def exist(self, board: List[List[str]], word: str) -> bool:
-        self.nrows = len(board)
-        self.ncols = len(board[0])
-        self.board = board
+        m, n = len(board), len(board[0])
+        directions = [(-1, 0), (1, 0), (0, 1), (0, -1)]
 
-        for row in range(self.nrows):
-            for col in range(self.ncols):
-                if self.backtrack(row, col, word):
+        def backtrack(row: int, col: int, index: int) -> bool:
+            if index == len(word):
+                return True
+            if not (0 <= row < m and 0 <= col < n and board[row][col] == word[index]):
+                return False
+
+            board[row][col] = "visited"
+            temp = word[index]
+
+            for dx, dy in directions:
+                if backtrack(row + dx, col + dy, index + 1):
+                    return True
+            board[row][col] = temp
+
+            return False
+
+        for row in range(m):
+            for col in range(n):
+                if backtrack(row, col, 0):
                     return True
 
         return False
-
-    def backtrack(self, row, col, word) -> bool:
-        if len(word) == 0:
-            return True
-
-        if (
-            not (0 <= row < self.nrows)
-            or not (0 <= col < self.ncols)
-            or self.board[row][col] != word[0]
-        ):
-            return False
-
-        does_exist = False
-        self.board[row][col] = "#"
-        for row_offset, col_offset in self.direction:
-            does_exist = self.backtrack(row + row_offset, col + col_offset, word[1:])
-            if does_exist:
-                break
-
-        self.board[row][col] = word[0]
-        return does_exist
 
 
 if __name__ == "__main__":
