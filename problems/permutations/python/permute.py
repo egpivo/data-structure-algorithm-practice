@@ -5,8 +5,10 @@ class Solution:
     """
     Note
     ----
-    - TC: O(n^2)
-    - SC: O(n)
+    -  Time complexity: $O(n!)$
+        - The time complexity is factorial as each recursive call explores all possible arrangements.
+    - Space complexity: $O(n)$
+        - The space complexity is linear as the depth of the recursion is limited by the length of the input list (`nums`), and additional space is used for the result list and the current path.
     """
 
     def permute(self, nums: List[int]) -> List[List[int]]:
@@ -18,12 +20,10 @@ class Solution:
                 answer.append(collection[:])
 
             for i in range(n):
-                if nums[i] in collection:
-                    continue
-
-                collection.append(nums[i])
-                backtrack(collection[:])
-                collection.pop()
+                if nums[i] not in collection:
+                    collection.append(nums[i])
+                    backtrack(collection)
+                    collection.pop()
 
         backtrack([])
         return answer
