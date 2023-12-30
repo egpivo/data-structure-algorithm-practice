@@ -7,8 +7,13 @@ class Solution:
     """
     Complexity
     ----------
-    - TC: O(4^N * N)
-    - SC: O(N)
+    - Time complexity: $O(3^N \times 4^M)$
+        - $N$ is the number of digits that map to 3 letters (like `"2"`, `"3"`, `"4"`, `"5"`, `"6"`, `"8"`)
+        -  $M$ is the number of digits that map to 4 letters (like `"7"`, `"9"`).
+        -  This is because, for each digit, we explore all the corresponding letters. In the worst case, each digit can have 4 letters.
+
+    - Space complexity: $O(N + M)$
+        -  The space is used for the letters list, and the depth of the recursion stack.
     """
 
     _num_letter_map = {
@@ -44,8 +49,8 @@ class Solution2:
     """
     Complexity
     ----------
-    - TC: O(4^N * N)
-    - SC: O(N)
+    - Time complexity: $O(3^N \times 4^M)$
+    - Space complexity: $O(N + M)$
     """
 
     digit_map = {
@@ -78,8 +83,8 @@ class SolutionBacktracking:
     """
     Complexity
     ----------
-    - TC: O(4^N * N)
-    - SC: O(N)
+    - Time complexity: $O(3^N \times 4^M)$
+    - Space complexity: $O(N + M)$
     """
 
     digit_map = {
@@ -97,7 +102,7 @@ class SolutionBacktracking:
         if not digits:
             return []
 
-        def backtrack(index, path):
+        def backtrack(index: int, path: List[int]) -> None:
             nonlocal combinations
             if len(path) == len(digits):
                 combinations.append("".join(path))
@@ -109,11 +114,18 @@ class SolutionBacktracking:
                 path.pop()
 
         combinations = []
-        backtrack(0, deque([]))
+        backtrack(0, [])
         return combinations
 
 
 class Solution4:
+    """
+    Complexity
+    ----------
+    - Time complexity: $O(3^N \times 4^M)$
+    - Space complexity: $O(N + M)$
+    """
+
     digit_map = {
         "2": "abc",
         "3": "def",
