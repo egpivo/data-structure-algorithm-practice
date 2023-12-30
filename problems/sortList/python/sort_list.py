@@ -30,6 +30,42 @@ class Solution:
         return answer.next
 
 
+class SolutionMergeSort:
+    def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return head
+
+        fast, slow = head.next, head
+        while fast and fast.next:
+            fast, slow = fast.next.next, slow.next
+
+        mid, slow.next = slow.next, None
+
+        first_half = self.sortList(head)
+        second_half = self.sortList(mid)
+
+        merged_list = self.merge(first_half, second_half)
+        return merged_list
+
+    def merge(self, first: ListNode, second: ListNode) -> ListNode:
+        dummy = ListNode()
+        current = dummy
+
+        while first and second:
+            if first.val < second.val:
+                current.next, first = first, first.next
+            else:
+                current.next, second = second, second.next
+            current = current.next
+
+        if first:
+            current.next = first
+        if second:
+            current.next = second
+
+        return dummy.next
+
+
 def convert_to_list(head: ListNode) -> list:
     output = []
     while head:
@@ -52,4 +88,8 @@ def convert_to_linked_list(input: list) -> ListNode:
 if __name__ == "__main__":
     input = [1, 2, 5, 3, 6, 4]
     reversed = Solution().sortList(convert_to_linked_list(input))
+    print(convert_to_list(reversed))
+
+    input = [1, 2, 5, 3, 6, 4]
+    reversed = SolutionMergeSort().sortList(convert_to_linked_list(input))
     print(convert_to_list(reversed))
