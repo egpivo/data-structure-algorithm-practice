@@ -12,6 +12,15 @@ class Node:
 
 
 class Solution:
+    """
+    Complexity
+    ----------
+    - Time complexity: $O(n)$
+        - $n$ is the total number of elements in the grid, as we visit each element once.
+    - Space complexity: $O(n)$
+        -  due to the recursive calls, with the maximum depth of recursion proportional to the size of the grid.
+    """
+
     def construct(self, grid: List[List[int]]) -> "Node":
         if not grid:
             return None

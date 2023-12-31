@@ -10,6 +10,16 @@ class TreeNode:
 
 
 class Solution:
+    """
+    Complexity
+    ----------
+    - Time complexity: $O(n)$
+        - $n$ is the number of elements in the sorted array.
+    - Space complexity: $O(\log n)$
+        - based on the call stack.
+
+    """
+
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         def preorder(nums_slice: List[int]) -> TreeNode:
             if not nums_slice:
