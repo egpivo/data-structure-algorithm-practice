@@ -45,7 +45,33 @@ class SolutionRecursive:
         return self._recurse(nums, mid + 1, right)
 
 
+class SolutionIterativeII:
+    """
+
+    Complexity
+    ----------
+    - TC: O(log_2 n)
+    - SC: O(1)
+    """
+
+    def findPeakElement(self, nums: List[int]) -> int:
+        if len(nums) < 2:
+            return 0
+
+        left, right = 0, len(nums) - 1
+
+        while left < right:
+            mid = left + (right - left) // 2
+            if nums[mid] > nums[mid + 1]:
+                right = mid
+            else:
+                left = mid + 1
+
+        return left
+
+
 if __name__ == "__main__":
     nums = [1, 2, 3, 1]
     print(f"Solution: {SolutionIterative().findPeakElement(nums)}")
     print(f"Solution: {SolutionRecursive().findPeakElement(nums)}")
+    print(f"Solution: {SolutionIterativeII().findPeakElement(nums)}")
