@@ -1,4 +1,11 @@
 class Solution:
+    """
+    Complexity
+    ----------
+    - Time complexity: $O(n)$
+    - Space complexity: O(1)
+    """
+
     def maxSubarraySumCircular(self, nums):
         local_max = global_max = float("-inf")
         local_min = global_min = float("inf")
