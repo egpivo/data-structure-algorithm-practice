@@ -2,6 +2,15 @@ from typing import List
 
 
 class Solution:
+    """
+    Complexity
+    ----------
+    - Time complexity: $O(m^3 \cdot n)$
+        - $m$ is the number of rows
+        - $n$ is the number of columns.
+    - Space complexity: $O(1)$
+    """
+
     def numberOfBeams(self, bank: List[str]) -> int:
         count = 0
 
@@ -26,6 +35,22 @@ class Solution:
         return count
 
 
+class Solution2:
+    """
+    Complexity
+    ----------
+    - Time complexity: $O(m \codt n)$
+        - $m$ is the number of rows
+        - $n$ is the number of columns.
+    - Space complexity: $O(m)$
+    """
+
+    def numberOfBeams(self, bank: List[str]) -> int:
+        beams = [b.count("1") for b in bank if "1" in b]
+        return sum(previous * current for previous, current in zip(beams, beams[1:]))
+
+
 if __name__ == "__main__":
     g = ["011001", "000000", "010100", "001000"]
     print(f"The Solution is {Solution().numberOfBeams(g)}")
+    print(f"The Solution is {Solution2().numberOfBeams(g)}")
