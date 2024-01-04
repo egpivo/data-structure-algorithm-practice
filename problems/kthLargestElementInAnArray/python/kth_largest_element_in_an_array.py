@@ -25,6 +25,23 @@ class SolutionHeap:
         return heapq.nlargest(k, nums)[-1]
 
 
+class SolutionHeap2:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        """
+        Complexity
+        ---------
+        - TC: O(Nlogk) (due to the sort with the worst case)
+        - SC: O(1)
+        """
+        heap = nums[:k]
+        heapq.heapify(heap)
+        for num in nums:
+            if num > heap[0]:
+                heapq.heappop(heap)
+                heapq.heappush(heap, num)
+        return heap[0]
+
+
 class SolutionQuickSelect:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         """
@@ -66,4 +83,5 @@ if __name__ == "__main__":
     k = 2
     print(f"The answer is {SolutionArray().findKthLargest(array, k)}")
     print(f"The answer is {SolutionHeap().findKthLargest(array, k)}")
+    print(f"The answer is {SolutionHeap2().findKthLargest(array, k)}")
     print(f"The answer is {SolutionQuickSelect().findKthLargest(array, k)}")
