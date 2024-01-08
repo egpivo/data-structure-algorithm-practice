@@ -16,7 +16,7 @@ class SolutionIterative:
     ----
     - N: # nodes
     - TC: O(N)
-    - SC: O(N)
+    - SC: O(H)
     """
 
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
@@ -76,7 +76,7 @@ class SolutionBFS:
     ----
     - N: # nodes
     - TC: O(N)
-    - SC: O(N)
+    - SC: O(H)
     """
 
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
@@ -104,7 +104,7 @@ class SolutionTest:
         - level i root > level i+1 root
 
     - data structure: use an integer variable
-    - aglorithm:
+    - algorithm:
         - recursively sum up the node in the range until the invalid node occurs
 
     """
@@ -129,6 +129,26 @@ class SolutionTest:
         return result
 
 
+class SolutionSimpleDFS:
+    """
+    Note
+    ----
+    - N: # nodes
+    - TC: O(N)
+    - SC: O(H)
+    """
+
+    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        if not root:
+            return 0
+        result = root.val if low <= root.val <= high else 0
+        return (
+            result
+            + self.rangeSumBST(root.left, low, high)
+            + self.rangeSumBST(root.right, low, high)
+        )
+
+
 if __name__ == "__main__":
     root = TreeNode(10)
     root.left = TreeNode(5)
@@ -143,3 +163,4 @@ if __name__ == "__main__":
     print(SolutionDFSRecursive2().rangeSumBST(root, low, high))
     print(SolutionBFS().rangeSumBST(root, low, high))
     print(SolutionTest().rangeSumBST(root, low, high))
+    print(SolutionSimpleDFS().rangeSumBST(root, low, high))
