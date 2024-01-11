@@ -8,10 +8,10 @@ class Solution:
     - M: maximum length of a single list
     - N: # of logs in the list
     - TC: O(M Nlog(N))
-        - O(N log(N)): `sorted` in Python is based on Timsort algorithm
+        - O(N log(N)): `sorted` in python is based on Timsort algorithm
         - Since the keys of the elements are basically the logs itself, the comparison between two keys can take up to O(M) time.
     - SC: O(MN)
-        - O(MN): `sorted` in Python is based on Timsort algorithm
+        - O(MN): `sorted` in python is based on Timsort algorithm
     """
 
     def reorderLogFiles(self, logs: List[str]) -> List[str]:

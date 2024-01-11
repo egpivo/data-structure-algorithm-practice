@@ -3,6 +3,12 @@ from typing import List
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
+        """
+        Complexity
+        ----------
+        - SC: O(n)
+        - TC: O(1)
+        """
         if len(nums) <= 1:
             return len(nums)
 
@@ -20,6 +26,7 @@ class Solution:
         """
         Complexity
         ----------
+        - SC: O(n)
         - TC: O(1)
         """
         count = 1

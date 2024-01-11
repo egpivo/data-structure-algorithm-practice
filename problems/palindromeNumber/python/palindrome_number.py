@@ -15,6 +15,23 @@ class Solution:
         return x == rev or x == rev // 10
 
 
+class Solution2:
+    def isPalindrome(self, x: int) -> bool:
+
+        if x < 0:
+            return False
+
+        char = str(x)
+        left, right = 0, len(char) - 1
+
+        while left < right:
+            if char[left] != char[right]:
+                return False
+            left += 1
+            right -= 1
+        return True
+
+
 if __name__ == "__main__":
     ans = Solution()
 
