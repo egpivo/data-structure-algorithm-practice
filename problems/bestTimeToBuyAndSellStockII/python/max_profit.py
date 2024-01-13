@@ -31,6 +31,32 @@ class SolutionDP:
         return dp[-1]
 
 
+class SolutionDP2:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+        if n < 2:
+            return 0
+
+        # dp[i][j]: maximum profit on day i with j transactions
+        dp = [[0] * 2 for _ in range(n)]
+
+        # Base case: on day 0, no transactions, profit is 0
+        dp[0][0] = 0
+        # On day 0, if we buy a stock, profit is -prices[0]
+        dp[0][1] = -prices[0]
+
+        for i in range(1, n):
+            # Either do nothing (no transaction) or sell the stock
+            dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i])
+            # Either do nothing (no transaction) or buy the stock
+            dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - prices[i])
+
+        # The maximum profit is in the last day with no stock in hand
+        return max(dp[-1][0], 0)
+
+
 if __name__ == "__main__":
     prices = [7, 1, 5, 3, 6, 4]
     print(f"Solution: {SolutionGreedy().maxProfit(prices)}")
+    print(f"Solution: {SolutionDP().maxProfit(prices)}")
+    print(f"Solution: {SolutionDP2().maxProfit(prices)}")
