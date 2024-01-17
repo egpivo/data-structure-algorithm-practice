@@ -17,9 +17,9 @@ class SolutionDP:
         for i, num in enumerate(nums):
             for j in range(i + 1, min(n, i + num + 1)):
                 if dp[j - 1]:
-                    dp[j] = dp[j - 1]
+                    dp[j] = True
 
-            if dp[-1] == 1:
+            if dp[-1]:
                 return True
 
         return dp[-1]
