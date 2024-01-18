@@ -5,7 +5,7 @@ class Solution:
     def maximalSquare(self, matrix: List[List[str]]) -> int:
         m, n = len(matrix), len(matrix[0])
 
-        dp = [[0] * n for _ in range(n)]
+        dp = [[0] * n for _ in range(m)]
         for i in range(m):
             dp[i][0] = int(matrix[i][0])
         for j in range(n):
