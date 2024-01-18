@@ -1,4 +1,11 @@
 class Solution:
+    """
+    Complexity
+    ----------
+    - TC: O(n)
+    - SC: O(1)
+    """
+
     def climbStairs(self, n: int) -> int:
         if n <= 3:
             return n
@@ -10,6 +17,13 @@ class Solution:
 
 
 class SolutionDP:
+    """
+    Complexity
+    ----------
+    - TC: O(n)
+    - SC: O(n)
+    """
+
     def climbStairs(self, n: int) -> int:
         if n <= 3:
             return n
