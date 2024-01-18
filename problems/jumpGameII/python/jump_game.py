@@ -11,20 +11,19 @@ class SolutionTwoDimDP:
 
     def jump(self, nums: List[int]) -> int:
         n = len(nums)
+        if n <= 1:
+            return 0
+
         dp = [[float("inf")] * n for _ in range(n)]
-
         dp[0][0] = 0
-
         for i in range(n):
-            if i + nums[i] > n - 1:
-                break
-            for j in range(i, i + nums[i] + 1):
-                if i == j:
-                    dp[i][i] = min(dp[i][:])
-                else:
-                    dp[j][i] = 1 + dp[i][i]
+            for j in range(i, min(n, i + nums[i] + 1)):
+                dp[j][i] = min(dp[i][:]) if i == j else 1 + dp[i][i]
 
-        return min(dp[-1][:])
+            if dp[j][-1] != float("inf"):
+                return dp[j][-1]
+
+        return dp[-1][-1]
 
 
 class SolutionOneDimDP:
@@ -39,7 +38,7 @@ class SolutionOneDimDP:
         n = len(nums)
         dp = [0] * n
 
-        first_min = dp[-1]
+        first_min = 0
         min_index = n - 1
 
         for i in range(n - 2, -1, -1):

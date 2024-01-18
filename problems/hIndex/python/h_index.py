@@ -20,5 +20,24 @@ class Solution:
         return 0
 
 
+class SolutionDP:
+    def hIndex(self, citations: List[int]) -> int:
+        n = len(citations)
+        dp = [0] * (n + 1)
+
+        for citation in citations:
+            dp[min(n, citation)] += 1
+
+        h_index = 0
+        papers = 0
+        for i in range(n, 0, -1):
+            papers += dp[i]
+            if papers >= i:
+                h_index = papers
+                break
+        return h_index
+
+
 if __name__ == "__main__":
     print(f"{Solution().hIndex([3,0,6,1,5])}")
+    print(f"{SolutionDP().hIndex([3,0,6,1,5])}")
