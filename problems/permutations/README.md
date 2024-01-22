@@ -1,11 +1,9 @@
-## [Permutation in String](https://leetcode.com/problems/permutation-in-string/)
+## [Permutations](https://leetcode.com/problems/permutations/)
+Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
 
-Given two strings `s1` and `s2`, return true if `s2` contains a permutation of `s1`, or `false` otherwise.
 
-In other words, return `true` if one of `s1`'s permutations is the substring of `s2`.
 - Example:
 ```
-Input: s1 = "ab", s2 = "eidbaooo"
-Output: true
-Explanation: s2 contains one permutation of s1 ("ba").
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 ```
