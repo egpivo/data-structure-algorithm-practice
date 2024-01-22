@@ -42,22 +42,31 @@ class SolutionSlidingWindow:
 
 
 class Solution:
-    def lengthOfLongestSubstring(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
+    """
+    Complexity
+    ----------
+    - Time complexity: O(n)
+        - n: the length of s
+    - Space complexity: O(min(m, n))
+        - m is the size of the character set.
+        - In the worst case, where all characters are unique, it would be O(n).
 
-        temp = {}
-        ans = 0
-        idx = -1
+    """
 
-        for i, char in enumerate(s):
-            idx = max(idx, temp.get(char, -1))
-            temp[char] = i
-            ans = max(ans, i - idx)
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if not s:
+            return 0
+        left = 0
+        max_length = 1
+        char_index = {}
 
-        return ans
+        for right, char in enumerate(s):
+            if char in char_index:
+                left = max(left, char_index[char] + 1)
+            max_length = max(max_length, right - left + 1)
+            char_index[char] = right
+
+        return max_length
 
 
 if __name__ == "__main__":
