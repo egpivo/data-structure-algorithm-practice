@@ -28,6 +28,36 @@ class Solution:
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 
 
+class SolutionDFSStack:
+    """
+    Notes
+    -----
+    - TC: O(n)
+    - SC: O(n)
+    """
+
+    def maxDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if root is None:
+            return 0
+
+        stack = [(root, 1)]
+        max_depth = 0
+        while stack:
+            node, depth = stack.pop()
+            max_depth = max(max_depth, depth)
+
+            if node.right:
+                stack.append((node.right, depth + 1))
+            if node.left:
+                stack.append((node.left, depth + 1))
+
+        return max_depth
+
+
 class SolutionBFS:
     def maxDepth(self, root):
         """
@@ -63,3 +93,4 @@ if __name__ == "__main__":
     ans = Solution()
     print(ans.maxDepth(tree))
     print(SolutionBFS().maxDepth(tree))
+    print(SolutionDFSStack().maxDepth(tree))
