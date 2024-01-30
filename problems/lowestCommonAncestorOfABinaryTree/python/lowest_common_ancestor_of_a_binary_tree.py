@@ -26,7 +26,7 @@ class SolutionRecursive:
         def dfs(node):
             nonlocal lca
 
-            if not node or lca:
+            if not node:
                 return False
 
             is_left = dfs(node.left)
