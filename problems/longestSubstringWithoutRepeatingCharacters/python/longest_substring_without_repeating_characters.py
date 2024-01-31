@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class SolutionBruteForce:
     def lengthOfLongestSubstring(self, s: str) -> int:
         def is_duplicate(start: int, end: int) -> bool:
@@ -41,7 +44,7 @@ class SolutionSlidingWindow:
         return ans
 
 
-class Solution:
+class Solution3:
     """
     Complexity
     ----------
@@ -69,12 +72,26 @@ class Solution:
         return max_length
 
 
+class Solution4:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        queue = deque([])
+        max_length = 0
+        for char in s:
+            if char in char:
+                max_length = max(max_length, len(queue))
+                while char in queue:
+                    queue.popleft()
+            queue.append(char)
+
+        return max(max_length, len(queue))
+
+
 if __name__ == "__main__":
     test1 = "abcabcbb"
     test2 = "bbbbb"
     test3 = "pwwkew"
 
-    detect = Solution()
+    detect = Solution3()
     detect2 = SolutionBruteForce()
     detect3 = SolutionSlidingWindow()
 
