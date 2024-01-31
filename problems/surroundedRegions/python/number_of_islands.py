@@ -56,6 +56,41 @@ class SolutionDFS:
                     board[row][col] = "O"
 
 
+class SolutionDFS2:
+    """
+    Notes
+    -----
+    - TC: O(m * n)
+    - SC: O(m * n)
+    """
+
+    def solve(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        m, n = len(board), len(board[0])
+        directions = ((0, 1), (0, -1), (1, 0), (-1, 0))
+
+        def dfs(row, col):
+            if 0 <= row < m and 0 <= col < n and board[row][col] == "O":
+                board[row][col] = "visited"
+                for dx, dy in directions:
+                    new_r, new_c = row + dx, col + dy
+                    dfs(new_r, new_c)
+
+        for row in range(m):
+            for col in range(n):
+                if (row in {0, m - 1} or col in {0, n - 1}) and board[row][col] == "O":
+                    dfs(row, col)
+
+        for row in range(m):
+            for col in range(n):
+                if board[row][col] == "O":
+                    board[row][col] = "X"
+                elif board[row][col] == "visited":
+                    board[row][col] = "O"
+
+
 if __name__ == "__main__":
     grid = [
         ["X", "X", "X", "X", "O"],
