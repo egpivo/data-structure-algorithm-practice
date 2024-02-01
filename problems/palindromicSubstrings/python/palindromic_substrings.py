@@ -45,19 +45,43 @@ class DPSolution:
             dp[i][i] = True
 
         for i in range(n - 1):
-            dp[i][i + 1] = s[i] == s[j]
+            dp[i][i + 1] = s[i] == s[i + 1]
             answer += dp[i][i + 1]
 
         for win in range(3, n + 1):
             for i in range(n - win + 1):
                 j = i + win - 1
-                dp[i][j] = dp[i + 1][j - 1] and s[i][j]
+                dp[i][j] = dp[i + 1][j - 1] and s[i] == s[j]
                 answer += dp[i][j]
 
         return answer
+
+
+class SolutionDFS:
+    def countSubstrings(self, s: str) -> int:
+        count = 0
+
+        def is_palindromic(substring):
+            return substring == substring[::-1]
+
+        def dfs(index):
+            nonlocal count
+            if index == len(s):
+                return
+
+            for i in range(index, len(s)):
+                substring = s[index : i + 1]
+                if is_palindromic(substring):
+                    count += 1
+
+            dfs(index + 1)
+
+        dfs(0)
+        return count
 
 
 if __name__ == "__main__":
     s = "aaa"
     print(f"Solution: {Solution().countSubstrings(s)}")
     print(f"DPSolution: {Solution().countSubstrings(s)}")
+    print(f"DFSolution: {Solution().countSubstrings(s)}")
