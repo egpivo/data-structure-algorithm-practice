@@ -80,8 +80,27 @@ class SolutionDFS:
         return count
 
 
+class Solution4:
+    def countSubstrings(self, s: str) -> int:
+        count = 0
+
+        def expand_around_center(left, right):
+            nonlocal count
+            while left >= 0 and right < len(s) and s[left] == s[right]:
+                count += 1
+                left -= 1
+                right += 1
+
+        for i in range(len(s)):
+            expand_around_center(i, i)  # Odd length palindrome
+            expand_around_center(i, i + 1)  # Even length palindrome
+
+        return count
+
+
 if __name__ == "__main__":
     s = "aaa"
     print(f"Solution: {Solution().countSubstrings(s)}")
     print(f"DPSolution: {Solution().countSubstrings(s)}")
     print(f"DFSolution: {Solution().countSubstrings(s)}")
+    print(f"Solution4: {Solution().countSubstrings(s)}")
