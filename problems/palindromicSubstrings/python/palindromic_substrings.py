@@ -53,7 +53,6 @@ class DPSolution:
                 j = i + win - 1
                 dp[i][j] = dp[i + 1][j - 1] and s[i] == s[j]
                 answer += dp[i][j]
-
         return answer
 
 
