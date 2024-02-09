@@ -17,7 +17,6 @@ class Solution:
         min_heap = []
         for row in range(min(k, nrows)):
             min_heap.append((matrix[row][0], row, 0))
-
         heapq.heapify(min_heap)
 
         while k:

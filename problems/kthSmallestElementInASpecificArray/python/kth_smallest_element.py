@@ -18,7 +18,7 @@ class Solution:
                 heapq.heappush(output, -num)
                 if len(output) > k:
                     heapq.heappop(output)
-        return -heapq.nlargest(k + 1, output)[-1]
+        return -output[0]
 
 
 if __name__ == "__main__":

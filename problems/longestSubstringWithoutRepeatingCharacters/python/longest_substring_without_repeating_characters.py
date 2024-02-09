@@ -77,10 +77,9 @@ class Solution4:
         queue = deque([])
         max_length = 0
         for char in s:
-            if char in char:
-                max_length = max(max_length, len(queue))
-                while char in queue:
-                    queue.popleft()
+            max_length = max(max_length, len(queue))
+            while char in queue:
+                queue.popleft()
             queue.append(char)
 
         return max(max_length, len(queue))
