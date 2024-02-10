@@ -57,6 +57,13 @@ class DPSolution:
 
 
 class SolutionDFS:
+    """
+    Complexity
+    ----------
+    - TC: O(n^3)
+    - SC: O(n^2)
+    """
+
     def countSubstrings(self, s: str) -> int:
         count = 0
 
@@ -80,6 +87,13 @@ class SolutionDFS:
 
 
 class Solution4:
+    """
+    Complexity
+    ----------
+    - TC: O(n^2)
+    - SC: O(1)
+    """
+
     def countSubstrings(self, s: str) -> int:
         count = 0
 
