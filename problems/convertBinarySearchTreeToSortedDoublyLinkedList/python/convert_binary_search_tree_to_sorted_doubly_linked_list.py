@@ -20,24 +20,24 @@ class Solution:
 
         head, tail = None, None
 
-        def dfs(node):
+        def inorder(node):
             nonlocal head, tail
             # base condition
             if node is None:
                 return None
 
-            dfs(node.left)
+            inorder(node.left)
             if head is None:
                 head = node
             else:
                 tail.right = node
                 node.left = tail
             tail = node
-            dfs(node.right)
+            inorder(node.right)
 
-        dfs(root)
-
-        head.left = tail
-        tail.right = head
+        inorder(root)
+        if head and tail:
+            head.left = tail
+            tail.right = head
 
         return head
