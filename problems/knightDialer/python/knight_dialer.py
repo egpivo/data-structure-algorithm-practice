@@ -1,4 +1,15 @@
 class Solution:
+    """
+    Complexity
+    ----------
+    -  Time complexity: $O(n \times 10^k)$
+        - $k$ is the number of possible moves for each position.
+        - This is because we iterate over all the positions on the board, which are 10 in total, and for each position, we recursively explore all the valid moves, which are at most 8 in total.
+        - The `visited` dictionary helps to reduce the number of recursive calls by returning the cached results, but it does not change the asymptotic complexity.
+    - Space complexity: $O(n \times 10^k)$
+        - This is because we need to store the results for each position and index in the visited dictionary, which has at most $n * 10^k$ entries.
+    """
+
     def knightDialer(self, n: int) -> int:
         nrows, ncols = 4, 3
         board = [[1, 1, 1], [1, 1, 1], [1, 1, 1], [0, 1, 0]]
