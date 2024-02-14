@@ -15,3 +15,5 @@ As the answer may be very large, return the answer modulo 109 + 7.
 Input: n = 3131
 Output: 136006598
 ```
+
+- See my solution: https://leetcode.com/problems/knight-dialer/solutions/4724942/backtracking-approach/
