@@ -2,6 +2,13 @@ from typing import List
 
 
 class Solution:
+    """
+    Complexity
+    ----------
+    - TC: O(n^2)
+    - SC: O(n)
+    """
+
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
         nums.sort()
         n = len(nums)

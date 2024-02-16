@@ -3,6 +3,13 @@ from typing import List
 
 
 class Solution:
+    """
+    Complexity
+    ----------
+    - TC: O(V+E)
+    - SC: O(V)
+    """
+
     def isBipartite(self, graph: List[List[int]]) -> bool:
         n = len(graph)
         colors = [0] * n

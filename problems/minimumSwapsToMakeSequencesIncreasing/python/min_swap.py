@@ -3,23 +3,37 @@ from typing import List
 
 class Solution:
     """
-    The dp[i][0] represents the minimum swaps needed at position i when no swap is performed,
-    and dp[i][1] represents the minimum swaps needed when a swap is performed.
+    Complexity
+    ----------
+    - TC: O(n)
+    - SC: O(n)
     """
 
     def minSwap(self, nums1: List[int], nums2: List[int]) -> int:
-        dp = [[float("inf"), float("inf")] for i in range(len(nums1))]
+        n = len(nums1)
 
+        # dp[i][0]: Minimum swaps to make nums1[0:i+1] and nums2[0:i+1] increasing without swapping the i-th element.
+        # dp[i][1]: Minimum swaps to make nums1[0:i+1] and nums2[0:i+1] increasing by swapping the i-th element.
+        dp = [[float("inf"), float("inf")] for _ in range(n)]
+
+        # Base cases
         dp[0][0] = 0
         dp[0][1] = 1
 
-        for i in range(1, len(dp)):
+        for i in range(1, n):
+            # If we don't swap i-th element, both arrays should be in increasing order.
             if nums1[i] > nums1[i - 1] and nums2[i] > nums2[i - 1]:
                 dp[i][0] = min(dp[i][0], dp[i - 1][0])
+                # If we swap i-th element, both arrays should be in increasing order by swapping the i-th element.
                 dp[i][1] = min(dp[i][1], dp[i - 1][1] + 1)
+
+                # If we swap i-th element, nums1[0:i] and nums2[0:i] should be in increasing order.
             if nums1[i] > nums2[i - 1] and nums2[i] > nums1[i - 1]:
                 dp[i][0] = min(dp[i][0], dp[i - 1][1])
+                # If we don't swap i-th element, nums1[0:i] and nums2[0:i] should be in increasing order.
                 dp[i][1] = min(dp[i][1], dp[i - 1][0] + 1)
+
+        # Minimum swaps required to make both arrays increasing, considering the last element.
         return min(dp[-1])
 
 

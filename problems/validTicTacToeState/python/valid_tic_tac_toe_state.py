@@ -2,6 +2,13 @@ from typing import List
 
 
 class Solution:
+    """
+    Complexity
+    ----------
+    - SC: O(1)
+    - TC: O(1)
+    """
+
     def validTicTacToe(self, board: List[str]) -> bool:
         def check_winner(player):
             for row in board:
