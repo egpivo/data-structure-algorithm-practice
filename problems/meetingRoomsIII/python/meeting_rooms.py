@@ -4,6 +4,13 @@ from typing import List
 
 
 class Solution:
+    """
+    Complexity
+    ----------
+    - TC: O(n\log(n))
+    - SC: O(n)
+    """
+
     def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
         meetings.sort()
         booked, free = [], list(range(n))

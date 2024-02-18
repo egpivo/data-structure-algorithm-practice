@@ -20,3 +20,5 @@ A half-closed interval [a, b) is the interval between a and b including a and no
 Input: n = 3, meetings = [[1,20],[2,10],[3,5],[4,9],[6,8]]
 Output: 1
 ```
+
+- My Solution: https://leetcode.com/problems/meeting-rooms-iii/solutions/4744246/priority-queue-approach/
