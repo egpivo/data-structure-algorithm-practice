@@ -34,10 +34,10 @@ class SolutionIterative:
         exponent = abs(n)
         base = x
         while exponent > 0:
-            if exponent % 2 == 1:
+            if exponent & 1:
                 answer *= base
             base = base * base
-            exponent //= 2
+            exponent >>= 1
         return answer if n >= 0 else 1 / answer
 
 
