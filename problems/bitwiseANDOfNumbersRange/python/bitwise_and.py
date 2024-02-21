@@ -1,4 +1,11 @@
 class Solution:
+    """
+    Complexity
+    ----------
+    - TC: O(log(max(left, right))
+    - SC: O(1)
+    """
+
     def rangeBitwiseAnd(self, left: int, right: int) -> int:
         shift = 0
         while left < right:
