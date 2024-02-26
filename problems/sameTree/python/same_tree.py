@@ -11,19 +11,44 @@ class TreeNode:
 
 class Solution:
     """
-    Notes
+    Complexity
     -----
     - TC: O(n)
-    - SC: O(n)
+    - SC: O(h)
     """
 
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         if not q and not p:
             return True
-        elif (p and not q) or (q and not p) or p.val != q.val:
+        elif not q or not p or p.val != q.val:
             return False
 
         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+
+
+class Solution2:
+    """
+    Complexity
+    -----
+    - TC: O(n)
+    - SC: O(h)
+    """
+
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        stack = [(p, q)]
+
+        while stack:
+            current_p, current_q = stack.pop()
+
+            if not current_p and not current_q:
+                continue
+            if not current_p or not current_q or current_p.val != current_q.val:
+                return False
+
+            stack.append((current_p.left, current_q.left))
+            stack.append((current_p.right, current_q.right))
+
+        return True
 
 
 if __name__ == "__main__":
@@ -39,5 +64,5 @@ if __name__ == "__main__":
     tree2.right.left = TreeNode(15)
     tree2.right.right = TreeNode(7)
 
-    ans = Solution()
-    print(ans.isSameTree(tree, tree2))
+    print(Solution().isSameTree(tree, tree2))
+    print(Solution2().isSameTree(tree, tree2))
