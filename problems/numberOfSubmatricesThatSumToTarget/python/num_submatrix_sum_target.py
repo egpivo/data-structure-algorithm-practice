@@ -6,7 +6,7 @@ class Solution:
     """
     Complexity
     ----------
-    - TC: O(m * n + n^2)
+    - TC: O(n^2 * m)
     - SC: O(m * n)
     """
 
