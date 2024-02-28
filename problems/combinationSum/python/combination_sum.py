@@ -49,7 +49,7 @@ class DpSolution:
 
                 for cumulative in dp[c - candidate]:
                     dp[c].append(cumulative + [candidate])
-
+        print(dp)
         return dp[-1]
 
 
