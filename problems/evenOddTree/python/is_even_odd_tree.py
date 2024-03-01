@@ -12,6 +12,13 @@ class TreeNode:
 
 
 class Solution:
+    """
+    Complexity
+    ----------
+    - TC: O(n)
+    - SC: O(n)
+    """
+
     def isEvenOddTree(self, root: Optional[TreeNode]) -> bool:
         if not root:
             return True  # An empty tree is considered an even-odd tree
