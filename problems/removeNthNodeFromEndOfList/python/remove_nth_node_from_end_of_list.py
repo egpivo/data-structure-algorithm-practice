@@ -9,6 +9,13 @@ class ListNode:
 
 
 class Solution:
+    """
+    Complexity
+    ----------
+    - TC: O(N)
+    - SC: O(1)
+    """
+
     def removeNthFromEnd(self, head, n):
         """
         :type head: ListNode
@@ -34,35 +41,51 @@ class Solution:
 
 
 class Solution2:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        total = 0
+    """
+    Complexity
+    ----------
+    - TC: O(N)
+    - SC: O(1)
+    """
 
-        current = head
-        while current:
-            current = current.next
-            total += 1
-        if total == n:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        if not head or n <= 0:
+            return head
+
+        length = 0
+        current_node = head
+
+        # Count the length of the linked list
+        while current_node:
+            current_node = current_node.next
+            length += 1
+
+        # Reset current_node to the head for traversal
+        current_node = head
+        steps_to_remove = length - n
+
+        # Handle the case where the first node needs to be removed
+        if steps_to_remove == 0:
             return head.next
 
-        previous = None
-        current = head
-        position = total - n + 1
+        # Traverse to the node before the one to be removed
+        for _ in range(steps_to_remove - 1):
+            current_node = current_node.next
 
-        while position > 1:
-            previous = current
-            current = current.next
-            position -= 1
+        # Remove the nth node from the end
+        current_node.next = current_node.next.next
 
-        if current and current.next:
-            previous.next = previous.next.next
-        else:
-            previous.next = None
         return head
 
 
 class Solution3:
     """
     - Notes: two-pointer
+
+    Complexity
+    ----------
+    - TC: O(N)
+    - SC: O(1)
     """
 
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
