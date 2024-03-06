@@ -1,4 +1,11 @@
 class Solution:
+    """
+    Complexity
+    ----------
+    - TC: O(n)
+    - SC: O(1)
+    """
+
     def minimumLength(self, s: str) -> int:
         left, right = 0, len(s) - 1
 
