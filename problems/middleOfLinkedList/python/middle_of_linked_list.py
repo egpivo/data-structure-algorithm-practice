@@ -17,13 +17,18 @@ class Solution:
     """
 
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        fast = slow = head
+        # Initialize fast and slow pointers to the head of the linked list
+        fast_pointer = slow_pointer = head
 
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
+        # Traverse the linked list using the fast and slow pointers
+        while fast_pointer and fast_pointer.next:
+            # Move the fast pointer two steps at a time
+            fast_pointer = fast_pointer.next.next
+            # Move the slow pointer one step at a time
+            slow_pointer = slow_pointer.next
 
-        return slow
+        # The slow pointer is now at the middle node of the linked list
+        return slow_pointer
 
 
 if __name__ == "__main__":
