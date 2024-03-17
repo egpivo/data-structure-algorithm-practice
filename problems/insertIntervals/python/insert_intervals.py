@@ -5,7 +5,7 @@ class Solution:
     """
     Complexity
     ----------
-    - TC: O(n*long(n)) (sorting)
+    - TC: O(n)
     - SC: O(n) (resultant output)
     """
 
