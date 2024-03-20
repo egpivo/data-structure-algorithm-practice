@@ -10,3 +10,5 @@ An integer n is a power of two, if there exists an integer x such that n == 2x.
 Input: n = 3
 Output: false
 ```
+
+- My solution: https://leetcode.com/problems/power-of-two/solutions/4748851/bitwise-approach/
