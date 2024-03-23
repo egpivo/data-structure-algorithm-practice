@@ -54,6 +54,14 @@ class SolutionRescursive:
 
 
 class Solution:
+    """
+
+    Complexity
+    ----------
+    - TC: O(n)
+    - SC: O(1)
+    """
+
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
         if head is None:
             return True
@@ -64,9 +72,8 @@ class Solution:
         while temp_head and reserved_second_half:
             if temp_head.val != reserved_second_half.val:
                 return False
-            else:
-                temp_head = temp_head.next
-                reserved_second_half = reserved_second_half.next
+            temp_head = temp_head.next
+            reserved_second_half = reserved_second_half.next
 
         return True
 
