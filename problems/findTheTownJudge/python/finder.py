@@ -14,12 +14,10 @@ class Solution:
         trust_count = [0] * (n + 1)
 
         for src, dst in trust:
-            trust_count[
-                src
-            ] -= 1  # decrement trust count for the person making the trust
-            trust_count[
-                dst
-            ] += 1  # increment trust count for the person receiving the trust
+            # decrement trust count for the person making the trust
+            trust_count[src] -= 1
+            # increment trust count for the person receiving the trust
+            trust_count[dst] += 1
 
         for person in range(1, n + 1):
             if trust_count[person] == n - 1:
