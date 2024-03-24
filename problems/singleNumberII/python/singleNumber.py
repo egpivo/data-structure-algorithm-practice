@@ -2,6 +2,11 @@ from typing import List
 
 
 class SingleNumber:
+    """
+    - TC: O(n)
+    - SC: O(1)
+    """
+
     def single_number(self, nums: List[int]) -> int:
         once = 0
         twice = 0
