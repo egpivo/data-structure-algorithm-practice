@@ -12,3 +12,4 @@ Input: nums = [1,2,0]
 Output: 3
 Explanation: The numbers in the range [1,2] are all in the array.
 ```
+- My solution: https://leetcode.com/problems/first-missing-positive/solutions/4925753/presence-marking-detection-approach/
