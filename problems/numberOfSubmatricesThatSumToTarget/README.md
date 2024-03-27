@@ -1,15 +1,15 @@
-## [Number of Submatrices That Sum to Target](https://leetcode.com/problems/number-of-submatrices-that-sum-to-target/description/)
+## [Number of Smooth Descent Periods of a Stock](https://leetcode.com/problems/number-of-smooth-descent-periods-of-a-stock/description/)
 
-Given a matrix and a target, return the number of non-empty submatrices that sum to target.
+You are given an integer array prices representing the daily price history of a stock, where prices[i] is the stock price on the ith day.
 
-A submatrix x1, y1, x2, y2 is the set of all cells matrix[x][y] with x1 <= x <= x2 and y1 <= y <= y2.
+A smooth descent period of a stock consists of one or more contiguous days such that the price on each day is lower than the price on the preceding day by exactly 1. The first day of the period is exempted from this rule.
 
-Two submatrices (x1, y1, x2, y2) and (x1', y1', x2', y2') are different if they have some coordinate that is different: for example, if x1 != x1'.
+Return the number of smooth descent periods.
 
 
 
 - Example 1:
 ```
-Input: matrix = [[1,-1],[-1,1]], target = 0
-Output: 5
+Input: prices = [3,2,1,4]
+Output: 7
 ```
