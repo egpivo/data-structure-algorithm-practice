@@ -18,10 +18,11 @@ class Solution:
         for right, num in enumerate(nums):
             if not (minK <= num <= maxK):
                 left = right
-            if num == minK:
-                prev_minK_index = right
-            if num == maxK:
-                prev_maxK_index = right
+            else:
+                if num == minK:
+                    prev_minK_index = right
+                if num == maxK:
+                    prev_maxK_index = right
 
             count += max(0, min(prev_minK_index, prev_maxK_index) - left)
 
