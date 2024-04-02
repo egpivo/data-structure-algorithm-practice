@@ -6,9 +6,8 @@ class BackTrackingSolution:
 
     Complexity
     ----------
-    - TC: O(n^(target/min(candidates)))
-       - n = len(candidates)
-    - SC: O(target/min(candidates))
+    - TC: O(2^n)
+    - SC: O(n)
     """
 
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
@@ -49,7 +48,6 @@ class DpSolution:
 
                 for cumulative in dp[c - candidate]:
                     dp[c].append(cumulative + [candidate])
-        print(dp)
         return dp[-1]
 
 
