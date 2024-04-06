@@ -14,24 +14,24 @@ class Solution:
         if not (self.left_parenthesis in s or self.right_parenthesis in s):
             return s
 
-        removed_parenthesis_index = []
-        left_parenthesis_count = 0
+        stack = []
+        collect = set()
 
         for index, char in enumerate(s):
-            if self.left_parenthesis == char:
-                removed_parenthesis_index.append(index)
-                left_parenthesis_count += 1
-            if self.right_parenthesis == char:
-                if removed_parenthesis_index and left_parenthesis_count > 0:
-                    removed_parenthesis_index.pop()
-                else:
-                    removed_parenthesis_index.append(index)
-        answer = []
-        for index, char in enumerate(s):
-            if not index in removed_parenthesis_index:
-                answer.append(char)
+            if char == "(":
+                stack.append(index)
+            elif char == ")":
+                if stack:
+                    collect.add(stack.pop())
+                    collect.add(index)
 
-        return "".join(answer)
+        result = "".join(
+            char
+            for index, char in enumerate(s)
+            if char not in ("(", ")") or index in collect
+        )
+
+        return result
 
 
 class TowPassSolution:
