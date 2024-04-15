@@ -15,3 +15,5 @@ A leaf node is a node with no children.
 Input: root = [1,2,3]
 Output: 25
 ```
+
+- My solution: https://leetcode.com/problems/sum-root-to-leaf-numbers/solutions/5024772/dfs-approach/
