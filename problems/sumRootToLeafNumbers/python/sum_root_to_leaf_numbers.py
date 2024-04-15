@@ -10,6 +10,13 @@ class TreeNode:
 
 
 class SolutionDFS:
+    """
+    Complexity
+    ----------
+    - TC: O(N)
+    - SC: O(H)
+    """
+
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
         if not root:
             return None
