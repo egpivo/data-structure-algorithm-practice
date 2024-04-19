@@ -12,3 +12,5 @@ Input: grid = [
 ]
 Output: 1
 ```
+
+- My solution: https://leetcode.com/problems/number-of-islands/solutions/4424173/dfs-bfs-appoaches/

@@ -23,22 +23,28 @@ class UnionFind:
 
 
 class SolutionUnionFind:
+    """
+    Notes
+    -----
+    - TC: O(mn)
+    - SC: O(mn)
+    """
+
     def numIslands(self, grid: List[List[str]]) -> int:
-        nrow = len(grid)
-        ncol = len(grid[0])
+        m, n = len(grid), len(grid[0])
 
-        max_count = sum(grid[i][j] == "1" for i in range(nrow) for j in range(ncol))
-        uf = UnionFind(nrow * ncol, max_count)
+        max_count = sum(grid[i][j] == "1" for i in range(m) for j in range(n))
+        uf = UnionFind(m * n, max_count)
 
-        for i in range(nrow):
-            for j in range(ncol):
+        for i in range(m):
+            for j in range(n):
                 if grid[i][j] == "0":
                     continue
-                index = i * ncol + j
-                if j < ncol - 1 and grid[i][j + 1] == "1":
+                index = i * n + j
+                if j < n - 1 and grid[i][j + 1] == "1":
                     uf.union(index, index + 1)
-                if i < nrow - 1 and grid[i + 1][j] == "1":
-                    uf.union(index, index + ncol)
+                if i < m - 1 and grid[i + 1][j] == "1":
+                    uf.union(index, index + n)
 
         return uf.max_count
 
