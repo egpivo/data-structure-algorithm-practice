@@ -3,36 +3,45 @@ from typing import List
 
 class Solution:
     """
-    - Time complexity: O(n)
-    - Space complexity: O(1)
+    - Time complexity: O(mn)
+    - Space complexity: O(mn)
     """
 
-    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        for i in range(n):
-            while nums[nums[i] - 1] != nums[i]:
-                nums[nums[i] - 1], nums[i] = nums[i], nums[nums[i] - 1]
+    def findFarmland(self, land: List[List[int]]) -> List[List[int]]:
+        rows, cols = len(land), len(land[0])
+        farmlands = []
 
-        return [i + 1 for i in range(n) if i + 1 != nums[i]]
+        def dfs(row, col, max_row, max_col):
+            # Base cases: out of bounds or not land
+            if row >= rows or col >= cols or land[row][col] == 0:
+                return max_row, max_col
 
+            # Update bottom-right corner coordinates
+            max_row = max(max_row, row)
+            max_col = max(max_col, col)
 
-class Solution2:
-    """
-    - Time complexity: O(n)
-    - Space complexity: O(1)
-    """
+            # Mark the land as visited
+            land[row][col] = 0
 
-    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        len(nums)
-        for num in nums:
-            index = abs(num) - 1
-            nums[index] = -abs(nums[index])
+            # Explore adjacent land cells
+            max_row, max_col = dfs(row + 1, col, max_row, max_col)
+            max_row, max_col = dfs(row, col + 1, max_row, max_col)
+            return max_row, max_col
 
-        return [i + 1 for i, num in enumerate(nums) if num > 0]
+        # Iterate through all cells in the land
+        for row in range(rows):
+            for col in range(cols):
+                # If current cell is land
+                if land[row][col] == 1:
+                    # Get top-left and bottom-right corners
+                    top_left = (row, col)
+                    bottom_right = dfs(row, col, row, col)
+                    # Append farmland coordinates
+                    farmlands.append([*top_left, *bottom_right])
+
+        return farmlands
 
 
 if __name__ == "__main__":
-    nums = [4, 3, 2, 7, 8, 2, 3, 1]
-    print(f"Solution: {Solution().findDisappearedNumbers(nums)}")
-    nums = [4, 3, 2, 7, 8, 2, 3, 1]
-    print(f"Solution2: {Solution2().findDisappearedNumbers(nums)}")
+    land = [[1, 0, 0], [0, 1, 1], [0, 1, 1]]
+    print(f"Solution: {Solution().findFarmland(land)}")
