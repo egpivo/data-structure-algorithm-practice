@@ -12,3 +12,5 @@ Explanation: There are two paths from vertex 0 to vertex 2:
 - 0 → 1 → 2
 - 0 → 2
 ```
+
+- My Solution: https://leetcode.com/problems/find-if-path-exists-in-graph/solutions/5052165/bfs-approach/

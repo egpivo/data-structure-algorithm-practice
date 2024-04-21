@@ -32,28 +32,31 @@ class DFS:
 
 
 class BFS:
-    def validPath(self, n: int, edges: List[List[int]], start: int, end: int) -> bool:
-        """
-        Time Complexity: O(V + E) ~ O(`n` + `n_edges`)
-        Space Complexity: O(V + E) ~ O(`n` + `n_edges`)
-        """
-        collection = defaultdict(list)
+    """
+    Time Complexity: O(V + E) ~ O(`n` + `n_edges`)
+    Space Complexity: O(V + E) ~ O(`n` + `n_edges`)
+    """
 
-        for x, y in edges:
-            collection[x].append(y)
-            collection[y].append(x)
+    def validPath(
+        self, n: int, edges: List[List[int]], source: int, destination: int
+    ) -> bool:
+        if not edges:
+            return source == destination
 
-        q = deque([start])
-        marked = set([start])
+        graph = defaultdict(list)
+        for u, v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
 
-        while q:
-            node = q.popleft()
-            if node == end:
+        children = deque([source])
+        visited = set()
+        while children:
+            node = children.popleft()
+            if node == destination:
                 return True
-            for child_node in collection[node]:
-                if child_node not in marked:
-                    marked.add(child_node)
-                    q.append(child_node)
+            if node not in visited:
+                children.extend(graph[node])
+                visited.add(node)
         return False
 
 
