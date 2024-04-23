@@ -12,3 +12,5 @@ The height of a rooted tree is the number of edges on the longest downward path 
 Input: n = 6, edges = [[3,0],[3,1],[3,2],[3,4],[5,4]]
 Output: [3,4]
 ```
+
+- My solution: https://leetcode.com/problems/minimum-height-trees/solutions/4632308/dfs-bfs-approaches/

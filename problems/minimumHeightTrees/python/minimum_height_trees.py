@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, deque
 from typing import List
 
 
@@ -40,3 +40,44 @@ class Solution:
 
         # If the diameter is even, return a list with one vertex, else return a list with two vertices
         return [vertex2] if diameter % 2 == 0 else [vertex2, parents[vertex2]]
+
+
+class Solution2:
+    """
+    Complexity
+    ----------
+    - SC: O(V)
+    - TC: O(V+E)
+    """
+
+    def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
+        if n == 1:
+            return [0]
+
+        # Initialize the graph
+        graph = defaultdict(set)
+        for a, b in edges:
+            graph[a].add(b)
+            graph[b].add(a)
+
+        # Perform BFS starting from leaves until only root(s) remain
+        leaves = deque(node for node in graph if len(graph[node]) == 1)
+        while n > 2:
+            # Trim leaves level by level until only root(s) remain
+            size = len(leaves)
+            n -= size
+            for _ in range(size):
+                leaf = leaves.popleft()
+                neighbor = graph[leaf].pop()
+                graph[neighbor].remove(leaf)
+                if len(graph[neighbor]) == 1:
+                    leaves.append(neighbor)
+
+        return list(leaves)
+
+
+if __name__ == "__main__":
+    n = 4
+    edges = [[1, 0], [1, 2], [1, 3]]
+    print(f"DFS Solution: {Solution().findMinHeightTrees(n, edges)}")
+    print(f"BFS Solution: {Solution2().findMinHeightTrees(n, edges)}")
