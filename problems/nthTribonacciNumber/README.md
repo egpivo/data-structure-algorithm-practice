@@ -1,17 +1,21 @@
-## [N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number/description/)
+## [Longest Ideal Subsequence](https://leetcode.com/problems/longest-ideal-subsequence/description/)
 
-The Tribonacci sequence Tn is defined as follows:
+You are given a string `s` consisting of lowercase letters and an integer `k`. We call a string `t` ideal if the following conditions are satisfied:
 
-T0 = 0, T1 = 1, T2 = 1, and Tn+3 = Tn + Tn+1 + Tn+2 for n >= 0.
+- `t` is a subsequence of the string `s`.
+- The absolute difference in the alphabet order of every two adjacent letters in `t` is less than or equal to `k`.
+Return the length of the longest ideal string.
 
-Given n, return the value of Tn.
+A subsequence is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.
+
+Note that the alphabet order is not cyclic. For example, the absolute difference in the alphabet order of 'a' and 'z' is 25, not 1.
 
 
 
 - Example:
 ```
-Input: n = 25
-Output: 1389537
+Input: s = "acfgbd", k = 2
+Output: 4
 ```
 
-- My solution: https://leetcode.com/problems/n-th-tribonacci-number/solutions/5064604/dp-approach/
+- My solution: https://leetcode.com/problems/longest-ideal-subsequence/solutions/5069420/dp-approach/
