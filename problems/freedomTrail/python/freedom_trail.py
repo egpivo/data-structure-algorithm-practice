@@ -8,7 +8,7 @@ class Solution:
     - TC: O(mn^2)
     - SC: O(mn)
     - m: length of key
-    - n: length of right
+    - n: length of ring
     """
 
     def findRotateSteps(self, ring: str, key: str) -> int:
