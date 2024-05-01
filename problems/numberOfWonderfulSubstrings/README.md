@@ -14,3 +14,5 @@ A substring is a contiguous sequence of characters in a string.
 Input: word = "aba"
 Output: 4
 ```
+
+- My solution: https://leetcode.com/problems/number-of-wonderful-substrings/solutions/5090031/bit-manipulation-approach/
