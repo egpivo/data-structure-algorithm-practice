@@ -11,3 +11,5 @@ Return the resulting string.
 Input: word = "abcdefd", ch = "d"
 Output: "dcbaefd"
 ```
+
+- My solution: https://leetcode.com/problems/reverse-prefix-of-word/solutions/5093558/simple-approach/
