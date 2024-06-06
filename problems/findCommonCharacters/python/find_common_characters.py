@@ -6,8 +6,8 @@ class Solution:
     """
     Complexity
     ----------
-    - TC:
-    - SC:
+    - TC: O(n_1 + k)
+    - SC: O(1)
     """
 
     def commonChars(self, words: List[str]) -> List[str]:
