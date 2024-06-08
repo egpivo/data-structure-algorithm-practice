@@ -11,3 +11,5 @@ Input: nums = [23,2,4,6,7], k = 6
 Output: true
 Explanation: [2, 4] is a continuous subarray of size 2 whose elements sum up to 6.
 ```
+
+- My solution: https://leetcode.com/problems/continuous-subarray-sum/solutions/4622328/prefix-sum-approach/
