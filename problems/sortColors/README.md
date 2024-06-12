@@ -9,3 +9,4 @@ You must solve this problem without using the library's sort function.
 Input: nums = [2,0,2,1,1,0]
 Output: [0,0,1,1,2,2]
 ```
+- My solution: https://leetcode.com/problems/sort-colors/solutions/5298757/three-pointer-approach/

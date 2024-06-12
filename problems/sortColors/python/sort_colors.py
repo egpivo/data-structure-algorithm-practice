@@ -2,6 +2,13 @@ from typing import List
 
 
 class Solution:
+    """
+    Complexity
+    ----------
+    - TC: O(n)
+    - SC: O(1)
+    """
+
     def sortColors(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
