@@ -1,0 +1,10 @@
+## [Add Binary](https://leetcode.com/problems/add-binary/)
+
+Given two binary strings `a` and `b`, return their sum as a binary string.
+
+
+- Example 1:
+```
+Input: a = "1010", b = "1011"
+Output: "10101"
+```
